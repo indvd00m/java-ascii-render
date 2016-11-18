@@ -7,6 +7,8 @@ import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
 /**
+ * Rectangle of a particular width and height.
+ * 
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 6:19:21 PM
  *
