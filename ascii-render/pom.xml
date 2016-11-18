@@ -6,7 +6,7 @@
 	<groupId>com.indvd00m.ascii.render</groupId>
 	<artifactId>ascii-render</artifactId>
 	<packaging>jar</packaging>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>0.9.0</version>
 	<name>ascii-render</name>
 
 	<licenses>
