@@ -31,14 +31,14 @@ public class Rectangle implements IElement {
 	@Override
 	public IPoint draw(ICanvas canvas, IContext context) {
 		canvas.draw(x, y, "─", width);
-		canvas.draw(x, y + height, "─", width);
+		canvas.draw(x, y + height - 1, "─", width);
 		canvas.draw(x, y, "│\n", height);
-		canvas.draw(x + width, y, "│\n", height);
+		canvas.draw(x + width - 1, y, "│\n", height);
 
 		canvas.draw(x, y, "┌");
-		canvas.draw(x + width, y, "┐");
-		canvas.draw(x, y + height, "└");
-		canvas.draw(x + width, y + height, "┘");
+		canvas.draw(x + width - 1, y, "┐");
+		canvas.draw(x, y + height - 1, "└");
+		canvas.draw(x + width - 1, y + height - 1, "┘");
 
 		return new Point(x, y);
 	}

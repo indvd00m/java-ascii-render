@@ -24,7 +24,7 @@ public class TestRectangle {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(10, 5);
 
-		Rectangle r = new Rectangle(0, 0, 3, 4);
+		Rectangle r = new Rectangle(0, 0, 4, 5);
 		IPoint point = r.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
 		String s = "";
@@ -36,7 +36,7 @@ public class TestRectangle {
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 
-		r = new Rectangle(1, 1, 1, 1);
+		r = new Rectangle(1, 1, 2, 2);
 		point = r.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
 		s = "";
@@ -48,7 +48,7 @@ public class TestRectangle {
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 
-		r = new Rectangle(8, 2, 3, 3);
+		r = new Rectangle(8, 2, 4, 4);
 		point = r.draw(canvas, context);
 		assertEquals(new Point(8, 2), point);
 		s = "";
@@ -60,7 +60,7 @@ public class TestRectangle {
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 
-		r = new Rectangle(-2, -3, 6, 6);
+		r = new Rectangle(-2, -3, 7, 7);
 		point = r.draw(canvas, context);
 		assertEquals(new Point(-2, -3), point);
 		s = "";

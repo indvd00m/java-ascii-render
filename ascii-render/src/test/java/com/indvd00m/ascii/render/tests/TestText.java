@@ -10,6 +10,7 @@ import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IPoint;
+import com.indvd00m.ascii.render.elements.Rectangle;
 import com.indvd00m.ascii.render.elements.Text;
 
 /**
@@ -176,6 +177,41 @@ public class TestText {
 		s += "          \n";
 		s += "          \n";
 		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+
+		canvas.clear();
+		t = new Text("This is long text in rectangle", 2, 1, 5, 3);
+		point = t.draw(canvas, context);
+		new Rectangle(1, 0, 7, 5).draw(canvas, context);
+		assertEquals(point, new Point(2, 1));
+		s = "";
+		s += " ┌─────┐  \n";
+		s += " │This │  \n";
+		s += " │is lo│  \n";
+		s += " │ng t…│  \n";
+		s += " └─────┘  ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+
+		canvas = new Canvas(30, 10);
+		t = new Text(
+				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+				5, 3, 20, 6);
+		point = t.draw(canvas, context);
+		new Rectangle(4, 2, 22, 8).draw(canvas, context);
+		assertEquals(point, new Point(5, 3));
+		s = "";
+		s += "                              \n";
+		s += "                              \n";
+		s += "    ┌────────────────────┐    \n";
+		s += "    │Lorem Ipsum is simpl│    \n";
+		s += "    │y dummy text of the │    \n";
+		s += "    │printing and typeset│    \n";
+		s += "    │ting industry. Lorem│    \n";
+		s += "    │ Ipsum has been the │    \n";
+		s += "    │industry's standard…│    \n";
+		s += "    └────────────────────┘    ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 	}
