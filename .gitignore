@@ -3,3 +3,5 @@
 .settings
 .project
 **/target/
+**/ascii-plotter-api/
+**/ascii-plotter/
