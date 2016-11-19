@@ -10,7 +10,7 @@ package com.indvd00m.ascii.render.api;
  * @date 2016-Nov-19 7:39:37 PM
  *
  */
-public interface TypedIdentified<T> {
+public interface ITypedIdentified<T> {
 
 	/**
 	 * @return Type of object.

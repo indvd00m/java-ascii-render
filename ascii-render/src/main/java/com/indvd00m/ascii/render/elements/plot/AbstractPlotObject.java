@@ -6,7 +6,7 @@ import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 import com.indvd00m.ascii.render.api.IRegion;
-import com.indvd00m.ascii.render.api.TypedIdentified;
+import com.indvd00m.ascii.render.api.ITypedIdentified;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoints;
 import com.indvd00m.ascii.render.elements.plot.misc.PlotPoints;
@@ -19,7 +19,7 @@ import com.indvd00m.ascii.render.elements.plot.misc.PlotPoints;
  * @date 2016-Nov-19 9:45:31 PM
  *
  */
-public abstract class AbstractPlotObject<P extends AbstractPlotObject<P>> implements IElement, TypedIdentified<P> {
+public abstract class AbstractPlotObject<P extends AbstractPlotObject<P>> implements IElement, ITypedIdentified<P> {
 
 	protected int typedId;
 	protected List<IPlotPoint> points;

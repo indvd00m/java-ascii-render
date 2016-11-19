@@ -12,7 +12,7 @@ import com.indvd00m.ascii.render.api.IContextBuilder;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.ILayer;
 import com.indvd00m.ascii.render.api.IRegion;
-import com.indvd00m.ascii.render.api.TypedIdentified;
+import com.indvd00m.ascii.render.api.ITypedIdentified;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
@@ -28,7 +28,7 @@ public class ContextBuilder implements IContextBuilder {
 	// cache
 	Map<IElement, Set<ILayer>> layersByElement = new HashMap<IElement, Set<ILayer>>();
 	Map<Class<IElement>, Set<IElement>> elementsByClass = new HashMap<Class<IElement>, Set<IElement>>();
-	Map<Class<TypedIdentified<?>>, Map<Integer, TypedIdentified<?>>> identifiedByType = new HashMap<Class<TypedIdentified<?>>, Map<Integer, TypedIdentified<?>>>();
+	Map<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>> identifiedByType = new HashMap<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>>();
 
 	public static IContextBuilder newBuilder() {
 		return new ContextBuilder();
@@ -90,14 +90,14 @@ public class ContextBuilder implements IContextBuilder {
 					layer,
 					element
 			}) {
-				if (o instanceof TypedIdentified) {
-					TypedIdentified<?> ti = (TypedIdentified<?>) o;
+				if (o instanceof ITypedIdentified) {
+					ITypedIdentified<?> ti = (ITypedIdentified<?>) o;
 					Class<?> type = ti.getType();
 					int typedId = ti.getTypedId();
-					Map<Integer, TypedIdentified<?>> map = identifiedByType.get(type);
+					Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
 					if (map == null) {
-						map = new HashMap<Integer, TypedIdentified<?>>();
-						identifiedByType.put((Class<TypedIdentified<?>>) type, map);
+						map = new HashMap<Integer, ITypedIdentified<?>>();
+						identifiedByType.put((Class<ITypedIdentified<?>>) type, map);
 					}
 					map.put(typedId, ti);
 				}

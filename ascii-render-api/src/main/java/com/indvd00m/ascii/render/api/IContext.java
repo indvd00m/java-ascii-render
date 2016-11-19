@@ -85,23 +85,23 @@ public interface IContext {
 	List<ILayer> lookupLayers(IElement element);
 
 	/**
-	 * Search object with type {@code T} and identificator {@code typedId}. See {@link TypedIdentified}.
+	 * Search object with type {@code T} and identificator {@code typedId}. See {@link ITypedIdentified}.
 	 * 
 	 * @param type
 	 * @param typedId
 	 * @return
 	 */
-	<T extends TypedIdentified<T>> T lookupTyped(Class<T> type, int typedId);
+	<T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int typedId);
 
 	/**
 	 * Search objects with type {@code T}. If objects not found, empty list will be returned. See
-	 * {@link TypedIdentified}.
+	 * {@link ITypedIdentified}.
 	 * 
 	 * @param type
 	 * @param id
 	 * @return
 	 */
-	<T extends TypedIdentified<T>> List<T> lookupTyped(Class<T> type);
+	<T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type);
 
 	/**
 	 * @param element

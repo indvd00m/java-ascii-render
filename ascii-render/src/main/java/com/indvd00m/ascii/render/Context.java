@@ -12,7 +12,7 @@ import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.ILayer;
 import com.indvd00m.ascii.render.api.IPoint;
 import com.indvd00m.ascii.render.api.IRegion;
-import com.indvd00m.ascii.render.api.TypedIdentified;
+import com.indvd00m.ascii.render.api.ITypedIdentified;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
@@ -28,7 +28,7 @@ public class Context implements IContext {
 	// cache
 	Map<IElement, Set<ILayer>> layersByElement = new HashMap<IElement, Set<ILayer>>();
 	Map<Class<IElement>, Set<IElement>> elementsByClass = new HashMap<Class<IElement>, Set<IElement>>();
-	Map<Class<TypedIdentified<?>>, Map<Integer, TypedIdentified<?>>> identifiedByType = new HashMap<Class<TypedIdentified<?>>, Map<Integer, TypedIdentified<?>>>();
+	Map<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>> identifiedByType = new HashMap<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>>();
 
 	Context() {
 
@@ -118,10 +118,10 @@ public class Context implements IContext {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends TypedIdentified<T>> T lookupTyped(Class<T> type, int id) {
-		Map<Integer, TypedIdentified<?>> map = identifiedByType.get(type);
+	public <T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int id) {
+		Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
 		if (map != null) {
-			TypedIdentified<?> ti = map.get(id);
+			ITypedIdentified<?> ti = map.get(id);
 			return (T) ti;
 		}
 		return null;
@@ -129,11 +129,11 @@ public class Context implements IContext {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends TypedIdentified<T>> List<T> lookupTyped(Class<T> type) {
+	public <T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type) {
 		@SuppressWarnings("rawtypes")
 		List list = new ArrayList();
 
-		Map<Integer, TypedIdentified<?>> map = identifiedByType.get(type);
+		Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
 		if (map != null) {
 			list.addAll(map.values());
 		}
