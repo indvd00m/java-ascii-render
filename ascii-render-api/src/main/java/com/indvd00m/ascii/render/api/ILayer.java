@@ -12,35 +12,17 @@ import java.util.List;
 public interface ILayer {
 
 	/**
-	 * @return Region of this layer in Context coordinates.
+	 * Region of this layer in Context coordinates.
+	 * 
+	 * @return
 	 */
 	IRegion getRegion();
 
 	/**
-	 * @return List of elements. Elements will be drawn by render in order of this list.
+	 * List of elements. Elements will be drawn by render in order of this list.
+	 * 
+	 * @return
 	 */
 	List<IElement> getElements();
-
-	/**
-	 * Add element to layer.
-	 * 
-	 * @param element
-	 */
-	void addElement(IElement element);
-
-	/**
-	 * Remove element from layer.
-	 * 
-	 * @param element
-	 */
-	void removeElement(IElement element);
-
-	/**
-	 * Insert element at position.
-	 * 
-	 * @param index
-	 * @param element
-	 */
-	void insertElement(int index, IElement element);
 
 }

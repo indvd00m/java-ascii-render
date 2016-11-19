@@ -7,8 +7,8 @@ import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
 /**
- * Single-line string. Label has a width and text which do not gets in a label region will be discarded. In this case last symbol of a drawed text will be
- * '<tt>…</tt>'. Line breaks will be replaced with space symbol.
+ * Single-line string. Label has a width and text which do not gets in a label region will be discarded. In this case
+ * last symbol of a drawed text will be {@literal '…'}. Line breaks will be replaced with space symbol.
  * 
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 12:29:22 PM

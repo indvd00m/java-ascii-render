@@ -1,7 +1,10 @@
 package com.indvd00m.ascii.render.api;
 
+import javax.sound.sampled.Line;
+
 /**
- * Graphical element. It's may be a primitive, like <tt>Line</tt>, <tt>Circle</tt>, etc., or more complex object. Element will be drawn in his layer.
+ * Graphical element. It's may be a primitive, like {@link Line}, {@link Circle}, etc., or more complex object. Element
+ * will be drawn in his layer.
  * 
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 12:21:54 PM
@@ -14,7 +17,8 @@ public interface IElement {
 	 * 
 	 * @param canvas
 	 * @param context
-	 * @return Anchor point for this element in relative coordinates of his layer. If element was not be drawn, null must be returned.
+	 * @return Anchor point for this element in relative coordinates of his layer. If element was not be drawn, null
+	 *         must be returned.
 	 */
 	IPoint draw(ICanvas canvas, IContext context);
 

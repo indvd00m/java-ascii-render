@@ -16,6 +16,10 @@ public class Region implements IRegion {
 
 	public Region(int x, int y, int width, int height) {
 		super();
+		if (width < 0)
+			throw new IllegalArgumentException();
+		if (height < 0)
+			throw new IllegalArgumentException();
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -40,11 +44,6 @@ public class Region implements IRegion {
 	@Override
 	public int getHeight() {
 		return height;
-	}
-
-	@Override
-	public int getSquere() {
-		return width * height;
 	}
 
 	@Override

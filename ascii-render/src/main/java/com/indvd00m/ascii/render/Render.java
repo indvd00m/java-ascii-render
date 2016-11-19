@@ -2,6 +2,7 @@ package com.indvd00m.ascii.render;
 
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
+import com.indvd00m.ascii.render.api.IContextBuilder;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.ILayer;
 import com.indvd00m.ascii.render.api.IRegion;
@@ -15,9 +16,8 @@ import com.indvd00m.ascii.render.api.IRender;
 public class Render implements IRender {
 
 	@Override
-	public IContext createContext(int width, int height) {
-		IContext context = new Context(width, height);
-		return context;
+	public IContextBuilder newBuilder() {
+		return ContextBuilder.newBuilder();
 	}
 
 	@Override

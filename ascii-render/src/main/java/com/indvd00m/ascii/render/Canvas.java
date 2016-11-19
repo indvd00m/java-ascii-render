@@ -64,7 +64,7 @@ public class Canvas implements ICanvas {
 		if (y >= height)
 			return;
 
-		if (s.matches("(?s).*[\\n\\r]+.*")) { // multilined string
+		if (s.matches("(?s).*[\\n\\r]+.*")) { // multi-lined string
 			for (String line : s.split("[\\n\\r]")) {
 				draw(x, y++, line);
 				if (y >= height)
@@ -97,6 +97,8 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public void draw(int x, int y, String s, int count) {
+		if (count <= 0)
+			return;
 		draw(x, y, repeatString(s, count));
 	}
 

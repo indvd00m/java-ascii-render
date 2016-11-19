@@ -3,8 +3,9 @@ package com.indvd00m.ascii.render.api;
 import java.util.List;
 
 /**
- * Context object. Context contains layers which contains elements. Every layer has region, in which it will be drawn. Only content from this layer region will
- * be drawn in render. Layers contained in a particular order and will be drawn in this order.
+ * Context object. Context contains layers which contains elements. Every layer has region, in which it will be drawn.
+ * Only content from this layer region will be drawn in render. Layers contained in a particular order and will be drawn
+ * in this order.
  * 
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 3:46:21 PM
@@ -13,49 +14,119 @@ import java.util.List;
 public interface IContext {
 
 	/**
-	 * @return Width of context.
+	 * Width of context.
+	 * 
+	 * @return
 	 */
 	int getWidth();
 
 	/**
-	 * @return Height of context.
+	 * Height of context.
+	 * 
+	 * @return
 	 */
 	int getHeight();
 
 	/**
-	 * @return Layers list.
+	 * Layers list.
+	 * 
+	 * @return
 	 */
 	List<ILayer> getLayers();
 
 	/**
-	 * Create new layer and add him to context in a context region <tt>(0, 0, width, height)</tt>.
+	 * Search first element of {@code E} type.
 	 * 
+	 * @param clazz
 	 * @return
 	 */
-	ILayer createLayer();
+	<E extends IElement> E lookup(Class<E> clazz);
 
 	/**
-	 * Create new layer and add him to context in a specific region.
+	 * Search all elements of {@code E} type. If elements not found, empty list will be returned.
 	 * 
-	 * @param region
+	 * @param clazz
 	 * @return
 	 */
-	ILayer createLayer(IRegion region);
+	<E extends IElement> List<E> lookupAll(Class<E> clazz);
 
 	/**
-	 * Remove layer.
+	 * Search first element of {@code E} type in layer.
 	 * 
+	 * @param clazz
 	 * @param layer
-	 */
-	void removeLayer(ILayer layer);
-
-	/**
-	 * Set layer index.
-	 * 
-	 * @param layer
-	 * @param newIndex
 	 * @return
 	 */
-	int setLayerIndex(ILayer layer, int newIndex);
+	<E extends IElement> E lookup(Class<E> clazz, ILayer layer);
+
+	/**
+	 * Search all elements of {@code E} type in layer. If elements not found, empty list will be returned.
+	 * 
+	 * @param clazz
+	 * @param layer
+	 * @return
+	 */
+	<E extends IElement> List<E> lookupAll(Class<E> clazz, ILayer layer);
+
+	/**
+	 * Search first layer which contains {@code element}.
+	 * 
+	 * @param element
+	 * @return
+	 */
+	ILayer lookupLayer(IElement element);
+
+	/**
+	 * Search all layers which contains {@code element}. If layers not found, empty list will be returned.
+	 * 
+	 * @param element
+	 * @return
+	 */
+	List<ILayer> lookupLayers(IElement element);
+
+	/**
+	 * Search object with type {@code T} and identificator {@code typedId}. See {@link TypedIdentified}.
+	 * 
+	 * @param type
+	 * @param typedId
+	 * @return
+	 */
+	<T extends TypedIdentified<T>> T lookupTyped(Class<T> type, int typedId);
+
+	/**
+	 * Search objects with type {@code T}. If objects not found, empty list will be returned. See
+	 * {@link TypedIdentified}.
+	 * 
+	 * @param type
+	 * @param id
+	 * @return
+	 */
+	<T extends TypedIdentified<T>> List<T> lookupTyped(Class<T> type);
+
+	/**
+	 * @param element
+	 * @return true, if this context contains {@code element}.
+	 */
+	boolean contains(IElement element);
+
+	/**
+	 * Transform point coordinates from {@code source} coordinate system to {@code target} coordinate system.
+	 * 
+	 * @param point
+	 * @param source
+	 * @param target
+	 * @return
+	 */
+	IPoint transform(IPoint point, ILayer source, ILayer target);
+
+	/**
+	 * Transform point coordinates from {@code source} coordinate system to {@code target} coordinate system.
+	 * 
+	 * @param point
+	 * @param source
+	 * @param target
+	 * @return
+	 */
+	IPoint transform(IPoint point, IElement source, IElement target);
 
 }

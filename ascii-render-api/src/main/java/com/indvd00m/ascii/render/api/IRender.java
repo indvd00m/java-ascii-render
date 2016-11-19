@@ -9,8 +9,19 @@ package com.indvd00m.ascii.render.api;
  */
 public interface IRender {
 
-	IContext createContext(int width, int height);
+	/**
+	 * New context builder.
+	 * 
+	 * @return
+	 */
+	IContextBuilder newBuilder();
 
+	/**
+	 * Render context to canvas.
+	 * 
+	 * @param context
+	 * @return
+	 */
 	ICanvas render(IContext context);
 
 }

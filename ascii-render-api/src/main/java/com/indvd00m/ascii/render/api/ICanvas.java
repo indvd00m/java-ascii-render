@@ -1,8 +1,9 @@
 package com.indvd00m.ascii.render.api;
 
 /**
- * Canvas it's a low level object, which can draw text in a particular position. Canvas has width and height and contains area of <tt>\s</tt> and <tt>\n</tt>
- * (line breaks) symbols after creating.
+ * Canvas it's a low level object, which can draw text in a particular position. Canvas has width and height and
+ * contains area of {@code \s} and {@literal \n} (line breaks) symbols after creating. Axis X directed from left to
+ * right. Axis Y directed from top to bottom.
  * 
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-16 10:45:16 PM
@@ -11,23 +12,29 @@ package com.indvd00m.ascii.render.api;
 public interface ICanvas {
 
 	/**
-	 * @return Final version of text, which contains all drawed elements.
+	 * Final version of text, which contains all drawed elements.
+	 * 
+	 * @return
 	 */
 	String getText();
 
 	/**
-	 * @return Height of canvas.
+	 * Height of canvas.
+	 * 
+	 * @return
 	 */
 	int getHeight();
 
 	/**
-	 * @return Width of canvas.
+	 * Width of canvas.
+	 * 
+	 * @return
 	 */
 	int getWidth();
 
 	/**
-	 * Draw string in a particular position. Coordinates <tt>x</tt> and <tt>y</tt> may be any, canvas will draw only text which gets in his region. <tt>s</tt>
-	 * can contains line breaks.
+	 * Draw string in a particular position. Coordinates {@code x} and {@code y} may be any, canvas will draw only text
+	 * which gets in his region. {@code s} can contains line breaks.
 	 * 
 	 * @param x
 	 * @param y
@@ -36,8 +43,8 @@ public interface ICanvas {
 	void draw(int x, int y, String s);
 
 	/**
-	 * Draw string <tt>count</tt> times starting from <tt>x</tt> and <tt>y</tt>. Coordinates <tt>x</tt> and <tt>y</tt> may be any, canvas will draw only text
-	 * which gets in his region. <tt>s</tt> can contains line breaks.
+	 * Draw string {@code count} times starting from {@code x} and {@code y}. Coordinates {@code x} and {@code y} may be
+	 * any, canvas will draw only text which gets in his region. {@code s} can contains line breaks.
 	 * 
 	 * @param x
 	 * @param y
@@ -51,8 +58,8 @@ public interface ICanvas {
 	void clear();
 
 	/**
-	 * Gets char at a particular position. After creating canvas contains only <tt>\s</tt> symbols and line breaks <tt>\n</tt>. If coordinates do not gets in a
-	 * canvas region <tt>0</tt> will be returned.
+	 * Gets char at a particular position. After creating canvas contains only {@literal \s} symbols and line breaks
+	 * {@literal \n}. If coordinates do not gets in a canvas region {@literal 0} will be returned.
 	 * 
 	 * @param x
 	 * @param y

@@ -18,7 +18,7 @@ public class Layer implements ILayer {
 	IRegion region;
 	List<IElement> elements = new ArrayList<IElement>();
 
-	public Layer(IRegion region) {
+	Layer(IRegion region) {
 		super();
 		this.region = region;
 	}
@@ -31,21 +31,6 @@ public class Layer implements ILayer {
 	@Override
 	public List<IElement> getElements() {
 		return Collections.unmodifiableList(elements);
-	}
-
-	@Override
-	public void addElement(IElement element) {
-		elements.add(element);
-	}
-
-	@Override
-	public void removeElement(IElement element) {
-		elements.remove(element);
-	}
-
-	@Override
-	public void insertElement(int index, IElement element) {
-		elements.add(index, element);
 	}
 
 }

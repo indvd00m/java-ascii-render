@@ -7,8 +7,8 @@ import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
 /**
- * Multilined string. <tt>Text</tt> has a width and source string will be split in a parts by a <tt>\n</tt> symbol if length of string more than <tt>Text</tt>
- * width.
+ * Multilined string. {@code Text} has a width and source string will be split in a parts by a {@literal \n} symbol if
+ * length of string more than {@code Text} width.
  * 
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 2:11:38 PM
