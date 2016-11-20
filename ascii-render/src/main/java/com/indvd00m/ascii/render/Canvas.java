@@ -64,7 +64,7 @@ public class Canvas implements ICanvas {
 		if (y >= height)
 			return;
 
-		if (s.matches("(?s).*[\\n\\r]+.*")) { // multi-lined string
+		if (s.matches("(?s).*[\\n\\r]+.*")) { // multiline string
 			for (String line : s.split("[\\n\\r]")) {
 				draw(x, y++, line);
 				if (y >= height)
