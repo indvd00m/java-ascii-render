@@ -18,6 +18,14 @@ public class Ellipse implements IElement {
 	int width;
 	int height;
 
+	public Ellipse() {
+		super();
+		this.x = Integer.MIN_VALUE;
+		this.y = Integer.MIN_VALUE;
+		this.width = Integer.MIN_VALUE;
+		this.height = Integer.MIN_VALUE;
+	}
+
 	public Ellipse(int x, int y, int width, int height) {
 		super();
 		this.x = x;
@@ -28,6 +36,20 @@ public class Ellipse implements IElement {
 
 	@Override
 	public IPoint draw(ICanvas canvas, IContext context) {
+		int x = this.x;
+		int y = this.y;
+		int width = this.width;
+		int height = this.height;
+
+		if (x == Integer.MIN_VALUE)
+			x = canvas.getWidth() / 2;
+		if (y == Integer.MIN_VALUE)
+			y = canvas.getHeight() / 2;
+		if (width == Integer.MIN_VALUE)
+			width = canvas.getWidth() - 1;
+		if (height == Integer.MIN_VALUE)
+			height = canvas.getHeight() - 1;
+
 		double a = width / 2d;
 		double b = height / 2d;
 		double c = Math.sqrt(Math.abs(Math.pow(a, 2) - Math.pow(b, 2)));

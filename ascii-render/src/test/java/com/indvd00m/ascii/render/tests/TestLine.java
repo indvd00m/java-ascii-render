@@ -20,10 +20,9 @@ import com.indvd00m.ascii.render.elements.line.Line;
 public class TestLine {
 
 	@Test
-	public void test() {
+	public void test01() {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(10, 5);
-
 		Line l = new Line(new Point(0, 0), new Point(10, 5));
 		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
@@ -35,12 +34,16 @@ public class TestLine {
 		s += "        **";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		l = new Line(new Point(5, 0), new Point(10, 5));
-		point = l.draw(canvas, context);
+	@Test
+	public void test02() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Line l = new Line(new Point(5, 0), new Point(10, 5));
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(5, 0), point);
-		s = "";
+		String s = "";
 		s += "     *    \n";
 		s += "      *   \n";
 		s += "       *  \n";
@@ -48,12 +51,16 @@ public class TestLine {
 		s += "         *";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		l = new Line(new Point(9, 0), new Point(9, 4));
-		point = l.draw(canvas, context);
+	@Test
+	public void test03() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Line l = new Line(new Point(9, 0), new Point(9, 4));
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(9, 0), point);
-		s = "";
+		String s = "";
 		s += "         *\n";
 		s += "         *\n";
 		s += "         *\n";
@@ -61,12 +68,16 @@ public class TestLine {
 		s += "         *";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		l = new Line(new Point(9, 0), new Point(0, 0));
-		point = l.draw(canvas, context);
+	@Test
+	public void test04() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Line l = new Line(new Point(9, 0), new Point(0, 0));
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(9, 0), point);
-		s = "";
+		String s = "";
 		s += "**********\n";
 		s += "          \n";
 		s += "          \n";
@@ -74,12 +85,16 @@ public class TestLine {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		l = new Line(new Point(0, 0), new Point(0, 5));
-		point = l.draw(canvas, context);
+	@Test
+	public void test05() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Line l = new Line(new Point(0, 0), new Point(0, 5));
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
-		s = "";
+		String s = "";
 		s += "*         \n";
 		s += "*         \n";
 		s += "*         \n";
@@ -87,12 +102,16 @@ public class TestLine {
 		s += "*         ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		l = new Line(new Point(0, 4), new Point(10, 4));
-		point = l.draw(canvas, context);
+	@Test
+	public void test06() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Line l = new Line(new Point(0, 4), new Point(10, 4));
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(0, 4), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += "          \n";
 		s += "          \n";
@@ -100,10 +119,14 @@ public class TestLine {
 		s += "**********";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas = new Canvas(30, 30);
-		l = new Line(new Point(3, 5), new Point(25, 20));
-		point = l.draw(canvas, context);
+	@Test
+	public void test07() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(30, 30);
+		Line l = new Line(new Point(3, 5), new Point(25, 20));
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(3, 5), point);
 		l = new Line(new Point(5, 10), new Point(25, 20));
 		point = l.draw(canvas, context);
@@ -120,7 +143,7 @@ public class TestLine {
 		l = new Line(new Point(50, 50), new Point(150, 150));
 		point = l.draw(canvas, context);
 		assertEquals(new Point(50, 50), point);
-		s = "";
+		String s = "";
 		s += "                              \n";
 		s += "                              \n";
 		s += "                              \n";
@@ -151,7 +174,6 @@ public class TestLine {
 		s += "                              \n";
 		s += "                              \n";
 		s += "                              ";
-
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 	}

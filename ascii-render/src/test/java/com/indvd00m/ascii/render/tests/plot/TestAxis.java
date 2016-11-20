@@ -32,7 +32,7 @@ public class TestAxis {
 	}
 
 	@Test
-	public void test() {
+	public void test01() {
 		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
 			double val = Math.sin(Math.toRadians(degree));
@@ -43,7 +43,6 @@ public class TestAxis {
 		IContextBuilder builder = render.newBuilder();
 		Region region = new Region(0, 0, 80, 20);
 		builder.width(region.getWidth()).height(region.getHeight());
-
 		builder.element(new Axis(points, region));
 		ICanvas canvas = render.render(builder.build());
 		String s = canvas.getText();
@@ -70,12 +69,26 @@ public class TestAxis {
 		expected += "│                                                                               \n";
 		expected += "└───────────────────────────────────────────────────────────────────────────────";
 		assertEquals(expected, s);
+	}
 
+	@Test
+	public void test02() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
+		for (int degree = 0; degree <= 360; degree++) {
+			double val = Math.sin(Math.toRadians(degree));
+			IPlotPoint plotPoint = new PlotPoint(degree, val);
+			points.add(plotPoint);
+		}
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		Region region = new Region(0, 0, 80, 20);
+		builder.width(region.getWidth()).height(region.getHeight());
+		builder.element(new Axis(points, region));
 		builder.element(new AxisLabels(points, region));
-		canvas = render.render(builder.build());
-		s = canvas.getText();
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
 		System.out.println(s);
-		expected = "";
+		String expected = "";
 		expected += " 1.00┼                                                                          \n";
 		expected += "     │                                                                          \n";
 		expected += "     │                                                                          \n";

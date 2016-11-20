@@ -20,10 +20,9 @@ import com.indvd00m.ascii.render.elements.Label;
 public class TestLabel {
 
 	@Test
-	public void test() {
+	public void test01() {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(10, 5);
-
 		Label l = new Label("Test", 1, 1, 4);
 		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
@@ -35,26 +34,70 @@ public class TestLabel {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		l = new Label("Test", 1, 2, 3);
-		point = l.draw(canvas, context);
+	@Test
+	public void test02() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Label l = new Label("Test", 1, 2, 3);
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(1, 2), point);
-		s = "";
+		String s = "";
 		s += "          \n";
-		s += " Test     \n";
+		s += "          \n";
 		s += " Te…      \n";
 		s += "          \n";
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		l = new Label("Test", 1, 3, 0);
-		point = l.draw(canvas, context);
+	@Test
+	public void test03() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Label l = new Label("Test", 1, 3, 0);
+		IPoint point = l.draw(canvas, context);
 		assertEquals(new Point(1, 3), point);
-		s = "";
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test04() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Label l = new Label("Test");
+		IPoint point = l.draw(canvas, context);
+		assertEquals(new Point(0, 0), point);
+		String s = "";
+		s += "Test      \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test05() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Label l = new Label("Test", 1, 1);
+		IPoint point = l.draw(canvas, context);
+		assertEquals(new Point(1, 1), point);
+		String s = "";
 		s += "          \n";
 		s += " Test     \n";
-		s += " Te…      \n";
+		s += "          \n";
 		s += "          \n";
 		s += "          ";
 		System.out.println(canvas.getText());

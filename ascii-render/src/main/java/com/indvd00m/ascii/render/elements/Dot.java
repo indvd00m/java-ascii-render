@@ -18,6 +18,12 @@ public class Dot implements IElement {
 	int x;
 	int y;
 
+	public Dot() {
+		super();
+		this.x = Integer.MIN_VALUE;
+		this.y = Integer.MIN_VALUE;
+	}
+
 	public Dot(int x, int y) {
 		super();
 		this.x = x;
@@ -26,6 +32,14 @@ public class Dot implements IElement {
 
 	@Override
 	public IPoint draw(ICanvas canvas, IContext context) {
+		int x = this.x;
+		int y = this.y;
+
+		if (x == Integer.MIN_VALUE)
+			x = canvas.getWidth() / 2;
+		if (y == Integer.MIN_VALUE)
+			y = canvas.getHeight() / 2;
+
 		canvas.draw(x, y, "*");
 		return new Point(x, y);
 	}

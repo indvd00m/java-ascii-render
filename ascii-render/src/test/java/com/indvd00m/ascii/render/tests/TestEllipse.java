@@ -20,10 +20,9 @@ import com.indvd00m.ascii.render.elements.Ellipse;
 public class TestEllipse {
 
 	@Test
-	public void test() {
+	public void test01() {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(10, 5);
-
 		Ellipse e = new Ellipse(5, 2, 4, 4);
 		IPoint point = e.draw(canvas, context);
 		assertEquals(new Point(5, 2), point);
@@ -35,12 +34,16 @@ public class TestEllipse {
 		s += "    ***   ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		e = new Ellipse(5, 2, 8, 4);
-		point = e.draw(canvas, context);
+	@Test
+	public void test02() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Ellipse e = new Ellipse(5, 2, 8, 4);
+		IPoint point = e.draw(canvas, context);
 		assertEquals(new Point(5, 2), point);
-		s = "";
+		String s = "";
 		s += "   *****  \n";
 		s += "  *     * \n";
 		s += " *       *\n";
@@ -48,12 +51,16 @@ public class TestEllipse {
 		s += "   *****  ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas = new Canvas(80, 20);
-		e = new Ellipse(40, 10, 70, 16);
-		point = e.draw(canvas, context);
+	@Test
+	public void test03() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(80, 20);
+		Ellipse e = new Ellipse(40, 10, 70, 16);
+		IPoint point = e.draw(canvas, context);
 		assertEquals(new Point(40, 10), point);
-		s = "";
+		String s = "";
 		s += "                                                                                \n";
 		s += "                                                                                \n";
 		s += "                        *********************************                       \n";
@@ -74,7 +81,23 @@ public class TestEllipse {
 		s += "                  *********************************************                 \n";
 		s += "                        *********************************                       \n";
 		s += "                                                                                ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
 
+	@Test
+	public void test04() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Ellipse e = new Ellipse();
+		IPoint point = e.draw(canvas, context);
+		assertEquals(new Point(5, 2), point);
+		String s = "";
+		s += "   *****  \n";
+		s += " **     **\n";
+		s += "          \n";
+		s += " **     **\n";
+		s += "   *****  ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 	}

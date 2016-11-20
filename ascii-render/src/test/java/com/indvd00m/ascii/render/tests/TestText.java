@@ -21,10 +21,9 @@ import com.indvd00m.ascii.render.elements.Text;
 public class TestText {
 
 	@Test
-	public void test() {
+	public void test01() {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(10, 5);
-
 		Text t = new Text("Test", 1, 1, 4, 1);
 		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
@@ -36,12 +35,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Test", 1, 1, 3, 1);
-		point = t.draw(canvas, context);
+	@Test
+	public void test02() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Test", 1, 1, 3, 1);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Te…      \n";
 		s += "          \n";
@@ -49,12 +52,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Test", 1, 1, 3, 2);
-		point = t.draw(canvas, context);
+	@Test
+	public void test03() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Test", 1, 1, 3, 2);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Tes      \n";
 		s += " t        \n";
@@ -62,12 +69,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\nt", 1, 1, 3, 2);
-		point = t.draw(canvas, context);
+	@Test
+	public void test04() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\nt", 1, 1, 3, 2);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Tes      \n";
 		s += " t        \n";
@@ -75,12 +86,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 3, 2);
-		point = t.draw(canvas, context);
+	@Test
+	public void test05() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 3, 2);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Te…      \n";
 		s += "          \n";
@@ -88,12 +103,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 3, 1);
-		point = t.draw(canvas, context);
+	@Test
+	public void test06() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 3, 1);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Te…      \n";
 		s += "          \n";
@@ -101,12 +120,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 3, 3);
-		point = t.draw(canvas, context);
+	@Test
+	public void test07() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 3, 3);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Tes      \n";
 		s += "          \n";
@@ -114,12 +137,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 2, 4);
-		point = t.draw(canvas, context);
+	@Test
+	public void test08() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 2, 4);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Te       \n";
 		s += " s        \n";
@@ -127,12 +154,16 @@ public class TestText {
 		s += " t        ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 2, 3);
-		point = t.draw(canvas, context);
+	@Test
+	public void test09() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 2, 3);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " Te       \n";
 		s += " …        \n";
@@ -140,12 +171,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 2, 1);
-		point = t.draw(canvas, context);
+	@Test
+	public void test10() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 2, 1);
+		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += " T…       \n";
 		s += "          \n";
@@ -153,12 +188,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 2, 0);
-		point = t.draw(canvas, context);
+	@Test
+	public void test11() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 2, 0);
+		IPoint point = t.draw(canvas, context);
 		assertNull(point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += "          \n";
 		s += "          \n";
@@ -166,12 +205,16 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("Tes\n\nt", 1, 1, 0, 1);
-		point = t.draw(canvas, context);
+	@Test
+	public void test12() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("Tes\n\nt", 1, 1, 0, 1);
+		IPoint point = t.draw(canvas, context);
 		assertNull(point);
-		s = "";
+		String s = "";
 		s += "          \n";
 		s += "          \n";
 		s += "          \n";
@@ -179,13 +222,17 @@ public class TestText {
 		s += "          ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas.clear();
-		t = new Text("This is long text in rectangle", 2, 1, 5, 3);
-		point = t.draw(canvas, context);
+	@Test
+	public void test13() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text("This is long text in rectangle", 2, 1, 5, 3);
+		IPoint point = t.draw(canvas, context);
 		new Rectangle(1, 0, 7, 5).draw(canvas, context);
 		assertEquals(point, new Point(2, 1));
-		s = "";
+		String s = "";
 		s += " ┌─────┐  \n";
 		s += " │This │  \n";
 		s += " │is lo│  \n";
@@ -193,15 +240,19 @@ public class TestText {
 		s += " └─────┘  ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
+	}
 
-		canvas = new Canvas(30, 10);
-		t = new Text(
+	@Test
+	public void test14() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(30, 10);
+		Text t = new Text(
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 				5, 3, 20, 6);
-		point = t.draw(canvas, context);
+		IPoint point = t.draw(canvas, context);
 		new Rectangle(4, 2, 22, 8).draw(canvas, context);
 		assertEquals(point, new Point(5, 3));
-		s = "";
+		String s = "";
 		s += "                              \n";
 		s += "                              \n";
 		s += "    ┌────────────────────┐    \n";
@@ -212,6 +263,24 @@ public class TestText {
 		s += "    │ Ipsum has been the │    \n";
 		s += "    │industry's standard…│    \n";
 		s += "    └────────────────────┘    ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test15() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Text t = new Text(
+				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+		IPoint point = t.draw(canvas, context);
+		assertEquals(point, new Point(0, 0));
+		String s = "";
+		s += "Lorem Ipsu\n";
+		s += "m is simpl\n";
+		s += "y dummy te\n";
+		s += "xt of the \n";
+		s += "printing …";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 	}

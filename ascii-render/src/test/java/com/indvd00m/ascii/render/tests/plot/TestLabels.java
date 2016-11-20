@@ -42,7 +42,6 @@ public class TestLabels {
 		IContextBuilder builder = render.newBuilder();
 		Region region = new Region(0, 0, 80, 20);
 		builder.width(region.getWidth()).height(region.getHeight());
-
 		builder.element(new AxisLabels(points, region));
 		ICanvas canvas = render.render(builder.build());
 		String s = canvas.getText();

@@ -21,6 +21,22 @@ public class Label implements IElement {
 	int y;
 	int width;
 
+	public Label(String text) {
+		super();
+		this.text = text;
+		this.x = Integer.MIN_VALUE;
+		this.y = Integer.MIN_VALUE;
+		this.width = Integer.MIN_VALUE;
+	}
+
+	public Label(String text, int x, int y) {
+		super();
+		this.text = text;
+		this.x = x;
+		this.y = y;
+		this.width = Integer.MIN_VALUE;
+	}
+
 	public Label(String text, int x, int y, int width) {
 		super();
 		this.text = text;
@@ -31,7 +47,19 @@ public class Label implements IElement {
 
 	@Override
 	public IPoint draw(ICanvas canvas, IContext context) {
+		int x = this.x;
+		int y = this.y;
+		int width = this.width;
+
 		String s = text.replaceAll("[\\n\\r]+", " ");
+
+		if (x == Integer.MIN_VALUE)
+			x = 0;
+		if (y == Integer.MIN_VALUE)
+			y = 0;
+		if (width == Integer.MIN_VALUE)
+			width = s.length();
+
 		if (s.length() > width) {
 			if (width > 1) {
 				s = s.substring(0, width);

@@ -20,10 +20,9 @@ import com.indvd00m.ascii.render.elements.Dot;
 public class TestDot {
 
 	@Test
-	public void test() {
+	public void test01() {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(10, 5);
-
 		Dot d = new Dot(1, 1);
 		IPoint point = d.draw(canvas, context);
 		assertEquals(new Point(1, 1), point);
@@ -31,6 +30,23 @@ public class TestDot {
 		s += "          \n";
 		s += " *        \n";
 		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test02() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(10, 5);
+		Dot d = new Dot();
+		IPoint point = d.draw(canvas, context);
+		assertEquals(new Point(5, 2), point);
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "     *    \n";
 		s += "          \n";
 		s += "          ";
 		System.out.println(canvas.getText());

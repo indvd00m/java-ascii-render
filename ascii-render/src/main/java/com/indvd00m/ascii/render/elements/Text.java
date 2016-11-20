@@ -22,6 +22,15 @@ public class Text implements IElement {
 	int width;
 	int height;
 
+	public Text(String text) {
+		super();
+		this.text = text;
+		this.x = Integer.MIN_VALUE;
+		this.y = Integer.MIN_VALUE;
+		this.width = Integer.MIN_VALUE;
+		this.height = Integer.MIN_VALUE;
+	}
+
 	public Text(String text, int x, int y, int width, int height) {
 		super();
 		this.text = text;
@@ -33,6 +42,20 @@ public class Text implements IElement {
 
 	@Override
 	public IPoint draw(ICanvas canvas, IContext context) {
+		int x = this.x;
+		int y = this.y;
+		int width = this.width;
+		int height = this.height;
+
+		if (x == Integer.MIN_VALUE)
+			x = 0;
+		if (y == Integer.MIN_VALUE)
+			y = 0;
+		if (width == Integer.MIN_VALUE)
+			width = canvas.getWidth();
+		if (height == Integer.MIN_VALUE)
+			height = canvas.getHeight();
+
 		if (height <= 0 || width <= 0)
 			return null;
 		// text.replaceAll("([^\\n\\r]{" + width + "})\\s*", "$1\n").trim();
