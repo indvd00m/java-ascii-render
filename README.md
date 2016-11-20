@@ -1,6 +1,6 @@
 #Java ASCII Render
 
-ASCII render in pure java with no external dependencies.
+ASCII renderer in pure java with no external dependencies. Java ASCII Render supports graphical elements, layers, context, canvas.
 
 ```
                                EXPERIMENTAL RESULT                              
