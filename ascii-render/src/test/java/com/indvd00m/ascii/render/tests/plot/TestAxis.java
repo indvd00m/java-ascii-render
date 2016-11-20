@@ -81,6 +81,31 @@ public class TestAxis {
 		}
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
+		Region region = new Region(0, 0, 10, 5);
+		builder.width(region.getWidth()).height(region.getHeight());
+		builder.element(new Axis(points, new Region(1, 1, 8, 3)));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String expected = "";
+		expected += "          \n";
+		expected += " │        \n";
+		expected += " │        \n";
+		expected += " └─────── \n";
+		expected += "          ";
+		assertEquals(expected, s);
+	}
+
+	@Test
+	public void test03() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
+		for (int degree = 0; degree <= 360; degree++) {
+			double val = Math.sin(Math.toRadians(degree));
+			IPlotPoint plotPoint = new PlotPoint(degree, val);
+			points.add(plotPoint);
+		}
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
 		Region region = new Region(0, 0, 80, 20);
 		builder.width(region.getWidth()).height(region.getHeight());
 		builder.element(new Axis(points, region));

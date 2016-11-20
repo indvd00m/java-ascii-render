@@ -42,7 +42,7 @@ public class Axis extends AbstractPlotObject<Axis> {
 		}
 
 		canvas.draw(startX, startY, "│\n", height);
-		canvas.draw(startX + 1, lastY, "─", width);
+		canvas.draw(startX + 1, lastY, "─", width - 1);
 		canvas.draw(startX, lastY, "└");
 
 		if (labels != null) {
