@@ -239,6 +239,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 		builder.element(new Plot(points, new Region(0, 0, 78, 18)));
 		ICanvas canvas = render.render(builder.build());
 		String s = canvas.getText();
+		System.out.println(s);
 ```
 
 
