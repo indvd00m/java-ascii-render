@@ -34,16 +34,14 @@ public class TestFullPlott {
 	}
 
 	@Test
-	public void test() {
+	public void test01() {
 		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
 			double val = Math.sin(Math.toRadians(degree));
 			IPlotPoint plotPoint = new PlotPoint(degree, val);
 			points.add(plotPoint);
 		}
-
 		IRender render = new Render();
-
 		IContextBuilder builder = render.newBuilder();
 		Region region = new Region(0, 0, 80, 20);
 		builder.width(region.getWidth()).height(region.getHeight());
@@ -75,18 +73,28 @@ public class TestFullPlott {
 		expected += "-1.00┼─────────────────┼──────────────────┼──────────────────┼─────────────────┼\n";
 		expected += "     0                90                 180                270              360";
 		assertEquals(expected, s);
+	}
 
-		builder = render.newBuilder();
+	@Test
+	public void test02() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
+		for (int degree = 0; degree <= 360; degree++) {
+			double val = Math.sin(Math.toRadians(degree));
+			IPlotPoint plotPoint = new PlotPoint(degree, val);
+			points.add(plotPoint);
+		}
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
 		builder.width(27).height(8);
 		builder.element(new Rectangle(0, 0, 27, 8));
 		builder.layer(new Region(1, 1, 25, 6));
 		builder.element(new Axis(points, new Region(0, 0, 25, 6)));
 		builder.element(new AxisLabels(points, new Region(0, 0, 25, 6)));
 		builder.element(new Plot(points, new Region(0, 0, 25, 6)));
-		canvas = render.render(builder.build());
-		s = canvas.getText();
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
 		System.out.println(s);
-		expected = "";
+		String expected = "";
 		expected += "┌─────────────────────────┐\n";
 		expected += "│ 1.00┼ ********          │\n";
 		expected += "│ 0.50┼*       **       **│\n";
@@ -96,24 +104,28 @@ public class TestFullPlott {
 		expected += "│     0   90   180  270360│\n";
 		expected += "└─────────────────────────┘";
 		assertEquals(expected, s);
+	}
 
-		points = new ArrayList<IPlotPoint>();
+	@Test
+	public void test03() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
 			double val = Math.cos(Math.toRadians(degree));
 			IPlotPoint plotPoint = new PlotPoint(degree, val);
 			points.add(plotPoint);
 		}
-		builder = render.newBuilder();
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
 		builder.width(80).height(20);
 		builder.element(new Rectangle(0, 0, 80, 20));
 		builder.layer(new Region(1, 1, 78, 18));
 		builder.element(new Axis(points, new Region(0, 0, 78, 18)));
 		builder.element(new AxisLabels(points, new Region(0, 0, 78, 18)));
 		builder.element(new Plot(points, new Region(0, 0, 78, 18)));
-		canvas = render.render(builder.build());
-		s = canvas.getText();
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
 		System.out.println(s);
-		expected = "";
+		String expected = "";
 		expected += "┌──────────────────────────────────────────────────────────────────────────────┐\n";
 		expected += "│ 1.00┼******                                                           *******│\n";
 		expected += "│     │     ****                                                     ****      │\n";
@@ -135,8 +147,11 @@ public class TestFullPlott {
 		expected += "│     0                90                180               270              360│\n";
 		expected += "└──────────────────────────────────────────────────────────────────────────────┘";
 		assertEquals(expected, s);
+	}
 
-		points = new ArrayList<IPlotPoint>();
+	@Test
+	public void test04() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
 			if (degree > 75 && degree < 105)
 				continue;
@@ -146,17 +161,18 @@ public class TestFullPlott {
 			IPlotPoint plotPoint = new PlotPoint(degree, val);
 			points.add(plotPoint);
 		}
-		builder = render.newBuilder();
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
 		builder.width(80).height(20);
 		builder.element(new Rectangle(0, 0, 80, 20));
 		builder.layer(new Region(1, 1, 78, 18));
 		builder.element(new Axis(points, new Region(0, 0, 78, 18)));
 		builder.element(new AxisLabels(points, new Region(0, 0, 78, 18)));
 		builder.element(new Plot(points, new Region(0, 0, 78, 18)));
-		canvas = render.render(builder.build());
-		s = canvas.getText();
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
 		System.out.println(s);
-		expected = "";
+		String expected = "";
 		expected += "┌──────────────────────────────────────────────────────────────────────────────┐\n";
 		expected += "│ 3.73┼              *                                  **                     │\n";
 		expected += "│     │             **                                  *                      │\n";
@@ -178,24 +194,28 @@ public class TestFullPlott {
 		expected += "│     0                90                180               270              360│\n";
 		expected += "└──────────────────────────────────────────────────────────────────────────────┘";
 		assertEquals(expected, s);
+	}
 
-		points = new ArrayList<IPlotPoint>();
+	@Test
+	public void test05() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (double x = 0; x < 5; x += 0.01) {
 			double val = Math.exp(x);
 			IPlotPoint plotPoint = new PlotPoint(x, val);
 			points.add(plotPoint);
 		}
-		builder = render.newBuilder();
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
 		builder.width(80).height(20);
 		builder.element(new Rectangle(0, 0, 80, 20));
 		builder.layer(new Region(1, 1, 78, 18));
 		builder.element(new Axis(points, new Region(0, 0, 78, 18)));
 		builder.element(new AxisLabels(points, new Region(0, 0, 78, 18)));
 		builder.element(new Plot(points, new Region(0, 0, 78, 18)));
-		canvas = render.render(builder.build());
-		s = canvas.getText();
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
 		System.out.println(s);
-		expected = "";
+		String expected = "";
 		expected += "┌──────────────────────────────────────────────────────────────────────────────┐\n";
 		expected += "│148┼                                                                        **│\n";
 		expected += "│   │                                                                      **  │\n";
