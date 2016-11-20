@@ -258,7 +258,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>0.9.0</version>
+		<version>1.0.0</version>
 	</dependency>
 ```
 
@@ -274,6 +274,9 @@ https://github.com/indvd00m/java-ascii-render/releases
 
 ### Version 0.9.0
 - First release. Project reworked from https://github.com/indvd00m/java-ascii-plotter
+
+### Version 1.0.0
+- Reworking API. Add new elements.
 
 ## Roadmap
 
