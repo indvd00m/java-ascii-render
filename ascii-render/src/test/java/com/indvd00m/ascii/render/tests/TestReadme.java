@@ -19,6 +19,7 @@ import com.indvd00m.ascii.render.elements.Circle;
 import com.indvd00m.ascii.render.elements.Dot;
 import com.indvd00m.ascii.render.elements.Ellipse;
 import com.indvd00m.ascii.render.elements.Label;
+import com.indvd00m.ascii.render.elements.PseudoText;
 import com.indvd00m.ascii.render.elements.Rectangle;
 import com.indvd00m.ascii.render.elements.Text;
 import com.indvd00m.ascii.render.elements.line.Line;
@@ -46,6 +47,8 @@ public class TestReadme {
 
 	@Test
 	public void test01() {
+		// TODO draw lambda
+
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 
@@ -302,6 +305,39 @@ public class TestReadme {
 
 	@Test
 	public void test09() {
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		builder.width(120).height(20);
+		builder.element(new PseudoText("PseudoText"));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String e = "";
+		e += "                                                                                                                        \n";
+		e += "                                                                                                                        \n";
+		e += "                                                                                                                        \n";
+		e += "                                                ██                                                                      \n";
+		e += " ██████▒                                        ██           ██████████                         ██                      \n";
+		e += " ██ ░░██▒                                       ██               ██                             ██                      \n";
+		e += " ██   ░██                                       ██               ██                             ██                      \n";
+		e += " ██   ░██  ░▒████▓▒   ░▓███▒    ██    ██   ▒███▒██   ▒████░      ██       ░▓███▒   ▓██░░██▓   ███████                   \n";
+		e += " ██   ░██  ▓█▓░░░▒▓  ░██░░██░   ██    ██  ░██░░███  ░██░░██░     ██      ░██░░██░  ░██▓▓██░     ██                      \n";
+		e += " ██ ░░██▒  ██▒░      ▓█▒  ░█▓   ██    ██  ▓█▒  ▒██  ▓█▒  ▒█▓     ██      ▓█▒  ░█▓   ░████░      ██                      \n";
+		e += " ██████▒   ▓████▓▒   ██░  ░██   ██    ██  ██░  ░██  ██░  ░██     ██      ██░  ░██    ▒██▒       ██                      \n";
+		e += " ██        ░▓█████▒  ████████   ██    ██  ██░  ░██  ██░  ░██     ██      ████████    ░██░       ██                      \n";
+		e += " ██           ░░▓██  ██░        ██░  ░██  ██░  ░██  ██░  ░██     ██      ██░         ▓██▓       ██                      \n";
+		e += " ██             ░██  ▓█▒        ██░  ░██  ▓█▒  ▒██  ▓█▒  ▒█▓     ██      ▓█▒        ▒████▒      ██░                     \n";
+		e += " ██        █▒░░░▓█▓  ░██▒░░▒▓   ▓█▓░░███  ░██░░███  ░██░░██░     ██      ░██▒░░▒▓  ░██▒▒██░     ▓█▒░                    \n";
+		e += " ██        ░▓████▒░   ░▓███▓░   ░▓███░██   ▒███▒██   ▒████▒      ██       ░▓███▓░  ▓██░░██▓     ░▓███                   \n";
+		e += "                                                                                                                        \n";
+		e += "                                                                                                                        \n";
+		e += "                                                                                                                        \n";
+		e += "                                                                                                                        ";
+		assertEquals(e, s);
+	}
+
+	@Test
+	public void test10() {
 		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
 			if (degree > 75 && degree < 105)
