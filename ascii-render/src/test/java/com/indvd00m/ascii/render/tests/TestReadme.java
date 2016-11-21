@@ -334,7 +334,7 @@ public class TestReadme {
 		e += "                                                                                                      \n";
 		e += "                                                                                                      \n";
 		e += "                                                                                                      ";
-		// enabled antialiasing leads to different results on different machines
+		// Do not test this, because AWT produce different environment-specific results
 		// assertEquals(e, s);
 	}
 
