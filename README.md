@@ -1,6 +1,6 @@
 #Java ASCII Render
 
-ASCII renderer in pure java with no external dependencies. Java ASCII Render supports graphical elements, layers, context, canvas.
+ASCII renderer in pure java with no external dependencies. Java ASCII Render supports graphical primitives/elements, layers, context, canvas.
 
 ```
                                EXPERIMENTAL RESULT                              
@@ -147,7 +147,10 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 		System.out.println(s);
 ```
 
-### Label - single-line string
+### Label
+
+Single-line string.
+
 ```
 ┌──────────────────┐
 │                  │
@@ -171,7 +174,10 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 		System.out.println(s);
 ```
 
-### Text - multiline string
+### Text
+
+Multiline string.
+
 ```
 ┌──────────────────┐
 │                  │
@@ -195,7 +201,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 		System.out.println(s);
 ```
 
-### PseudoText with antialiasing
+### PseudoText
 
 Antialising option is customizable, enabled by default.
 
@@ -224,7 +230,10 @@ Antialising option is customizable, enabled by default.
 		System.out.println(s);
 ```
 
-### Plot with axis and labels
+### Plot
+
+Plot with axis and labels based on array of points.
+
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ 3.73┼              *                                  **                     │
