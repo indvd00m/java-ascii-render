@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.indvd00m.ascii.render.Canvas;
@@ -20,6 +21,7 @@ import com.indvd00m.ascii.render.elements.PseudoText;
  * @date 2016-Nov-21 3:28:50 PM
  *
  */
+@Ignore
 public class TestPseudoText {
 
 	@Test
