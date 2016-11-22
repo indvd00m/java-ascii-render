@@ -1,9 +1,7 @@
-package com.indvd00m.ascii.render.elements.line;
+package com.indvd00m.ascii.render.elements;
 
-import java.util.HashSet;
-import java.util.NavigableSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
@@ -29,63 +27,62 @@ public class Line implements IElement {
 
 	@Override
 	public IPoint draw(ICanvas canvas, IContext context) {
-		// TODO simplify line drawing
 		int x1 = start.getX();
 		int x2 = end.getX();
 		int y1 = start.getY();
 		int y2 = end.getY();
 
-		int minX = Math.min(x1, x2);
-		int maxX = Math.max(x1, x2);
-		int minY = Math.min(y1, y2);
-		int maxY = Math.max(y1, y2);
+		List<IPoint> points = new ArrayList<IPoint>();
 
-		int diffX = maxX - minX;
-		int diffY = maxY - minY;
-		int neededCount = (int) Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
+		int w = x2 - x1;
+		int h = y2 - y1;
 
-		Set<IPoint> points = new HashSet<IPoint>();
+		int dx1 = 0;
+		int dy1 = 0;
+		int dx2 = 0;
+		int dy2 = 0;
 
-		// search exact points
-		for (int x = minX; x <= maxX; x++) {
-			for (int y = minY; y <= maxY; y++) {
-				IPoint point = new Point(x, y);
-				if (points.contains(point))
-					continue;
+		if (w < 0)
+			dx1 = -1;
+		else if (w > 0)
+			dx1 = 1;
 
-				boolean draw = false;
-				if (x2 == x1 && x2 == x && y >= minY && y <= maxY)
-					draw = true;
-				else if (y2 == y1 && y2 == y && x >= minX && x <= maxX)
-					draw = true;
+		if (h < 0)
+			dy1 = -1;
+		else if (h > 0)
+			dy1 = 1;
 
-				if (draw)
-					points.add(point);
-			}
+		if (w < 0)
+			dx2 = -1;
+		else if (w > 0)
+			dx2 = 1;
+
+		int longest = Math.abs(w);
+		int shortest = Math.abs(h);
+
+		if (longest <= shortest) {
+			longest = Math.abs(h);
+			shortest = Math.abs(w);
+
+			if (h < 0)
+				dy2 = -1;
+			else if (h > 0)
+				dy2 = 1;
+			dx2 = 0;
 		}
 
-		// search nearing points
-		if (points.size() < neededCount) {
-			NavigableSet<PointWithDiff> candidates = new TreeSet<PointWithDiff>();
-			for (int x = minX; x <= maxX; x++) {
-				for (int y = minY; y <= maxY; y++) {
-					IPoint point = new Point(x, y);
-					if (points.contains(point))
-						continue;
+		int numerator = longest >> 1;
+		for (int i = 0, x = x1, y = y1; i <= longest; i++) {
+			points.add(new Point(x, y));
 
-					double a1 = Math.abs((double) (x - x1) / diffX);
-					double a2 = Math.abs((double) (y - y1) / diffY);
-
-					double diff = Math.abs(a1 - a2);
-					PointWithDiff candidate = new PointWithDiff(point, diff);
-					candidates.add(candidate);
-				}
-			}
-			while (points.size() < neededCount) {
-				PointWithDiff nextPoint = candidates.pollFirst();
-				if (nextPoint == null)
-					break;
-				points.add(nextPoint.point);
+			numerator += shortest;
+			if (numerator >= longest) {
+				numerator -= longest;
+				x += dx1;
+				y += dy1;
+			} else {
+				x += dx2;
+				y += dy2;
 			}
 		}
 

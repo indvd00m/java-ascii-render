@@ -10,7 +10,7 @@ import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IPoint;
-import com.indvd00m.ascii.render.elements.line.Line;
+import com.indvd00m.ascii.render.elements.Line;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
@@ -28,10 +28,10 @@ public class TestLine {
 		assertEquals(new Point(0, 0), point);
 		String s = "";
 		s += "*         \n";
-		s += "  **      \n";
-		s += "    **    \n";
-		s += "     ***  \n";
-		s += "        **";
+		s += " **       \n";
+		s += "   **     \n";
+		s += "     **   \n";
+		s += "       ** ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 	}
@@ -47,7 +47,7 @@ public class TestLine {
 		s += "     *    \n";
 		s += "      *   \n";
 		s += "       *  \n";
-		s += "       ** \n";
+		s += "        * \n";
 		s += "         *";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
@@ -152,19 +152,19 @@ public class TestLine {
 		s += "   *                          \n";
 		s += "    **    *         *         \n";
 		s += "      *   *        **         \n";
-		s += "       **         ** *        \n";
+		s += "       ***        *  *        \n";
 		s += "         *        *  *        \n";
-		s += "     **  ***     *   *        \n";
-		s += "       *** **   *     *       \n";
-		s += "        ***  ***      *       \n";
-		s += "        * *** **              \n";
-		s += "        *    ** **     *      \n";
+		s += "     *   ***     *   *        \n";
+		s += "      ** *  *   *     *       \n";
+		s += "        **   * *      *       \n";
+		s += "        * **  **       *      \n";
+		s += "        *   *** *      *      \n";
 		s += "        *    *** **    *      \n";
 		s += "       *    *   ** *    *     \n";
 		s += "       *   *      ****  *     \n";
-		s += "       *  **         ** *     \n";
-		s += "       *  *            ***    \n";
-		s += "      *  *               *    \n";
+		s += "       *   *        *** *     \n";
+		s += "       *  *           ****    \n";
+		s += "      *  *              **    \n";
 		s += "      * *                     \n";
 		s += "      **                      \n";
 		s += "      **                      \n";

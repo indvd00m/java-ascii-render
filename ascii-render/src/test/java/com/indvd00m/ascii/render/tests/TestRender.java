@@ -11,8 +11,8 @@ import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContextBuilder;
 import com.indvd00m.ascii.render.api.IRender;
 import com.indvd00m.ascii.render.elements.Circle;
+import com.indvd00m.ascii.render.elements.Line;
 import com.indvd00m.ascii.render.elements.Rectangle;
-import com.indvd00m.ascii.render.elements.line.Line;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
@@ -94,8 +94,8 @@ public class TestRender {
 		expected += "    │││ *    │││      *               *   *               * │││┌─────┐          \n";
 		expected += "    │││  *   │││      *               *   *               * ││││┌─────┐         \n";
 		expected += "    │││   *  │││      *               *   *               * │││││ │││││         \n";
-		expected += "    │││    **│││      *               *   *               * └││││─┘││││         \n";
-		expected += "    │││    **│││      *               *   *               *  └│││──┘│││         \n";
+		expected += "    │││    * │││      *               *   *               * └││││─┘││││         \n";
+		expected += "    │││     *│││      *               *   *               *  └│││──┘│││         \n";
 		expected += "    └─└────────┘      │*             *│    *             *    └││───┘││         \n";
 		expected += "    │└│──────│┘│      │*             *│    *             *     └│────┘│         \n";
 		expected += "    └────────┘─┘      │ *           * │     *           *       └─────┘         \n";
