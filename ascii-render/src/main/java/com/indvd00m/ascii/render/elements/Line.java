@@ -18,11 +18,19 @@ public class Line implements IElement {
 
 	IPoint start;
 	IPoint end;
+	char pen = '●';
 
 	public Line(IPoint start, IPoint end) {
 		super();
 		this.start = start;
 		this.end = end;
+	}
+
+	public Line(IPoint start, IPoint end, char pen) {
+		super();
+		this.start = start;
+		this.end = end;
+		this.pen = pen;
 	}
 
 	@Override
@@ -88,7 +96,7 @@ public class Line implements IElement {
 
 		// draw
 		for (IPoint point : points) {
-			canvas.draw(point.getX(), point.getY(), "*");
+			canvas.draw(point.getX(), point.getY(), pen + "");
 		}
 
 		return start;
@@ -158,6 +166,10 @@ public class Line implements IElement {
 		}
 		builder.append("]");
 		return builder.toString();
+	}
+
+	public char getPen() {
+		return pen;
 	}
 
 }

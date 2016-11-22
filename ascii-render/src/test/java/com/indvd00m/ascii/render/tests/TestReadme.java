@@ -104,7 +104,7 @@ public class TestReadme {
 			Label label = new Label("CONCLUSION: APPROVE", 0, 1);
 			Region region = new Region(width - label.getText().length(), height - 2, label.getText().length(), 2);
 			builder.layer(region);
-			builder.element(new Line(new Point(0, 0), new Point(label.getText().length(), 0)));
+			builder.element(new Line(new Point(0, 0), new Point(label.getText().length(), 0), '*'));
 			builder.element(label);
 		}
 
@@ -195,12 +195,12 @@ public class TestReadme {
 		String e = "";
 		e += "┌──────────────────┐\n";
 		e += "│                  │\n";
-		e += "│ **               │\n";
-		e += "│   ***            │\n";
-		e += "│      ***         │\n";
-		e += "│         ***      │\n";
-		e += "│            ***   │\n";
-		e += "│               ** │\n";
+		e += "│ ●●               │\n";
+		e += "│   ●●●            │\n";
+		e += "│      ●●●         │\n";
+		e += "│         ●●●      │\n";
+		e += "│            ●●●   │\n";
+		e += "│               ●● │\n";
 		e += "│                  │\n";
 		e += "└──────────────────┘";
 		assertEquals(e, s);

@@ -78,12 +78,12 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 ```
 ┌──────────────────┐
 │                  │
-│ **               │
-│   ***            │
-│      ***         │
-│         ***      │
-│            ***   │
-│               ** │
+│ ●●               │
+│   ●●●            │
+│      ●●●         │
+│         ●●●      │
+│            ●●●   │
+│               ●● │
 │                  │
 └──────────────────┘
 
