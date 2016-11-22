@@ -2,6 +2,7 @@ package com.indvd00m.ascii.render.elements;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -9,6 +10,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
@@ -19,7 +21,7 @@ import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
 /**
- * PseudoText element.
+ * PseudoText element. Default font DejaVu Sans Mono.
  * 
  * <pre>
  *                                                ██                                                                      
@@ -47,7 +49,8 @@ public class PseudoText implements IElement {
 	int x;
 	int y;
 	int height;
-	boolean antialising = true;;
+	boolean antialising = true;
+	Font font;
 
 	public PseudoText(String text) {
 		super();
@@ -66,6 +69,16 @@ public class PseudoText implements IElement {
 		this.antialising = antialising;
 	}
 
+	public PseudoText(String text, Font font, boolean antialising) {
+		super();
+		this.text = text;
+		this.x = Integer.MIN_VALUE;
+		this.y = Integer.MIN_VALUE;
+		this.height = Integer.MIN_VALUE;
+		this.font = font;
+		this.antialising = antialising;
+	}
+
 	public PseudoText(String text, int x, int y, int height) {
 		super();
 		this.text = text;
@@ -80,6 +93,16 @@ public class PseudoText implements IElement {
 		this.x = x;
 		this.y = y;
 		this.height = height;
+		this.antialising = antialising;
+	}
+
+	public PseudoText(String text, int x, int y, int height, Font font, boolean antialising) {
+		super();
+		this.text = text;
+		this.x = x;
+		this.y = y;
+		this.height = height;
+		this.font = font;
 		this.antialising = antialising;
 	}
 
@@ -109,13 +132,15 @@ public class PseudoText implements IElement {
 		else
 			graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
 
-		Font font = new Font(Font.MONOSPACED, Font.PLAIN, 24);
+		Font font = getFont().deriveFont(24);
 		FontMetrics fm = graphics.getFontMetrics(font);
 		Rectangle2D r2d = fm.getStringBounds(text, graphics);
 		float leadingFactor = (float) fm.getLeading() / fm.getHeight();
-		float descentFactor = (float) fm.getDescent() / fm.getHeight();
 		float size = (float) (font.getSize2D() * height / (r2d.getHeight() - r2d.getHeight() * leadingFactor));
 		font = font.deriveFont(size);
+		fm = graphics.getFontMetrics(font);
+		int ascent = fm.getAscent();
+		int leading = fm.getLeading();
 
 		Color fontColor = Color.BLACK;
 		Color backgroundColor = Color.WHITE;
@@ -124,7 +149,7 @@ public class PseudoText implements IElement {
 		graphics.setColor(backgroundColor);
 		graphics.fillRect(0, 0, width, height);
 		graphics.setColor(fontColor);
-		graphics.drawString(text, 0, height - height * descentFactor);
+		graphics.drawString(text, 0, ascent + leading);
 
 		// writeImageToPNG(image, "/tmp/pseudotext.png");
 
@@ -180,6 +205,27 @@ public class PseudoText implements IElement {
 		return Math.sqrt(weightR * r * r + weightG * g * g + weightB * b * b);
 	}
 
+	Font createFont() {
+		InputStream is = null;
+		try {
+			is = getClass().getResourceAsStream("/fonts/DejaVuSansMono/DejaVuSansMono.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+			return font;
+		} catch (FontFormatException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		}
+	}
+
 	void writeImageToPNG(BufferedImage image, String path) {
 		try {
 			ImageIO.write(image, "png", new File(path));
@@ -204,6 +250,12 @@ public class PseudoText implements IElement {
 		return height;
 	}
 
+	public Font getFont() {
+		if (font == null)
+			font = createFont();
+		return font;
+	}
+
 	public boolean isAntialising() {
 		return antialising;
 	}
@@ -213,6 +265,7 @@ public class PseudoText implements IElement {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (antialising ? 1231 : 1237);
+		result = prime * result + ((font == null) ? 0 : font.hashCode());
 		result = prime * result + height;
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		result = prime * result + x;
@@ -230,6 +283,11 @@ public class PseudoText implements IElement {
 			return false;
 		PseudoText other = (PseudoText) obj;
 		if (antialising != other.antialising)
+			return false;
+		if (font == null) {
+			if (other.font != null)
+				return false;
+		} else if (!font.equals(other.font))
 			return false;
 		if (height != other.height)
 			return false;
@@ -262,6 +320,11 @@ public class PseudoText implements IElement {
 		builder.append(height);
 		builder.append(", antialising=");
 		builder.append(antialising);
+		builder.append(", ");
+		if (font != null) {
+			builder.append("font=");
+			builder.append(font);
+		}
 		builder.append("]");
 		return builder.toString();
 	}

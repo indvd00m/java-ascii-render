@@ -61,34 +61,32 @@ public class TestPseudoText {
 	public void test02() {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(20, 20);
-		PseudoText t = new PseudoText("A");
+		PseudoText t = new PseudoText("A", true);
 		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
-		@SuppressWarnings("unused")
 		String s = "";
 		s += "                    \n";
 		s += "                    \n";
 		s += "                    \n";
-		s += "    ▒▒░             \n";
-		s += "   ░██▒             \n";
-		s += "   ▒██▓             \n";
-		s += "   █▓▒█░            \n";
-		s += "  ░█▒░█▒            \n";
-		s += "  ▒█░ █▓            \n";
-		s += "  ▓█  ▓█            \n";
-		s += " ░█▓  ▒█░           \n";
-		s += " ▒█▓▓▓▓█▓           \n";
-		s += " ▓█▓▓▓▓██           \n";
-		s += " █▓    ▒█░          \n";
-		s += "░█▒    ░█▒          \n";
-		s += "▓█░     █▓          \n";
+		s += "                    \n";
+		s += "   ░██░             \n";
+		s += "   ░██░             \n";
+		s += "   ▓██▓             \n";
+		s += "   ████             \n";
+		s += "  ░█▓▓█░            \n";
+		s += "  ▒█▒▒█▒            \n";
+		s += "  ▓█░░█▓            \n";
+		s += "  ██░░██            \n";
+		s += " ░██████░           \n";
+		s += " ▒█▓  ▓█▒           \n";
+		s += " ▓█▒  ▒█▓           \n";
+		s += " ██░  ░██           \n";
 		s += "                    \n";
 		s += "                    \n";
 		s += "                    \n";
 		s += "                    ";
 		System.out.println(canvas.getText());
-		// Do not test this, because AWT produce different environment-specific results
-		// assertEquals(s, canvas.getText());
+		assertEquals(s, canvas.getText());
 	}
 
 	@Test
@@ -98,7 +96,6 @@ public class TestPseudoText {
 		PseudoText t = new PseudoText("A", false);
 		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
-		@SuppressWarnings("unused")
 		String s = "";
 		s += "                    \n";
 		s += "                    \n";
@@ -121,18 +118,16 @@ public class TestPseudoText {
 		s += "                    \n";
 		s += "                    ";
 		System.out.println(canvas.getText());
-		// Do not test this, because AWT produce different environment-specific results
-		// assertEquals(s, canvas.getText());
+		assertEquals(s, canvas.getText());
 	}
 
 	@Test
 	public void test04() {
 		IContext context = mock(IContext.class);
 		ICanvas canvas = new Canvas(120, 20);
-		PseudoText t = new PseudoText("PseudoText");
+		PseudoText t = new PseudoText("PseudoText", true);
 		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
-		@SuppressWarnings("unused")
 		String s = "";
 		s += "                                                                                                                        \n";
 		s += "                                                                                                                        \n";
@@ -154,9 +149,9 @@ public class TestPseudoText {
 		s += "                                                                                                                        \n";
 		s += "                                                                                                                        \n";
 		s += "                                                                                                                        ";
+		System.out.println(s);
 		System.out.println(canvas.getText());
-		// Do not test this, because AWT produce different environment-specific results
-		// assertEquals(s, canvas.getText());
+		assertEquals(s, canvas.getText());
 	}
 
 	@Test
@@ -166,7 +161,6 @@ public class TestPseudoText {
 		PseudoText t = new PseudoText("PseudoText", false);
 		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
-		@SuppressWarnings("unused")
 		String s = "";
 		s += "                                                                                                                        \n";
 		s += "                                                                                                                        \n";
@@ -188,9 +182,197 @@ public class TestPseudoText {
 		s += "                                                                                                                        \n";
 		s += "                                                                                                                        \n";
 		s += "                                                                                                                        ";
+		System.out.println(s);
 		System.out.println(canvas.getText());
-		// Do not test this, because AWT produce different environment-specific results
-		// assertEquals(s, canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test06() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(60, 10);
+		PseudoText t = new PseudoText("PseudoText", true);
+		IPoint point = t.draw(canvas, context);
+		assertEquals(new Point(0, 0), point);
+		String s = "";
+		s += "                                                            \n";
+		s += "                          █                                 \n";
+		s += " ███▒                     █      █████                      \n";
+		s += " █ ░█                     █        █               █        \n";
+		s += " █ ░█ ▒███  ░██▒ █  █  ▒█▓█ ▒██▒   █   ░██▒ ▓▒▒▓  ████      \n";
+		s += " ███▒ █▒░   █▒░█ █  █  █▒▒█ █▒▒█   █   █▒░█ ░██░   █        \n";
+		s += " █    ▒▓█▓  ████ █ ░█  █░░█ █░░█   █   ████  ██    █        \n";
+		s += " █      ░█  █░░  █░▒█  █▒▒█ █▒▒█   █   █░░  ░██░   █░       \n";
+		s += " █    ███▒  ░███ ▒█▓█  ▒█▓█ ▒██▒   █   ░███ ▓▒▒▓   ▓██      \n";
+		s += "                                                            ";
+		System.out.println(s);
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test07() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(60, 10);
+		PseudoText t = new PseudoText("PseudoText", false);
+		IPoint point = t.draw(canvas, context);
+		assertEquals(new Point(0, 0), point);
+		String s = "";
+		s += "                                                            \n";
+		s += "                          █                                 \n";
+		s += " ███                      █      █████                      \n";
+		s += " █  █                     █        █               █        \n";
+		s += " █  █ ████   ██  █  █   ███  ██    █    ██  █  █  ████      \n";
+		s += " ███  █     █  █ █  █  █  █ █  █   █   █  █  ██    █        \n";
+		s += " █     ███  ████ █  █  █  █ █  █   █   ████  ██    █        \n";
+		s += " █       █  █    █  █  █  █ █  █   █   █     ██    █        \n";
+		s += " █    ████   ███ ████   ███  ██    █    ███ █  █   ███      \n";
+		s += "                                                            ";
+		System.out.println(s);
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test08() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(30, 5);
+		PseudoText t = new PseudoText("PseudoText", true);
+		IPoint point = t.draw(canvas, context);
+		assertEquals(new Point(0, 0), point);
+		String s = "";
+		s += "                              \n";
+		s += " ███▓        ████      █      \n";
+		s += " ████████░██████ ▓███████     \n";
+		s += " ████████▓██████ ▓████▒██     \n";
+		s += "                              ";
+		System.out.println(s);
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test09() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(30, 5);
+		PseudoText t = new PseudoText("PseudoText", false);
+		IPoint point = t.draw(canvas, context);
+		assertEquals(new Point(0, 0), point);
+		String s = "";
+		s += "                              \n";
+		s += " ████        ████      █      \n";
+		s += " ████████ ██████ ████████     \n";
+		s += " ███████████████ █████ ██     \n";
+		s += "                              ";
+		System.out.println(s);
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test10() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(240, 40);
+		PseudoText t = new PseudoText("PseudoText", true);
+		IPoint point = t.draw(canvas, context);
+		assertEquals(new Point(0, 0), point);
+		String s = "";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                 ███                                                                                                                                            \n";
+		s += "   ██████████▓▒░                                                                                 ███                        ███████████████████                                                                                                 \n";
+		s += "   █████████████▒                                                                                ███                        ███████████████████                                                ███                                              \n";
+		s += "   ██████████████▒                                                                               ███                        ███████████████████                                                ███                                              \n";
+		s += "   ███    ░░░▓████░                                                                              ███                                ███                                                        ███                                              \n";
+		s += "   ███        ░███▓                                                                              ███                                ███                                                        ███                                              \n";
+		s += "   ███         ▒███                                                                              ███                                ███                                                        ███                                              \n";
+		s += "   ███         ░███       ░▓█████▒░            ░▒█████▒░        ███        ███          ▒▓███▓▒  ███       ░▒▓████▓▒░               ███              ░▒█████▒░        ▓███░      ░███▓    ███████████████                                       \n";
+		s += "   ███         ░███      ▒█████████▒          ▒█████████▒       ███        ███        ░████████▓░███      ░██████████░              ███             ▒█████████▒       ░███▓░    ░▓███░    ███████████████                                       \n";
+		s += "   ███         ░███     ░███████████         ▓███████████░      ███        ███       ░██████████▓███     ░████████████░             ███            ▓███████████░       ▒███▒    ▒███▒     ███████████████                                       \n";
+		s += "   ███         ▒███     ▓███▒░░░░▓██        ▒███▓░░░░▒████░     ███        ███       ▓███▓░░░░▓█████     ▓███▓░░░░▓███▓             ███           ▒███▓░░░░▒████░       ▓███░  ░███▓           ███                                              \n";
+		s += "   ███        ░███▓     ███▒      ░▓       ░███▒      ░███▒     ███        ███      ░███▒      ▒████    ░███▒      ▒███░            ███          ░███▒      ░███▒       ░████░░████░           ███                                              \n";
+		s += "   ███    ░░░▓████░     ███░               ▒██▒        ▒██▓     ███        ███      ▒███       ░████    ▒███        ███▒            ███          ▒██▒        ▒██▓        ░███▓▓███░            ███                                              \n";
+		s += "   ██████████████▒      ███▓░              ▓██░        ░███     ███        ███      ▓██▒        ▒███    ▓██▒        ▒██▓            ███          ▓██░        ░███         ▒██████▒             ███                                              \n";
+		s += "   █████████████▒       ▓████▓▒▒░          ████████████████     ███        ███      ███░        ░███    ███░        ░███            ███          ████████████████         ░▓████▓░             ███                                              \n";
+		s += "   ██████████▓▒░        ░█████████▒░       ████████████████     ███        ███      ███░        ░███    ███░        ░███            ███          ████████████████          ░████░              ███                                              \n";
+		s += "   ███                   ░▓████████▓░      ████████████████     ███        ███      ███░        ░███    ███░        ░███            ███          ████████████████          ░████░              ███                                              \n";
+		s += "   ███                     ░░▒▓█████▒      ███                  ███       ░███      ███░        ░███    ███░        ░███            ███          ███                       ▓████▓              ███                                              \n";
+		s += "   ███                         ░▒████      ███░                 ███░      ░███      ███░        ░███    ███░        ░███            ███          ███░                     ▒██████▒             ███                                              \n";
+		s += "   ███                           ░███      ▓██▒                 ███░      ▒███      ▓██▒        ▒███    ▓██▒        ▒██▓            ███          ▓██▒                    ░███▓▓███░            ███░                                             \n";
+		s += "   ███                           ░███      ▒██▓                 ███▒      ▓███      ▒███       ░████    ▒███        ███▒            ███          ▒██▓                   ░████░░████░           ███░                                             \n";
+		s += "   ███                  ▓░       ▒███      ░███▓        ░▓      ▓██▓     ░████      ░███▒      ▒████    ░███▒      ▒███░            ███          ░███▓        ░▓        ▓███░  ░███▓           ███▒                                             \n";
+		s += "   ███                  ██▓▒░░░░▓███▓       ▒████▒░░░░▒███      ▒███▓░░░▒█████       ▓███▓░░░░▓█████     ▓███▓░░░░▓███▓             ███           ▒████▒░░░░▒███       ▒███▒    ▒███▒          ▓███▒░░                                          \n";
+		s += "   ███                  ████████████░        ▓████████████      ░█████████▒███       ░██████████▓███     ░████████████░             ███            ▓████████████      ░███▓      ▓███░         ▒█████████                                       \n";
+		s += "   ███                  ▒██████████░          ▒██████████▒       ▒███████▒ ███        ░▓███████▓░███      ░██████████░              ███             ▒██████████▒     ░████░      ░████░         ▓████████                                       \n";
+		s += "   ███                    ░▓████▓▒░            ░▒▓████▓░          ░▓███▓░  ███          ▒▓███▓▒  ███       ░▒▓████▓▒░               ███              ░▒▓████▓░       ▓███░        ░███▓          ▒▓██████                                       \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                ";
+		System.out.println(s);
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test11() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(240, 40);
+		PseudoText t = new PseudoText("PseudoText", false);
+		IPoint point = t.draw(canvas, context);
+		assertEquals(new Point(0, 0), point);
+		String s = "";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                 ███                                                                                                                                            \n";
+		s += "   ███████████                                                                                   ███                        ███████████████████                                                                                                 \n";
+		s += "   █████████████                                                                                 ███                        ███████████████████                                                ███                                              \n";
+		s += "   ██████████████                                                                                ███                        ███████████████████                                                ███                                              \n";
+		s += "   ███       █████                                                                               ███                                ███                                                        ███                                              \n";
+		s += "   ███         ████                                                                              ███                                ███                                                        ███                                              \n";
+		s += "   ███          ███                                                                              ███                                ███                                                        ███                                              \n";
+		s += "   ███          ███        ██████                █████          ███        ███           █████   ███         ██████                 ███                █████          ████        ████    ███████████████                                       \n";
+		s += "   ███          ███       █████████            █████████        ███        ███         █████████ ███       ██████████               ███              █████████         ████      ████     ███████████████                                       \n";
+		s += "   ███          ███      ███████████         ████████████       ███        ███        ██████████████      ████████████              ███            ████████████         ███      ███      ███████████████                                       \n";
+		s += "   ███          ███     ████     ███         ████     ████      ███        ███       █████    ██████     █████    █████             ███            ████     ████        ████    ████           ███                                              \n";
+		s += "   ███         ████     ███        █        ███        ███      ███        ███       ███        ████     ███        ███             ███           ███        ███         ████  ████            ███                                              \n";
+		s += "   ███       █████      ███                 ██          ███     ███        ███       ███        ████    ████        ████            ███           ██          ███         ████████             ███                                              \n";
+		s += "   ██████████████       ███                ███          ███     ███        ███      ███          ███    ███          ███            ███          ███          ███          ██████              ███                                              \n";
+		s += "   █████████████        ██████             ████████████████     ███        ███      ███          ███    ███          ███            ███          ████████████████          ██████              ███                                              \n";
+		s += "   ███████████           █████████         ████████████████     ███        ███      ███          ███    ███          ███            ███          ████████████████           ████               ███                                              \n";
+		s += "   ███                    ██████████       ████████████████     ███        ███      ███          ███    ███          ███            ███          ████████████████           ████               ███                                              \n";
+		s += "   ███                        ██████       ███                  ███        ███      ███          ███    ███          ███            ███          ███                       ██████              ███                                              \n";
+		s += "   ███                           ████      ███                  ███        ███      ███          ███    ███          ███            ███          ███                       ██████              ███                                              \n";
+		s += "   ███                            ███      ███                  ███        ███      ███          ███    ███          ███            ███          ███                      ████████             ███                                              \n";
+		s += "   ███                            ███       ███                 ███       ████       ███        ████    ████        ████            ███           ███                    ████  ████            ███                                              \n";
+		s += "   ███                  █         ███       ███          █      ████      ████       ███        ████     ███        ███             ███           ███          █        ████    ████           ███                                              \n";
+		s += "   ███                  ███     █████        ████      ███       ████    █████       █████    ██████     █████    █████             ███            ████      ███        ███      ███           ████                                             \n";
+		s += "   ███                  ████████████         █████████████       █████████ ███        ██████████████      ████████████              ███            █████████████       ████      ████           █████████                                       \n";
+		s += "   ███                   ██████████           ███████████         ████████ ███         █████████ ███       ██████████               ███             ███████████       ████        ████          █████████                                       \n";
+		s += "   ███                     ██████                ██████            █████   ███           █████   ███         ██████                 ███                ██████        ████          ████           ███████                                       \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                \n";
+		s += "                                                                                                                                                                                                                                                ";
+		System.out.println(s);
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
 	}
 
 }
