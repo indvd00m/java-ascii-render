@@ -40,7 +40,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 │                  │
 └──────────────────┘
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(20).height(10);
@@ -63,7 +63,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 │                  │
 └──────────────────┘
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(20).height(10);
@@ -88,7 +88,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 └──────────────────┘
 
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(20).height(10);
@@ -112,7 +112,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 │                  │
 └──────────────────┘
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(20).height(10);
@@ -136,7 +136,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 │                  │
 └──────────────────┘
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(20).height(10);
@@ -163,7 +163,7 @@ Single-line string.
 │                  │
 └──────────────────┘
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(20).height(10);
@@ -190,7 +190,7 @@ Multiline string.
 │                  │
 └──────────────────┘
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(20).height(10);
@@ -220,7 +220,7 @@ Antialising option is customizable, enabled by default.
  ██        █▒░░░▓█▓  ░██▒░░▒▓   ▓█▓░░███  ░██░░███  ░██░░██░     ██      ░██▒░░▒▓  ░██▒▒██░     ▓█▒░  
  ██        ░▓████▒░   ░▓███▓░   ░▓███░██   ▒███▒██   ▒████▒      ██       ░▓███▓░  ▓██░░██▓     ░▓███ 
 ```
-```
+```java
 		IRender render = new Render();
 		IContextBuilder builder = render.newBuilder();
 		builder.width(120).height(20);
@@ -256,7 +256,7 @@ Plot with axis and labels based on array of points.
 │     0                90                180               270              360│
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
-```
+```java
 		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
 			if (degree > 75 && degree < 105)
@@ -284,7 +284,7 @@ Plot with axis and labels based on array of points.
 ## Using
 Add repository to your POM:
 
-```
+```xml
 	<repository>
 		<id>indvd00m-github-repo</id>
 		<url>https://github.com/indvd00m/maven-repo/raw/master/repository</url>
@@ -293,7 +293,7 @@ Add repository to your POM:
 
 Add dependency to your maven project:
 
-```
+```xml
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
@@ -327,7 +327,7 @@ This component is developed as a hobby with no public roadmap or any guarantees 
 The issues for this project are tracked on its github.com page. All bug reports and feature requests are appreciated. 
 
 ## Building and running tests
-```
+```bash
 git clone https://github.com/indvd00m/java-ascii-render/
 cd java-ascii-render
 mvn clean install
