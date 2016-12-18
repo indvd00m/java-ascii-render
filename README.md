@@ -25,6 +25,30 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
     └──────────────────────────────────────┘                 CONCLUSION: APPROVE
 ```
 
+## Using
+Add repository to your POM:
+
+```xml
+	<repository>
+		<id>indvd00m-github-repo</id>
+		<url>https://github.com/indvd00m/maven-repo/raw/master/repository</url>
+	</repository>
+```
+
+Add dependency to your maven project:
+
+```xml
+	<dependency>
+		<groupId>com.indvd00m.ascii.render</groupId>
+		<artifactId>ascii-render</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+```
+
+## CI
+Maven artifacts are built via Travis: 
+[![Build Status](https://travis-ci.org/indvd00m/java-ascii-render.svg?branch=master)](https://travis-ci.org/indvd00m/java-ascii-render)
+
 ## Available graphical elements
 
 ### Rectangle
@@ -280,30 +304,6 @@ Plot with axis and labels based on array of points.
 		System.out.println(s);
 ```
 
-
-## Using
-Add repository to your POM:
-
-```xml
-	<repository>
-		<id>indvd00m-github-repo</id>
-		<url>https://github.com/indvd00m/maven-repo/raw/master/repository</url>
-	</repository>
-```
-
-Add dependency to your maven project:
-
-```xml
-	<dependency>
-		<groupId>com.indvd00m.ascii.render</groupId>
-		<artifactId>ascii-render</artifactId>
-		<version>1.0.0</version>
-	</dependency>
-```
-
-## CI
-Maven artifacts are built via Travis: 
-[![Build Status](https://travis-ci.org/indvd00m/java-ascii-render.svg?branch=master)](https://travis-ci.org/indvd00m/java-ascii-render)
 
 ## Download release
 
