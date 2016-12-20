@@ -41,7 +41,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</dependency>
 ```
 
@@ -316,6 +316,10 @@ https://github.com/indvd00m/java-ascii-render/releases
 
 ### Version 1.0.0
 - Reworking API. Add new elements.
+
+### Version 1.1.0
+- Add PseudoText element.
+- Use Bresenham's algorithm for line drawing.
 
 ## Roadmap
 
