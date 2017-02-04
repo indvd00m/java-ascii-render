@@ -34,7 +34,7 @@ public class Render implements IRender {
 		return canvas;
 	}
 
-	void drawOver(ICanvas c1, ICanvas c2, IRegion region) {
+	protected void drawOver(ICanvas c1, ICanvas c2, IRegion region) {
 		for (int c1x = region.getX(); c1x < region.getX() + region.getWidth(); c1x++) {
 			for (int c1y = region.getY(); c1y < region.getY() + region.getHeight(); c1y++) {
 				int c2x = c1x - region.getX();

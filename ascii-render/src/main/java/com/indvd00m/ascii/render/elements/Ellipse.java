@@ -68,7 +68,7 @@ public class Ellipse implements IElement {
 		return new Point(x, y);
 	}
 
-	int compare(double d1, double d2, double precision) {
+	protected int compare(double d1, double d2, double precision) {
 		double diff = d1 - d2;
 		if (Math.abs(diff) < precision)
 			return 0;

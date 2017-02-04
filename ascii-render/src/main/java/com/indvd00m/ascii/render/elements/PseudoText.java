@@ -169,7 +169,7 @@ public class PseudoText implements IElement {
 		return new Point(x, y);
 	}
 
-	char colorToChar(Color fontColor, Color backgroundColor, Color pixelColor) {
+	protected char colorToChar(Color fontColor, Color backgroundColor, Color pixelColor) {
 		if (backgroundColor.equals(pixelColor))
 			return ' ';
 		if (antialising) {
@@ -187,14 +187,14 @@ public class PseudoText implements IElement {
 		}
 	}
 
-	double getColorDistancePercentage(Color sourceColor, Color targetColor, Color maxDistanceColor) {
+	protected double getColorDistancePercentage(Color sourceColor, Color targetColor, Color maxDistanceColor) {
 		double maxDistance = getColorDistance(sourceColor, maxDistanceColor);
 		double distance = getColorDistance(sourceColor, targetColor);
 		double diff = distance / maxDistance;
 		return diff * 100;
 	}
 
-	double getColorDistance(Color c1, Color c2) {
+	protected double getColorDistance(Color c1, Color c2) {
 		double rmean = (c1.getRed() + c2.getRed()) / 2;
 		int r = c1.getRed() - c2.getRed();
 		int g = c1.getGreen() - c2.getGreen();
@@ -205,7 +205,7 @@ public class PseudoText implements IElement {
 		return Math.sqrt(weightR * r * r + weightG * g * g + weightB * b * b);
 	}
 
-	Font createFont() {
+	protected Font createFont() {
 		InputStream is = null;
 		try {
 			is = getClass().getResourceAsStream("/fonts/DejaVuSansMono/DejaVuSansMono.ttf");
@@ -226,7 +226,7 @@ public class PseudoText implements IElement {
 		}
 	}
 
-	void writeImageToPNG(BufferedImage image, String path) {
+	protected void writeImageToPNG(BufferedImage image, String path) {
 		try {
 			ImageIO.write(image, "png", new File(path));
 		} catch (IOException e) {

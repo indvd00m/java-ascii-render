@@ -49,7 +49,7 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		return anchorPoint;
 	}
 
-	void generateLabels() {
+	protected void generateLabels() {
 		// TODO labels count restriction
 		// TODO calculate labels count
 		labels.clear();
@@ -114,7 +114,7 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		}
 	}
 
-	List<String> createTexts(double minValue, double diffValues, int count) {
+	protected List<String> createTexts(double minValue, double diffValues, int count) {
 		List<String> texts = new ArrayList<String>(count);
 
 		double textsStep = diffValues / (count - 1);
@@ -126,7 +126,7 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		return texts;
 	}
 
-	String format(double value, double labelsStep) {
+	protected String format(double value, double labelsStep) {
 		String label = null;
 		if (labelsStep < 10d)
 			label = String.format("%1$,.2f", value);
@@ -135,7 +135,7 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		return label;
 	}
 
-	int getTextsYWidth(List<String> labelsY) {
+	protected int getTextsYWidth(List<String> labelsY) {
 		int labelsYWidth = 0;
 		for (String yLabel : labelsY) {
 			int length = yLabel.length();
