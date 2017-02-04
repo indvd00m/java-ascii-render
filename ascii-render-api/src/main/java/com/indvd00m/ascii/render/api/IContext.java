@@ -35,7 +35,7 @@ public interface IContext {
 	List<ILayer> getLayers();
 
 	/**
-	 * Search first element of {@code E} type.
+	 * Search first element of {@code E} type (or successors of {@code E})
 	 * 
 	 * @param clazz
 	 * @return
@@ -43,7 +43,16 @@ public interface IContext {
 	<E extends IElement> E lookup(Class<E> clazz);
 
 	/**
-	 * Search all elements of {@code E} type. If elements not found, empty list will be returned.
+	 * Search first element of {@code E} type (optionally including successors)
+	 * 
+	 * @param clazz
+	 * @return
+	 */
+	<E extends IElement> E lookup(Class<E> clazz, boolean includeSuccessors);
+
+	/**
+	 * Search all elements of {@code E} type (or successors of {@code E}). If elements not found, empty list will be
+	 * returned.
 	 * 
 	 * @param clazz
 	 * @return
@@ -51,7 +60,16 @@ public interface IContext {
 	<E extends IElement> List<E> lookupAll(Class<E> clazz);
 
 	/**
-	 * Search first element of {@code E} type in layer.
+	 * Search all elements of {@code E} type (optionally including successors). If elements not found, empty list will
+	 * be returned.
+	 * 
+	 * @param clazz
+	 * @return
+	 */
+	<E extends IElement> List<E> lookupAll(Class<E> clazz, boolean includeSuccessors);
+
+	/**
+	 * Search first element of {@code E} type (or successors of {@code E}) in layer.
 	 * 
 	 * @param clazz
 	 * @param layer
@@ -60,13 +78,33 @@ public interface IContext {
 	<E extends IElement> E lookup(Class<E> clazz, ILayer layer);
 
 	/**
-	 * Search all elements of {@code E} type in layer. If elements not found, empty list will be returned.
+	 * Search first element of {@code E} type (optionally including successors) in layer.
+	 * 
+	 * @param clazz
+	 * @param layer
+	 * @return
+	 */
+	<E extends IElement> E lookup(Class<E> clazz, boolean includeSuccessors, ILayer layer);
+
+	/**
+	 * Search all elements of {@code E} type (or successors of {@code E}) in layer. If elements not found, empty list
+	 * will be returned.
 	 * 
 	 * @param clazz
 	 * @param layer
 	 * @return
 	 */
 	<E extends IElement> List<E> lookupAll(Class<E> clazz, ILayer layer);
+
+	/**
+	 * Search all elements of {@code E} type (optionally including successors) in layer. If elements not found, empty
+	 * list will be returned.
+	 * 
+	 * @param clazz
+	 * @param layer
+	 * @return
+	 */
+	<E extends IElement> List<E> lookupAll(Class<E> clazz, boolean includeSuccessors, ILayer layer);
 
 	/**
 	 * Search first layer which contains {@code element}.
@@ -85,7 +123,8 @@ public interface IContext {
 	List<ILayer> lookupLayers(IElement element);
 
 	/**
-	 * Search object with type {@code T} and identificator {@code typedId}. See {@link ITypedIdentified}.
+	 * Search object with type {@code T} (or successors of {@code T}) and identificator {@code typedId}. See
+	 * {@link ITypedIdentified}.
 	 * 
 	 * @param type
 	 * @param typedId
@@ -94,14 +133,34 @@ public interface IContext {
 	<T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int typedId);
 
 	/**
-	 * Search objects with type {@code T}. If objects not found, empty list will be returned. See
+	 * Search object with type {@code T} (optionally including successors) and identificator {@code typedId}. See
 	 * {@link ITypedIdentified}.
+	 * 
+	 * @param type
+	 * @param typedId
+	 * @return
+	 */
+	<T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int typedId, boolean includeSuccessors);
+
+	/**
+	 * Search objects with type {@code T} (or successors of {@code T}). If objects not found, empty list will be
+	 * returned. See {@link ITypedIdentified}.
 	 * 
 	 * @param type
 	 * @param id
 	 * @return
 	 */
 	<T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type);
+
+	/**
+	 * Search objects with type {@code T} (optionally including successors). If objects not found, empty list will be
+	 * returned. See {@link ITypedIdentified}.
+	 * 
+	 * @param type
+	 * @param id
+	 * @return
+	 */
+	<T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type, boolean includeSuccessors);
 
 	/**
 	 * @param element

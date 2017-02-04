@@ -20,6 +20,8 @@ import com.indvd00m.ascii.render.elements.plot.AxisLabels;
 import com.indvd00m.ascii.render.elements.plot.Plot;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.misc.PlotPoint;
+import com.indvd00m.ascii.render.tests.plot.impl.AxisConvertedTestLabels;
+import com.indvd00m.ascii.render.tests.plot.impl.AxisTestLabels;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
@@ -235,6 +237,92 @@ public class TestFullPlott {
 		expected += "│   │*                                                                         │\n";
 		expected += "│  1┼─────────────────┼──────────────────┼──────────────────┼─────────────────┼│\n";
 		expected += "│   0.00            1.25               2.50               3.75             5.00│\n";
+		expected += "└──────────────────────────────────────────────────────────────────────────────┘";
+		assertEquals(expected, s);
+	}
+
+	@Test
+	public void test06() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
+		for (double x = 0; x < 5; x += 0.01) {
+			double val = Math.exp(x);
+			IPlotPoint plotPoint = new PlotPoint(x, val);
+			points.add(plotPoint);
+		}
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		builder.width(80).height(20);
+		builder.element(new Rectangle(0, 0, 80, 20));
+		builder.layer(new Region(1, 1, 78, 18));
+		builder.element(new Axis(points, new Region(0, 0, 78, 18)));
+		builder.element(new AxisTestLabels(points, new Region(0, 0, 78, 18)));
+		builder.element(new Plot(points, new Region(0, 0, 78, 18)));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String expected = "";
+		expected += "┌──────────────────────────────────────────────────────────────────────────────┐\n";
+		expected += "│148┼                                                                        **│\n";
+		expected += "│   │                                                                      **  │\n";
+		expected += "│   │                                                                     **   │\n";
+		expected += "│   │                                                                    **    │\n";
+		expected += "│111┼                                                                   **     │\n";
+		expected += "│   │                                                                 ***      │\n";
+		expected += "│   │                                                               ***        │\n";
+		expected += "│   │                                                              **          │\n";
+		expected += "│ 74┼                                                           ***            │\n";
+		expected += "│   │                                                         ***              │\n";
+		expected += "│   │                                                      ****                │\n";
+		expected += "│   │                                                 *****                    │\n";
+		expected += "│ 37┼                                            ******                        │\n";
+		expected += "│   │                                  ***********                             │\n";
+		expected += "│   │***********************************                                       │\n";
+		expected += "│   │*                                                                         │\n";
+		expected += "│  1┼─────────────────┼──────────────────┼──────────────────┼─────────────────┼│\n";
+		expected += "│   0.00            1.25               2.50               3.75             5.00│\n";
+		expected += "└──────────────────────────────────────────────────────────────────────────────┘";
+		assertEquals(expected, s);
+	}
+
+	@Test
+	public void test07() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
+		for (double x = 0; x < 5; x += 0.01) {
+			double val = Math.exp(x);
+			IPlotPoint plotPoint = new PlotPoint(x, val);
+			points.add(plotPoint);
+		}
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		builder.width(80).height(20);
+		builder.element(new Rectangle(0, 0, 80, 20));
+		builder.layer(new Region(1, 1, 78, 18));
+		builder.element(new Axis(points, new Region(0, 0, 78, 18)));
+		builder.element(new AxisConvertedTestLabels(points, new Region(0, 0, 78, 18)));
+		builder.element(new Plot(points, new Region(0, 0, 78, 18)));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String expected = "";
+		expected += "┌──────────────────────────────────────────────────────────────────────────────┐\n";
+		expected += "│1,484┼                                                                      **│\n";
+		expected += "│     │                                                                     ** │\n";
+		expected += "│     │                                                                   **   │\n";
+		expected += "│     │                                                                  **    │\n";
+		expected += "│1,115┼                                                                 **     │\n";
+		expected += "│     │                                                               ***      │\n";
+		expected += "│     │                                                              **        │\n";
+		expected += "│     │                                                            ***         │\n";
+		expected += "│  747┼                                                          ***           │\n";
+		expected += "│     │                                                       ****             │\n";
+		expected += "│     │                                                    ****                │\n";
+		expected += "│     │                                                *****                   │\n";
+		expected += "│  378┼                                           ******                       │\n";
+		expected += "│     │                                 **********                             │\n";
+		expected += "│     │**********************************                                      │\n";
+		expected += "│     │*                                                                       │\n";
+		expected += "│   10┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼│\n";
+		expected += "│     0.00            12.50             25.00             37.50           50.00│\n";
 		expected += "└──────────────────────────────────────────────────────────────────────────────┘";
 		assertEquals(expected, s);
 	}

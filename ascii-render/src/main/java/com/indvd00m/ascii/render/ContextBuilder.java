@@ -1,6 +1,7 @@
 package com.indvd00m.ascii.render;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -76,28 +77,27 @@ public class ContextBuilder implements IContextBuilder {
 			set.add(layer);
 		}
 
+		Collection<Class<?>> ancestors = getAncestors(element.getClass());
 		{
-			Set<IElement> set = elementsByClass.get(element.getClass());
-			if (set == null) {
-				set = new LinkedHashSet<IElement>();
-				elementsByClass.put((Class<IElement>) element.getClass(), set);
+			for (Class<?> clazz : ancestors) {
+				Set<IElement> set = elementsByClass.get(clazz);
+				if (set == null) {
+					set = new LinkedHashSet<IElement>();
+					elementsByClass.put((Class<IElement>) clazz, set);
+				}
+				set.add(element);
 			}
-			set.add(element);
 		}
 
 		{
-			for (Object o : new Object[] {
-					layer,
-					element
-			}) {
-				if (o instanceof ITypedIdentified) {
-					ITypedIdentified<?> ti = (ITypedIdentified<?>) o;
-					Class<?> type = ti.getType();
+			for (Class<?> clazz : ancestors) {
+				if (ITypedIdentified.class.isAssignableFrom(clazz)) {
+					ITypedIdentified<?> ti = (ITypedIdentified<?>) element;
 					int typedId = ti.getTypedId();
-					Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
+					Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(clazz);
 					if (map == null) {
 						map = new HashMap<Integer, ITypedIdentified<?>>();
-						identifiedByType.put((Class<ITypedIdentified<?>>) type, map);
+						identifiedByType.put((Class<ITypedIdentified<?>>) clazz, map);
 					}
 					map.put(typedId, ti);
 				}
@@ -182,6 +182,22 @@ public class ContextBuilder implements IContextBuilder {
 		for (IElement element : elements)
 			addElementToLayer(layer, element);
 		return this;
+	}
+
+	protected LinkedHashSet<Class<?>> getAncestors(Class<?> clazz) {
+		LinkedHashSet<Class<?>> ancestors = new LinkedHashSet<Class<?>>();
+
+		if (clazz == null)
+			return ancestors;
+
+		ancestors.add(clazz);
+		for (Class<?> iClazz : clazz.getInterfaces()) {
+			ancestors.add(iClazz);
+		}
+
+		ancestors.addAll(getAncestors(clazz.getSuperclass()));
+
+		return ancestors;
 	}
 
 }

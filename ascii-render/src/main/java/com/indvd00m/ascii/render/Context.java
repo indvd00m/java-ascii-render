@@ -3,6 +3,7 @@ package com.indvd00m.ascii.render;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -49,52 +50,103 @@ public class Context implements IContext {
 		return Collections.unmodifiableList(layers);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <E extends IElement> E lookup(Class<E> clazz) {
-		Set<IElement> elements = elementsByClass.get(clazz);
-		if (elements != null && !elements.isEmpty())
-			return (E) elements.iterator().next();
+		return lookup(clazz, true);
+	}
+
+	@Override
+	public <E extends IElement> E lookup(Class<E> clazz, boolean includeSuccessors) {
+		List<E> elements = lookupAll(clazz, includeSuccessors);
+		if (!elements.isEmpty())
+			return elements.get(0);
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <E extends IElement> List<E> lookupAll(Class<E> clazz) {
-		List<IElement> list = new ArrayList<IElement>();
-
-		Set<IElement> elements = elementsByClass.get(clazz);
-		if (elements == null)
-			list.addAll(elements);
-
-		return (List<E>) elements;
+		return lookupAll(clazz, true);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <E extends IElement> E lookup(Class<E> clazz, ILayer layer) {
-		Set<IElement> elements = elementsByClass.get(clazz);
-		for (IElement e : elements) {
-			Set<ILayer> elementLayers = layersByElement.get(e);
-			if (elementLayers.contains(layer))
-				return (E) e;
+	public <E extends IElement> List<E> lookupAll(Class<E> clazz, boolean includeSuccessors) {
+		LinkedHashSet<IElement> set = new LinkedHashSet<IElement>();
+
+		{
+			Set<IElement> elements = elementsByClass.get(clazz);
+			if (elements != null) {
+				for (IElement e : elements) {
+					if (includeSuccessors || clazz.equals(e.getClass()))
+						set.add(e);
+				}
+			}
 		}
+
+		if (includeSuccessors) {
+			for (Class<IElement> nextClazz : elementsByClass.keySet()) {
+				if (clazz.isAssignableFrom(nextClazz)) {
+					Set<IElement> elements = elementsByClass.get(nextClazz);
+					if (elements != null)
+						set.addAll(elements);
+				}
+			}
+		}
+
+		return (List<E>) new ArrayList<IElement>(set);
+	}
+
+	@Override
+	public <E extends IElement> E lookup(Class<E> clazz, ILayer layer) {
+		return lookup(clazz, true, layer);
+	}
+
+	@Override
+	public <E extends IElement> E lookup(Class<E> clazz, boolean includeSuccessors, ILayer layer) {
+		List<E> elements = lookupAll(clazz, includeSuccessors, layer);
+		if (!elements.isEmpty())
+			return elements.get(0);
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public <E extends IElement> List<E> lookupAll(Class<E> clazz, ILayer layer) {
-		List<E> list = new ArrayList<E>();
+		return lookupAll(clazz, true, layer);
+	}
 
-		Set<IElement> elements = elementsByClass.get(clazz);
-		for (IElement e : elements) {
-			Set<ILayer> elementLayers = layersByElement.get(e);
-			if (elementLayers.contains(layer))
-				list.add((E) e);
+	@SuppressWarnings("unchecked")
+	@Override
+	public <E extends IElement> List<E> lookupAll(Class<E> clazz, boolean includeSuccessors, ILayer layer) {
+		LinkedHashSet<IElement> set = new LinkedHashSet<IElement>();
+
+		{
+			Set<IElement> elements = elementsByClass.get(clazz);
+			if (elements != null) {
+				for (IElement e : elements) {
+					if (includeSuccessors || clazz.equals(e.getClass())) {
+						Set<ILayer> elementLayers = layersByElement.get(e);
+						if (elementLayers.contains(layer))
+							set.add((E) e);
+					}
+				}
+			}
 		}
 
-		return list;
+		if (includeSuccessors) {
+			for (Class<IElement> nextClazz : elementsByClass.keySet()) {
+				if (clazz.isAssignableFrom(nextClazz)) {
+					Set<IElement> elements = elementsByClass.get(nextClazz);
+					if (elements != null)
+						for (IElement e : elements) {
+							Set<ILayer> elementLayers = layersByElement.get(e);
+							if (elementLayers.contains(layer))
+								set.add((E) e);
+						}
+				}
+			}
+		}
+
+		return (List<E>) new ArrayList<IElement>(set);
 	}
 
 	@Override
@@ -116,29 +168,71 @@ public class Context implements IContext {
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int id) {
-		Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
-		if (map != null) {
-			ITypedIdentified<?> ti = map.get(id);
-			return (T) ti;
-		}
-		return null;
+	public <T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int typedId) {
+		return lookupTyped(type, typedId, true);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type) {
-		@SuppressWarnings("rawtypes")
-		List list = new ArrayList();
-
-		Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
-		if (map != null) {
-			list.addAll(map.values());
+	public <T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int typedId, boolean includeSuccessors) {
+		{
+			Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
+			if (map != null && map.containsKey(typedId)) {
+				ITypedIdentified<?> ti = map.get(typedId);
+				if (includeSuccessors || type.equals(ti.getClass()))
+					return (T) ti;
+			}
 		}
 
-		return list;
+		if (includeSuccessors) {
+			for (Class<ITypedIdentified<?>> nextType : identifiedByType.keySet()) {
+				if (type.isAssignableFrom(nextType)) {
+					Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(nextType);
+					if (map != null && map.containsKey(typedId)) {
+						ITypedIdentified<?> ti = map.get(typedId);
+						return (T) ti;
+					}
+				}
+			}
+		}
+
+		return null;
+	}
+
+	@Override
+	public <T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type) {
+		return lookupTyped(type, true);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type, boolean includeSuccessors) {
+		@SuppressWarnings("rawtypes")
+		LinkedHashSet set = new LinkedHashSet();
+
+		{
+			Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
+			if (map != null) {
+				for (ITypedIdentified<?> ti : map.values()) {
+					if (includeSuccessors || type.equals(ti.getClass()))
+						set.add(ti);
+				}
+			}
+		}
+
+		if (includeSuccessors) {
+			for (Class<ITypedIdentified<?>> nextType : identifiedByType.keySet()) {
+				if (type.isAssignableFrom(nextType)) {
+					Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(nextType);
+					if (map != null) {
+						set.addAll(map.values());
+					}
+				}
+			}
+		}
+
+		return (List<T>) new ArrayList<T>(set);
 	}
 
 	@Override
