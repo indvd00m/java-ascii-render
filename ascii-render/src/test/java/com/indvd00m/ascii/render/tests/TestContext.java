@@ -31,7 +31,6 @@ public class TestContext {
 		IContext context = builder.build();
 		assertEquals(r1, context.lookup(Rectangle.class));
 		assertEquals(d1, context.lookup(Dot.class));
-		assertEquals(d1, context.lookup(Dot.class));
 		assertTrue(context.lookupAll(Rectangle.class).contains(r1));
 		assertTrue(context.lookupAll(Dot.class).contains(d1));
 		assertTrue(context.lookupAll(IElement.class).contains(r1));
