@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.indvd00m.ascii.render.api.IRegion;
 import com.indvd00m.ascii.render.elements.plot.AxisLabels;
+import com.indvd00m.ascii.render.elements.plot.api.AxisType;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 
 /**
@@ -22,8 +23,8 @@ public class AxisConvertedTestLabels extends AxisLabels {
 	}
 
 	@Override
-	protected String format(double value, double labelsStep) {
-		return super.format(value * 10, labelsStep);
+	protected String format(AxisType type, double value, double labelsStep) {
+		return super.format(type, value * 10, labelsStep);
 	}
 
 }

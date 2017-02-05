@@ -54,8 +54,8 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		// TODO calculate labels count
 		labels.clear();
 
-		List<String> textsX = createTexts(plotPoints.getMinX(), plotPoints.getDiffX(), countX);
-		List<String> textsY = createTexts(plotPoints.getMinY(), plotPoints.getDiffY(), countY);
+		List<String> textsX = createTexts(AxisType.X, plotPoints.getMinX(), plotPoints.getDiffX(), countX);
+		List<String> textsY = createTexts(AxisType.Y, plotPoints.getMinY(), plotPoints.getDiffY(), countY);
 		labelsYWidth = getTextsYWidth(textsY);
 
 		int width = region.getWidth();
@@ -114,19 +114,19 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		}
 	}
 
-	protected List<String> createTexts(double minValue, double diffValues, int count) {
+	protected List<String> createTexts(AxisType type, double minValue, double diffValues, int count) {
 		List<String> texts = new ArrayList<String>(count);
 
 		double textsStep = diffValues / (count - 1);
 		for (int i = 0; i < count; i++) {
 			double value = i * textsStep + minValue;
-			String text = format(value, textsStep);
+			String text = format(type, value, textsStep);
 			texts.add(text);
 		}
 		return texts;
 	}
 
-	protected String format(double value, double labelsStep) {
+	protected String format(AxisType type, double value, double labelsStep) {
 		String label = null;
 		if (labelsStep < 10d)
 			label = String.format("%1$,.2f", value);
