@@ -41,7 +41,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>1.2.0</version>
+		<version>1.2.1</version>
 	</dependency>
 ```
 
@@ -323,6 +323,9 @@ https://github.com/indvd00m/java-ascii-render/releases
 
 ### Version 1.2.0
 - Simplify extending existing elements.
+
+### Version 1.2.1
+- Pass axis type to format method in AxisLabels element.
 
 ## Roadmap
 
