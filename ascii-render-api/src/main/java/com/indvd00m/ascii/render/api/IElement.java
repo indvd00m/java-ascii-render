@@ -1,9 +1,7 @@
 package com.indvd00m.ascii.render.api;
 
-import javax.sound.sampled.Line;
-
 /**
- * Graphical element. It's may be a primitive, like {@link Line}, {@link Circle}, etc., or more complex object. Element
+ * Graphical element. It's may be a primitive, like {@code Line}, {@code Circle}, etc., or more complex object. Element
  * will be drawn in his layer.
  * 
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
