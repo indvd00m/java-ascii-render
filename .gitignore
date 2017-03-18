@@ -3,3 +3,6 @@
 .settings
 .project
 **/target/
+
+cov-int/
+java-ascii-render.tgz
