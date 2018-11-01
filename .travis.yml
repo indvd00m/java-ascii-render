@@ -5,14 +5,6 @@ jdk:
  - openjdk8
  - oraclejdk8
 
-matrix:
-  include:
-    - addons:
-        apt:
-          packages:
-            - openjdk-6-jdk
-      jdk: openjdk6
-
 env:
   global:
     - secure: "oGkueLFwywOD8QOtHDwjxHN0K1/BE6xmRzsoncdmQnAfp2dVrtRzgB1LN7WJ7YmXk0AFDR3GptRxAs32LJX9AAOeWlrHNpKsFZGwZkpsHtB+KnT4iMMrW0cxxGR0roVIB1yPZSvJCSptoAvPuroXsGnUzTd7FXP8OvN9vqBsWMise2A+TDVbgwhzGt/xOI9i15yLT9fX/TNYgD3esd0DQm7ezxTiftg3KgnL2QhBLHZdKOKC/trDwffksytzDHCIj8eR3pUkvYcet9v0v68b45+XsP80wcmT74MPX/ofOWngoNl2qFOV55Y4li9lO+cDP0ZiIJTDqPVmtpc02Xhdv57urDsyoxDOigo97x2oIrtM+LfzswHN2k4D+iZZYtCfyH5c2PEOb2qWgci9dxxjXZ8qwiqqlK9ydyKUEbMIqFA/RvJ1kWsjRss4N5FwUcivcgjx/VnEvIMh1f6Al3FF25F6HEQwH+5qjCGzYAHHhdvSaaaPnzStHafgcIqIZKDlLrEEpQNPb9iPkIPeXwhUgWfo8WyC1Z4zzJtrT9G9waJClUpHTi1E6jTfVhOS4jIfMAs0/ejNS1jdr1LRqI3TsxS0U8aL5dT58wTlzMlUbfMuz3DJHLuf8FrVZeMtB8W3jd4uSjos0GzKKP3EDjhCDKGHSactRx8+VMK0zY+x5XM="
