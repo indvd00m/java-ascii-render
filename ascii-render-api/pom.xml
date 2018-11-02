@@ -10,6 +10,7 @@
 	<version>1.2.3-SNAPSHOT</version>
 	<name>ascii-render-api</name>
 	<description>ASCII renderer in pure java with no external dependencies. API interfaces.</description>
+	<url>https://github.com/indvd00m/java-ascii-render</url>
 
 	<licenses>
 		<license>
