@@ -7,7 +7,7 @@
 	<groupId>com.indvd00m.ascii.render</groupId>
 	<artifactId>java-ascii-render</artifactId>
 	<packaging>pom</packaging>
-	<version>1.2.2-SNAPSHOT</version>
+	<version>1.2.2</version>
 	<name>java-ascii-render</name>
 	<description>ASCII renderer in pure java with no external dependencies. Root pom.</description>
 

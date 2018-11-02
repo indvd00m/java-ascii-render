@@ -26,22 +26,13 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 ```
 
 ## Using
-Add repository to your POM:
-
-```xml
-	<repository>
-		<id>indvd00m-github-repo</id>
-		<url>https://github.com/indvd00m/maven-repo/raw/master/repository</url>
-	</repository>
-```
-
 Add dependency to your maven project:
 
 ```xml
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>1.2.1</version>
+		<version>1.2.2</version>
 	</dependency>
 ```
 
@@ -326,6 +317,9 @@ https://github.com/indvd00m/java-ascii-render/releases
 
 ### Version 1.2.1
 - Pass axis type to format method in AxisLabels element.
+
+### Version 1.2.2
+- Add deploy to maven central.
 
 ## Roadmap
 
