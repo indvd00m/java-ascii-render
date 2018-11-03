@@ -120,6 +120,11 @@ public class ContextBuilder implements IContextBuilder {
 	}
 
 	@Override
+	public IContextBuilder layer(int x, int y, int width, int height) {
+		return layer(new Region(x, y, width, height));
+	}
+
+	@Override
 	public IContextBuilder layer(IElement... elements) {
 		Layer layer = new Layer(new Region(0, 0, width, height));
 		addLayer(layer);
@@ -138,6 +143,11 @@ public class ContextBuilder implements IContextBuilder {
 	}
 
 	@Override
+	public IContextBuilder layer(int x, int y, int width, int height, IElement... elements) {
+		return layer(new Region(x, y, width, height), elements);
+	}
+
+	@Override
 	public IContextBuilder layer(List<IElement> elements) {
 		Layer layer = new Layer(new Region(0, 0, width, height));
 		addLayer(layer);
@@ -153,6 +163,11 @@ public class ContextBuilder implements IContextBuilder {
 		for (IElement element : elements)
 			addElementToLayer(layer, element);
 		return this;
+	}
+
+	@Override
+	public IContextBuilder layer(int x, int y, int width, int height, List<IElement> elements) {
+		return layer(new Region(x, y, width, height), elements);
 	}
 
 	@Override

@@ -46,6 +46,14 @@ public interface IContextBuilder {
 	 * @return
 	 */
 	IContextBuilder layer(IRegion region);
+	
+	/**
+	 * Create new layer and add him to context in a specific position.
+	 * 
+	 * @param region
+	 * @return
+	 */
+	IContextBuilder layer(int x, int y, int width, int height);
 
 	/**
 	 * Create new layer and add layer to context in a context region {@code (0, 0, width, height)}.
@@ -61,6 +69,14 @@ public interface IContextBuilder {
 	 * @return
 	 */
 	IContextBuilder layer(IRegion region, IElement... elements);
+	
+	/**
+	 * Create new layer with {@code elements} and add layer to context in a specific position.
+	 * 
+	 * @param region
+	 * @return
+	 */
+	IContextBuilder layer(int x, int y, int width, int height, IElement... elements);
 
 	/**
 	 * Create new layer with {@code elements} and add layer to context in a context region
@@ -77,6 +93,14 @@ public interface IContextBuilder {
 	 * @return
 	 */
 	IContextBuilder layer(IRegion region, List<IElement> elements);
+	
+	/**
+	 * Create new layer with {@code elements} and add layer to context in a specific position.
+	 * 
+	 * @param region
+	 * @return
+	 */
+	IContextBuilder layer(int x, int y, int width, int height, List<IElement> elements);
 
 	/**
 	 * Add {@code element} to last created layer. New layer will be created, if layers count is 0.
