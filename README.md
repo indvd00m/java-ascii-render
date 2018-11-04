@@ -364,7 +364,7 @@ The issues for this project are tracked on its github.com page. All bug reports 
 
 ## Building and running tests
 ```bash
-git clone https://github.com/indvd00m/java-ascii-render/
+git clone https://github.com/indvd00m/java-ascii-render.git
 cd java-ascii-render
 mvn clean install
 ```
