@@ -295,6 +295,32 @@ Plot with axis and labels based on array of points.
 		System.out.println(s);
 ```
 
+### Table
+
+Table with rows and columns.
+
+```
+┌────────┬────────┬────────┬────────┐
+│12345678│        │        │        │
+├────────┼────────┼────────┼────────┤
+│        │        │        │        │
+├────────┼────────┼────────┼────────┤
+│        │        │        │1234567…│
+└────────┴────────┴────────┴────────┘
+```
+```java
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		builder.width(37).height(7);
+		Table table = new Table(4, 3);
+		table.setElement(1, 1, new Label("1234567890"));
+		table.setElement(4, 3, new Text("1234567890"));
+		builder.element(table);
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+```
+
 
 ## Download release
 

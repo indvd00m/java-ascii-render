@@ -1,6 +1,6 @@
 package com.indvd00m.ascii.render.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,7 @@ import com.indvd00m.ascii.render.elements.Label;
 import com.indvd00m.ascii.render.elements.Line;
 import com.indvd00m.ascii.render.elements.PseudoText;
 import com.indvd00m.ascii.render.elements.Rectangle;
+import com.indvd00m.ascii.render.elements.Table;
 import com.indvd00m.ascii.render.elements.Text;
 import com.indvd00m.ascii.render.elements.plot.Axis;
 import com.indvd00m.ascii.render.elements.plot.AxisLabels;
@@ -383,6 +384,29 @@ public class TestReadme {
 		expected += "│     0                90                180               270              360│\n";
 		expected += "└──────────────────────────────────────────────────────────────────────────────┘";
 		assertEquals(expected, s);
+	}
+
+	@Test
+	public void test11() {
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		builder.width(37).height(7);
+		Table table = new Table(4, 3);
+		table.setElement(1, 1, new Label("1234567890"));
+		table.setElement(4, 3, new Text("1234567890"));
+		builder.element(table);
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String e = "";
+		e += "┌────────┬────────┬────────┬────────┐\n";
+		e += "│12345678│        │        │        │\n";
+		e += "├────────┼────────┼────────┼────────┤\n";
+		e += "│        │        │        │        │\n";
+		e += "├────────┼────────┼────────┼────────┤\n";
+		e += "│        │        │        │1234567…│\n";
+		e += "└────────┴────────┴────────┴────────┘";
+		assertEquals(e, s);
 	}
 
 }
