@@ -321,6 +321,42 @@ Table with rows and columns.
 		System.out.println(s);
 ```
 
+### Overlay
+
+Possibility to combine results of several renders.
+
+```
+┌──────────────────┐
+│                  │
+│                  │
+│Lore┌───────┐s sim│
+│ply │Overlay│t of │
+│the └───────┘and …│
+│                  │
+│                  │
+│                  │
+└──────────────────┘
+```
+```java
+		IRender render1 = new Render();
+		IContextBuilder builder1 = render1.newBuilder();
+		builder1.width(9).height(3);
+		builder1.element(new Rectangle());
+		builder1.element(new Text("Overlay", 1, 1, 7, 1));
+		ICanvas canvas1 = render1.render(builder1.build());
+
+		IRender render2 = new Render();
+		IContextBuilder builder2 = render2.newBuilder();
+		builder2.width(20).height(10);
+		builder2.element(new Rectangle());
+		builder2.element(
+				new Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 1, 3, 18, 3));
+		builder2.element(new Overlay(5, 3, canvas1, true));
+		ICanvas canvas2 = render2.render(builder2.build());
+		String s = canvas2.getText();
+		System.out.println(s);
+```
+
 
 ## Download release
 

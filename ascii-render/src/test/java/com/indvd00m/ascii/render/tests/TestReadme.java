@@ -20,6 +20,7 @@ import com.indvd00m.ascii.render.elements.Dot;
 import com.indvd00m.ascii.render.elements.Ellipse;
 import com.indvd00m.ascii.render.elements.Label;
 import com.indvd00m.ascii.render.elements.Line;
+import com.indvd00m.ascii.render.elements.Overlay;
 import com.indvd00m.ascii.render.elements.PseudoText;
 import com.indvd00m.ascii.render.elements.Rectangle;
 import com.indvd00m.ascii.render.elements.Table;
@@ -406,6 +407,39 @@ public class TestReadme {
 		e += "├────────┼────────┼────────┼────────┤\n";
 		e += "│        │        │        │1234567…│\n";
 		e += "└────────┴────────┴────────┴────────┘";
+		assertEquals(e, s);
+	}
+
+	@Test
+	public void test12() {
+		IRender render1 = new Render();
+		IContextBuilder builder1 = render1.newBuilder();
+		builder1.width(9).height(3);
+		builder1.element(new Rectangle());
+		builder1.element(new Text("Overlay", 1, 1, 7, 1));
+		ICanvas canvas1 = render1.render(builder1.build());
+
+		IRender render2 = new Render();
+		IContextBuilder builder2 = render2.newBuilder();
+		builder2.width(20).height(10);
+		builder2.element(new Rectangle());
+		builder2.element(
+				new Text("Lorem Ipsum is simply dummy text of the printing and typesetting industry.", 1, 3, 18, 3));
+		builder2.element(new Overlay(5, 3, canvas1, true));
+		ICanvas canvas2 = render2.render(builder2.build());
+		String s = canvas2.getText();
+		System.out.println(s);
+		String e = "";
+		e += "┌──────────────────┐\n";
+		e += "│                  │\n";
+		e += "│                  │\n";
+		e += "│Lore┌───────┐s sim│\n";
+		e += "│ply │Overlay│t of │\n";
+		e += "│the └───────┘and …│\n";
+		e += "│                  │\n";
+		e += "│                  │\n";
+		e += "│                  │\n";
+		e += "└──────────────────┘";
 		assertEquals(e, s);
 	}
 
