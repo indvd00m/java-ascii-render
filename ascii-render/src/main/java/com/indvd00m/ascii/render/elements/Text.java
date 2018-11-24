@@ -16,11 +16,11 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Text implements IElement {
 
-	String text;
-	int x;
-	int y;
-	int width;
-	int height;
+	protected String text;
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
 
 	public Text(String text) {
 		super();

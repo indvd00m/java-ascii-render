@@ -22,14 +22,14 @@ import com.indvd00m.ascii.render.api.ITypedIdentified;
  */
 public class ContextBuilder implements IContextBuilder {
 
-	int width;
-	int height;
-	List<ILayer> layers = new ArrayList<ILayer>();
+	protected int width;
+	protected int height;
+	protected List<ILayer> layers = new ArrayList<ILayer>();
 
 	// cache
-	Map<IElement, Set<ILayer>> layersByElement = new HashMap<IElement, Set<ILayer>>();
-	Map<Class<IElement>, Set<IElement>> elementsByClass = new HashMap<Class<IElement>, Set<IElement>>();
-	Map<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>> identifiedByType = new HashMap<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>>();
+	protected Map<IElement, Set<ILayer>> layersByElement = new HashMap<IElement, Set<ILayer>>();
+	protected Map<Class<IElement>, Set<IElement>> elementsByClass = new HashMap<Class<IElement>, Set<IElement>>();
+	protected Map<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>> identifiedByType = new HashMap<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>>();
 
 	public static IContextBuilder newBuilder() {
 		return new ContextBuilder();

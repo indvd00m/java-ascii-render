@@ -9,8 +9,8 @@ import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
  */
 public class PlotPoint implements IPlotPoint {
 
-	double x;
-	double y;
+	protected double x;
+	protected double y;
 
 	public PlotPoint(double x, double y) {
 		this.x = x;

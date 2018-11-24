@@ -24,10 +24,10 @@ import com.indvd00m.ascii.render.elements.plot.misc.AxisLabel;
  */
 public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 
-	int countX = 5;
-	int countY = 5;
-	List<AxisLabel> labels = new ArrayList<AxisLabel>();
-	int labelsYWidth;
+	protected int countX = 5;
+	protected int countY = 5;
+	protected List<AxisLabel> labels = new ArrayList<AxisLabel>();
+	protected int labelsYWidth;
 
 	public AxisLabels(List<IPlotPoint> points, IRegion region) {
 		super(points, region);

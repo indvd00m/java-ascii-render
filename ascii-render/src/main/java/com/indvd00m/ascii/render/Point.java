@@ -9,8 +9,8 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Point implements IPoint {
 
-	int x;
-	int y;
+	protected int x;
+	protected int y;
 
 	public Point(int x, int y) {
 		super();

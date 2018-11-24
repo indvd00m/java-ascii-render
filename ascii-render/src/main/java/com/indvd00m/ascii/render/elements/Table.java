@@ -19,13 +19,13 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Table implements IElement {
 
-	int x;
-	int y;
-	int width;
-	int height;
-	int columns;
-	int rows;
-	List<IElement> elements;
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
+	protected int columns;
+	protected int rows;
+	protected List<IElement> elements;
 
 	public Table(int columns, int rows) {
 		super();

@@ -15,8 +15,8 @@ import com.indvd00m.ascii.render.elements.plot.api.AxisType;
  */
 public class AxisLabel extends Label {
 
-	AxisType axisType;
-	IPoint anchorPoint;
+	protected AxisType axisType;
+	protected IPoint anchorPoint;
 
 	public AxisLabel(String text, int x, int y, AxisType axisType, IPoint anchorPoint) {
 		super(text, x, y, text.length());

@@ -15,8 +15,8 @@ import com.indvd00m.ascii.render.api.IRegion;
  */
 public class Layer implements ILayer {
 
-	IRegion region;
-	List<IElement> elements = new ArrayList<IElement>();
+	protected IRegion region;
+	protected List<IElement> elements = new ArrayList<IElement>();
 
 	Layer(IRegion region) {
 		super();

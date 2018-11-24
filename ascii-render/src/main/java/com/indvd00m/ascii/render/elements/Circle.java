@@ -15,9 +15,9 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Circle implements IElement {
 
-	int x;
-	int y;
-	int radius;
+	protected int x;
+	protected int y;
+	protected int radius;
 
 	public Circle() {
 		super();

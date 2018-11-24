@@ -13,13 +13,13 @@ import com.indvd00m.ascii.render.elements.plot.api.IPlotPoints;
  */
 public class PlotPoints implements IPlotPoints {
 
-	List<IPlotPoint> plotPoints;
-	double maxX = Double.MIN_VALUE;
-	double maxY = Double.MIN_VALUE;
-	double minX = Double.MAX_VALUE;
-	double minY = Double.MAX_VALUE;
-	double diffX;
-	double diffY;
+	protected List<IPlotPoint> plotPoints;
+	protected double maxX = Double.MIN_VALUE;
+	protected double maxY = Double.MIN_VALUE;
+	protected double minX = Double.MAX_VALUE;
+	protected double minY = Double.MAX_VALUE;
+	protected double diffX;
+	protected double diffY;
 
 	public PlotPoints(List<IPlotPoint> plotPoints) {
 		this.plotPoints = plotPoints;

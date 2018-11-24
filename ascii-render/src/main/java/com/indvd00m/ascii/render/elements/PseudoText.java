@@ -45,12 +45,12 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class PseudoText implements IElement {
 
-	String text;
-	int x;
-	int y;
-	int height;
-	boolean antialising = true;
-	Font font;
+	protected String text;
+	protected int x;
+	protected int y;
+	protected int height;
+	protected boolean antialising = true;
+	protected Font font;
 
 	public PseudoText(String text) {
 		super();

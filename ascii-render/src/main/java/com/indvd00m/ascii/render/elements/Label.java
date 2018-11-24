@@ -16,10 +16,10 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Label implements IElement {
 
-	String text;
-	int x;
-	int y;
-	int width;
+	protected String text;
+	protected int x;
+	protected int y;
+	protected int width;
 
 	public Label(String text) {
 		super();

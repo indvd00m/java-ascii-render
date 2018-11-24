@@ -9,10 +9,10 @@ import com.indvd00m.ascii.render.api.IRegion;
  */
 public class Region implements IRegion {
 
-	int x;
-	int y;
-	int width;
-	int height;
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
 
 	public Region(int x, int y, int width, int height) {
 		super();

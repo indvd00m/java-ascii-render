@@ -22,14 +22,14 @@ import com.indvd00m.ascii.render.api.ITypedIdentified;
  */
 public class Context implements IContext {
 
-	int width;
-	int height;
-	List<ILayer> layers = new ArrayList<ILayer>();
+	protected int width;
+	protected int height;
+	protected List<ILayer> layers = new ArrayList<ILayer>();
 
 	// cache
-	Map<IElement, Set<ILayer>> layersByElement = new HashMap<IElement, Set<ILayer>>();
-	Map<Class<IElement>, Set<IElement>> elementsByClass = new HashMap<Class<IElement>, Set<IElement>>();
-	Map<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>> identifiedByType = new HashMap<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>>();
+	protected Map<IElement, Set<ILayer>> layersByElement = new HashMap<IElement, Set<ILayer>>();
+	protected Map<Class<IElement>, Set<IElement>> elementsByClass = new HashMap<Class<IElement>, Set<IElement>>();
+	protected Map<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>> identifiedByType = new HashMap<Class<ITypedIdentified<?>>, Map<Integer, ITypedIdentified<?>>>();
 
 	Context() {
 
@@ -126,7 +126,7 @@ public class Context implements IContext {
 					if (includeSuccessors || clazz.equals(e.getClass())) {
 						Set<ILayer> elementLayers = layersByElement.get(e);
 						if (elementLayers.contains(layer))
-							set.add((E) e);
+							set.add(e);
 					}
 				}
 			}
@@ -140,7 +140,7 @@ public class Context implements IContext {
 						for (IElement e : elements) {
 							Set<ILayer> elementLayers = layersByElement.get(e);
 							if (elementLayers.contains(layer))
-								set.add((E) e);
+								set.add(e);
 						}
 				}
 			}
@@ -232,7 +232,7 @@ public class Context implements IContext {
 			}
 		}
 
-		return (List<T>) new ArrayList<T>(set);
+		return new ArrayList<T>(set);
 	}
 
 	@Override

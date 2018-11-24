@@ -15,8 +15,8 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Dot implements IElement {
 
-	int x;
-	int y;
+	protected int x;
+	protected int y;
 
 	public Dot() {
 		super();

@@ -15,10 +15,10 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Rectangle implements IElement {
 
-	int x;
-	int y;
-	int width;
-	int height;
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
 
 	public Rectangle() {
 		super();

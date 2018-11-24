@@ -13,10 +13,10 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Ellipse implements IElement {
 
-	int x;
-	int y;
-	int width;
-	int height;
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
 
 	public Ellipse() {
 		super();

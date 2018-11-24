@@ -14,12 +14,12 @@ import com.indvd00m.ascii.render.api.IRegion;
  */
 public class Canvas implements ICanvas {
 
-	final int width;
-	final int height;
-	final List<StringBuilder> lines;
+	protected final int width;
+	protected final int height;
+	protected final List<StringBuilder> lines;
 
 	// cache
-	String text;
+	protected String text;
 
 	public Canvas(int width, int height) {
 		if (width < 0)

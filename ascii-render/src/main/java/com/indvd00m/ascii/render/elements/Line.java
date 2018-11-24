@@ -16,9 +16,9 @@ import com.indvd00m.ascii.render.api.IPoint;
  */
 public class Line implements IElement {
 
-	IPoint start;
-	IPoint end;
-	char pen = '●';
+	protected IPoint start;
+	protected IPoint end;
+	protected char pen = '●';
 
 	public Line(IPoint start, IPoint end) {
 		super();

@@ -17,12 +17,12 @@ import com.indvd00m.ascii.render.api.IRegion;
  */
 public class Overlay implements IElement {
 
-	int x;
-	int y;
-	int width;
-	int height;
-	ICanvas overlay;
-	boolean opacity;
+	protected int x;
+	protected int y;
+	protected int width;
+	protected int height;
+	protected ICanvas overlay;
+	protected boolean opacity;
 
 	public Overlay(ICanvas overlay) {
 		this(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, overlay, false);
