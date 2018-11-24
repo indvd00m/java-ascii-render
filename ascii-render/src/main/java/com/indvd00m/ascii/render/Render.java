@@ -41,7 +41,7 @@ public class Render implements IRender {
 				int c2y = c1y - region.getY();
 				char c = c2.getChar(c2x, c2y);
 				if (c != 0 && c != ' ') {
-					c1.draw(c1x, c1y, c + "");
+					c1.draw(c1x, c1y, c);
 				}
 			}
 		}

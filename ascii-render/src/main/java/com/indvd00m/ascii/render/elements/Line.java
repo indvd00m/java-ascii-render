@@ -96,7 +96,7 @@ public class Line implements IElement {
 
 		// draw
 		for (IPoint point : points) {
-			canvas.draw(point.getX(), point.getY(), pen + "");
+			canvas.draw(point.getX(), point.getY(), pen);
 		}
 
 		return start;

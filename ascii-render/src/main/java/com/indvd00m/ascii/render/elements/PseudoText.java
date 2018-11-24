@@ -161,7 +161,7 @@ public class PseudoText implements IElement {
 					int cx = imgX + x;
 					int cy = imgY + y;
 					char c = colorToChar(fontColor, backgroundColor, color);
-					canvas.draw(cx, cy, c + "");
+					canvas.draw(cx, cy, c);
 				}
 			}
 		}
