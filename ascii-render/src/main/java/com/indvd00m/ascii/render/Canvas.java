@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.indvd00m.ascii.render.api.ICanvas;
+import com.indvd00m.ascii.render.api.IRegion;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
@@ -13,15 +14,17 @@ import com.indvd00m.ascii.render.api.ICanvas;
  */
 public class Canvas implements ICanvas {
 
-	int width = 80;
-	int height = 20;
-	List<StringBuilder> lines;
+	final int width;
+	final int height;
+	final List<StringBuilder> lines;
+
+	// cache
 	String text;
 
 	public Canvas(int width, int height) {
-		if (width <= 0)
+		if (width < 0)
 			throw new IllegalArgumentException();
-		if (height <= 0)
+		if (height < 0)
 			throw new IllegalArgumentException();
 
 		this.width = width;
@@ -55,6 +58,16 @@ public class Canvas implements ICanvas {
 	private String repeatString(String s, int count) {
 		String repeated = new String(new char[count]).replace("\0", s);
 		return repeated;
+	}
+
+	@Override
+	public void draw(int x, int y, char c) {
+		draw(x, y, c + "");
+	}
+
+	@Override
+	public void draw(int x, int y, char c, int count) {
+		draw(x, y, c + "", count);
 	}
 
 	@Override
@@ -162,6 +175,98 @@ public class Canvas implements ICanvas {
 		StringBuilder line = lines.get(y);
 		char c = line.charAt(x);
 		return c;
+	}
+
+	@Override
+	public char setChar(int x, int y, char c) {
+		if (x < 0 || x >= width)
+			return 0;
+		if (y < 0 || y >= height)
+			return 0;
+
+		StringBuilder line = lines.get(y);
+		char prevC = line.charAt(x);
+		line.setCharAt(x, c);
+		updateText();
+		return prevC;
+	}
+
+	@Override
+	public ICanvas trim() {
+		IRegion region = getTrimmedRegion(this);
+		int trimWidth = region.getWidth();
+		int trimHeight = region.getHeight();
+		int trimX = region.getX();
+		int trimY = region.getY();
+		ICanvas canvas = new Canvas(trimWidth, trimHeight);
+		for (int x = 0; x < trimWidth; x++) {
+			for (int y = 0; y < trimHeight; y++) {
+				char c = getChar(trimX + x, trimY + y);
+				canvas.setChar(x, y, c);
+			}
+		}
+		return canvas;
+	}
+
+	protected IRegion getTrimmedRegion(ICanvas canvas) {
+		int w = canvas.getWidth();
+		int h = canvas.getHeight();
+		int firstX = w;
+		int firstY = h;
+		int lastX = 0;
+		int lastY = 0;
+		// first x
+		cycle: for (int x = 0; x < w; x++) {
+			for (int y = 0; y < h; y++) {
+				char c = canvas.getChar(x, y);
+				if (c != ' ') {
+					firstX = x;
+					break cycle;
+				}
+			}
+		}
+		if (firstX != w) {
+			// first y
+			cycle: for (int y = 0; y < h; y++) {
+				for (int x = 0; x < w; x++) {
+					char c = canvas.getChar(x, y);
+					if (c != ' ') {
+						firstY = y;
+						break cycle;
+					}
+				}
+			}
+			// last x
+			cycle: for (int x = w - 1; x >= 0; x--) {
+				for (int y = h - 1; y >= 0; y--) {
+					char c = canvas.getChar(x, y);
+					if (c != ' ') {
+						lastX = x;
+						break cycle;
+					}
+				}
+			}
+			// last y
+			cycle: for (int y = h - 1; y >= 0; y--) {
+				for (int x = w - 1; x >= 0; x--) {
+					char c = canvas.getChar(x, y);
+					if (c != ' ') {
+						lastY = y;
+						break cycle;
+					}
+				}
+			}
+		}
+		int regionWidth = lastX - firstX + 1;
+		if (regionWidth < 0) {
+			regionWidth = 0;
+		}
+		int regionHeight = lastY - firstY + 1;
+		if (regionHeight < 0) {
+			regionHeight = 0;
+		}
+		IRegion region = new Region(firstX, firstY, regionWidth, regionHeight);
+		return region;
 	}
 
 }

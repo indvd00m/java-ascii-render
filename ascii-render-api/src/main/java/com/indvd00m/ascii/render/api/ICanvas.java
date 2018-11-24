@@ -33,6 +33,27 @@ public interface ICanvas {
 	int getWidth();
 
 	/**
+	 * Draw char in a particular position. Coordinates {@code x} and {@code y} may be any, canvas will draw only text
+	 * which gets in his region. {@code c} can contains line break.
+	 * 
+	 * @param x
+	 * @param y
+	 * @param c
+	 */
+	void draw(int x, int y, char c);
+
+	/**
+	 * Draw char {@code count} times starting from {@code x} and {@code y}. Coordinates {@code x} and {@code y} may be
+	 * any, canvas will draw only text which gets in his region. {@code c} can contains line break.
+	 * 
+	 * @param x
+	 * @param y
+	 * @param c
+	 * @param count
+	 */
+	void draw(int x, int y, char c, int count);
+
+	/**
 	 * Draw string in a particular position. Coordinates {@code x} and {@code y} may be any, canvas will draw only text
 	 * which gets in his region. {@code s} can contains line breaks.
 	 * 
@@ -66,5 +87,21 @@ public interface ICanvas {
 	 * @return
 	 */
 	char getChar(int x, int y);
+
+	/**
+	 * Set char at a particular position.
+	 * 
+	 * @param x
+	 * @param y
+	 * @return previous value
+	 */
+	char setChar(int x, int y, char c);
+
+	/**
+	 * Returns a canvas whose value is this canvas, with any leading and trailing whitespace {@code \s} removed.
+	 * 
+	 * @return
+	 */
+	ICanvas trim();
 
 }
