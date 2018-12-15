@@ -32,7 +32,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>1.4.0</version>
+		<version>1.5.0</version>
 	</dependency>
 ```
 
@@ -396,6 +396,9 @@ https://github.com/indvd00m/java-ascii-render/releases
 - Add overlay element.
 - Added possibility to trim canvas.
 - Simplified extending of existing implementation.
+
+### Version 1.5.0
+- Improved canvas draw performance.
 
 ## Roadmap
 
