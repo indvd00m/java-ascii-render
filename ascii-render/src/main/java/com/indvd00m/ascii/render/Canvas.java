@@ -20,6 +20,7 @@ public class Canvas implements ICanvas {
 
 	// cache
 	protected String text;
+	protected boolean needUpdateText = false;
 
 	public Canvas(int width, int height) {
 		if (width < 0)
@@ -37,10 +38,17 @@ public class Canvas implements ICanvas {
 			lines.add(line);
 		}
 
-		updateText();
+		needUpdateText = true;
 	}
 
-	private void updateText() {
+	protected void updateTextIfNeed() {
+		if (needUpdateText) {
+			updateText();
+			needUpdateText = false;
+		}
+	}
+
+	protected void updateText() {
 		StringBuilder sb = new StringBuilder();
 		for (Iterator<StringBuilder> it = lines.iterator(); it.hasNext();) {
 			StringBuilder line = it.next();
@@ -51,11 +59,11 @@ public class Canvas implements ICanvas {
 		text = sb.toString();
 	}
 
-	private String repeatChar(char c, int count) {
+	protected String repeatChar(char c, int count) {
 		return repeatString(c + "", count);
 	}
 
-	private String repeatString(String s, int count) {
+	protected String repeatString(String s, int count) {
 		String repeated = new String(new char[count]).replace("\0", s);
 		return repeated;
 	}
@@ -105,7 +113,7 @@ public class Canvas implements ICanvas {
 		StringBuilder line = lines.get(y);
 		line.replace(x, x + s.length(), s);
 
-		updateText();
+		needUpdateText = true;
 	}
 
 	@Override
@@ -127,6 +135,7 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public String getText() {
+		updateTextIfNeed();
 		return text;
 	}
 
@@ -137,6 +146,7 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public int hashCode() {
+		updateTextIfNeed();
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
@@ -152,6 +162,8 @@ public class Canvas implements ICanvas {
 		if (getClass() != obj.getClass())
 			return false;
 		Canvas other = (Canvas) obj;
+		updateTextIfNeed();
+		other.updateTextIfNeed();
 		if (text == null) {
 			if (other.text != null)
 				return false;
@@ -187,7 +199,7 @@ public class Canvas implements ICanvas {
 		StringBuilder line = lines.get(y);
 		char prevC = line.charAt(x);
 		line.setCharAt(x, c);
-		updateText();
+		needUpdateText = true;
 		return prevC;
 	}
 
