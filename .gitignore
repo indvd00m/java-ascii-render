@@ -2,7 +2,12 @@
 .classpath
 .settings
 .project
+
 **/target/
+
+.idea/
+
+out/
 
 cov-int/
 java-ascii-render.tgz
