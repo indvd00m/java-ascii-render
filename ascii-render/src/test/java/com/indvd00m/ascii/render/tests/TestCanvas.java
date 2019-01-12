@@ -1,16 +1,16 @@
 package com.indvd00m.ascii.render.tests;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 import com.indvd00m.ascii.render.Canvas;
 import com.indvd00m.ascii.render.api.ICanvas;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 5:15:07 PM
- *
  */
 public class TestCanvas {
 
@@ -389,6 +389,88 @@ public class TestCanvas {
 
 		assertEquals(s, canvas.getText());
 		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test14() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(4, 0, "*");
+		canvas.draw(2, 1, "1");
+		canvas.draw(2, 2, "****");
+		canvas.draw(4, 3, "3");
+		canvas.draw(1, 4, "2");
+		String s = "";
+		s += "    *     \n";
+		s += "  1       \n";
+		s += "  ****    \n";
+		s += "    3     \n";
+		s += " 2        ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+
+		canvas.clear();
+		s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test15() {
+		ICanvas canvas1 = new Canvas(10, 5);
+		canvas1.draw(2, 2, "****");
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "  ****    \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas1.getText());
+		assertEquals(s, canvas1.getText());
+
+		ICanvas canvas2 = new Canvas(10, 5);
+		canvas2.draw(2, 2, "**** ");
+		String s2 = "";
+		s2 += "          \n";
+		s2 += "          \n";
+		s2 += "  ****    \n";
+		s2 += "          \n";
+		s2 += "          ";
+		System.out.println(canvas2.getText());
+		assertEquals(s2, canvas2.getText());
+
+		assertTrue(canvas1.equals(canvas2));
+		assertTrue(canvas2.equals(canvas1));
+		assertEquals(canvas1.hashCode(), canvas2.hashCode());
+
+		canvas1 = new Canvas(10, 5);
+		canvas1.draw(2, 2, "****");
+		s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "  ****    \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas1.getText());
+		assertEquals(s, canvas1.getText());
+
+		canvas2 = new Canvas(10, 5);
+		canvas2.draw(2, 2, "***");
+		s2 = "";
+		s2 += "          \n";
+		s2 += "          \n";
+		s2 += "  ***     \n";
+		s2 += "          \n";
+		s2 += "          ";
+		System.out.println(canvas2.getText());
+		assertEquals(s2, canvas2.getText());
+
+		assertFalse(canvas1.equals(canvas2));
+		assertFalse(canvas2.equals(canvas1));
 	}
 
 }
