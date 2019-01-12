@@ -274,10 +274,12 @@ Plot with axis and labels based on array of points.
 ```java
 		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
-			if (degree > 75 && degree < 105)
+			if (degree > 75 && degree < 105) {
 				continue;
-			if (degree > 255 && degree < 285)
+			}
+			if (degree > 255 && degree < 285) {
 				continue;
+			}
 			double val = Math.tan(Math.toRadians(degree));
 			IPlotPoint plotPoint = new PlotPoint(degree, val);
 			points.add(plotPoint);
