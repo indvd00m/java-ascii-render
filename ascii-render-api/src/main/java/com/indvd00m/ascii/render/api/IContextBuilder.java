@@ -102,6 +102,15 @@ public interface IContextBuilder {
 	 */
 	IContextBuilder layer(int x, int y, int width, int height, List<IElement> elements);
 
+
+	/**
+	 * Opacity of last created layer. {@code False} by default.
+	 *
+	 * @param opacity
+	 * @return
+	 */
+	IContextBuilder opacity(boolean opacity);
+
 	/**
 	 * Add {@code element} to last created layer. New layer will be created, if layers count is 0.
 	 * 

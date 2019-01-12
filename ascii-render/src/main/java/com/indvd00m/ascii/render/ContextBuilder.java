@@ -171,6 +171,15 @@ public class ContextBuilder implements IContextBuilder {
 	}
 
 	@Override
+	public IContextBuilder opacity(boolean opacity) {
+		if (layers.isEmpty())
+			layer();
+		Layer layer = (Layer) layers.get(layers.size() - 1);
+		layer.opacity = opacity;
+		return this;
+	}
+
+	@Override
 	public IContextBuilder element(IElement element) {
 		if (layers.isEmpty())
 			layer();

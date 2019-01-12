@@ -25,4 +25,11 @@ public interface ILayer {
 	 */
 	List<IElement> getElements();
 
+	/**
+	 * Opacity of this layer. {@code False} by default.
+	 *
+	 * @return
+	 */
+	boolean isOpacity();
+
 }

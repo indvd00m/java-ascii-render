@@ -17,6 +17,7 @@ public class Layer implements ILayer {
 
 	protected IRegion region;
 	protected List<IElement> elements = new ArrayList<IElement>();
+	protected boolean opacity;
 
 	Layer(IRegion region) {
 		super();
@@ -31,6 +32,11 @@ public class Layer implements ILayer {
 	@Override
 	public List<IElement> getElements() {
 		return Collections.unmodifiableList(elements);
+	}
+
+	@Override
+	public boolean isOpacity() {
+		return opacity;
 	}
 
 }
