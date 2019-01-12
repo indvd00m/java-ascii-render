@@ -10,10 +10,9 @@ import com.indvd00m.ascii.render.api.IRegion;
 
 /**
  * Canvas overlay. Possibility to combine results of several renders.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2018-Nov-19 8:31:36 PM
- *
  */
 public class Overlay implements IElement {
 
@@ -61,14 +60,18 @@ public class Overlay implements IElement {
 		int width = this.width;
 		int height = this.height;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = 0;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = 0;
-		if (width == Integer.MIN_VALUE)
+		}
+		if (width == Integer.MIN_VALUE) {
 			width = overlay.getWidth();
-		if (height == Integer.MIN_VALUE)
+		}
+		if (height == Integer.MIN_VALUE) {
 			height = overlay.getHeight();
+		}
 
 		IRegion region = new Region(x, y, width, height);
 		drawOver(canvas, overlay, region);
@@ -110,28 +113,38 @@ public class Overlay implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Overlay other = (Overlay) obj;
 		if (overlay == null) {
-			if (other.overlay != null)
+			if (other.overlay != null) {
 				return false;
-		} else if (!overlay.equals(other.overlay))
+			}
+		} else if (!overlay.equals(other.overlay)) {
 			return false;
-		if (height != other.height)
+		}
+		if (height != other.height) {
 			return false;
-		if (opacity != other.opacity)
+		}
+		if (opacity != other.opacity) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

@@ -8,10 +8,9 @@ import com.indvd00m.ascii.render.api.IPoint;
 
 /**
  * Rectangle of a particular width and height.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 6:19:21 PM
- *
  */
 public class Rectangle implements IElement {
 
@@ -43,14 +42,18 @@ public class Rectangle implements IElement {
 		int width = this.width;
 		int height = this.height;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = 0;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = 0;
-		if (width == Integer.MIN_VALUE)
+		}
+		if (width == Integer.MIN_VALUE) {
 			width = canvas.getWidth();
-		if (height == Integer.MIN_VALUE)
+		}
+		if (height == Integer.MIN_VALUE) {
 			height = canvas.getHeight();
+		}
 
 		canvas.draw(x, y, "─", width);
 		canvas.draw(x, y + height - 1, "─", width);
@@ -93,21 +96,28 @@ public class Rectangle implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Rectangle other = (Rectangle) obj;
-		if (height != other.height)
+		if (height != other.height) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

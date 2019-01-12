@@ -8,10 +8,9 @@ import com.indvd00m.ascii.render.elements.plot.api.AxisType;
 
 /**
  * Single axis label.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 10:29:54 PM
- *
  */
 public class AxisLabel extends Label {
 

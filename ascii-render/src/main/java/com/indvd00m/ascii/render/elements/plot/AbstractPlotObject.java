@@ -1,7 +1,5 @@
 package com.indvd00m.ascii.render.elements.plot;
 
-import java.util.List;
-
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
@@ -11,13 +9,14 @@ import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoints;
 import com.indvd00m.ascii.render.elements.plot.misc.PlotPoints;
 
+import java.util.List;
+
 /**
  * Base class for plot elements. Every individual plot is identified by his {@link #anchorPoint} and {@link points}
  * hashCode.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-19 9:45:31 PM
- *
  */
 public abstract class AbstractPlotObject<P extends AbstractPlotObject<P>> implements IElement, ITypedIdentified<P> {
 

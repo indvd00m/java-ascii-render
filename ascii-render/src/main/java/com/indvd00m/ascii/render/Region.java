@@ -5,7 +5,6 @@ import com.indvd00m.ascii.render.api.IRegion;
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 5:40:41 PM
- *
  */
 public class Region implements IRegion {
 
@@ -16,10 +15,12 @@ public class Region implements IRegion {
 
 	public Region(int x, int y, int width, int height) {
 		super();
-		if (width < 0)
+		if (width < 0) {
 			throw new IllegalArgumentException();
-		if (height < 0)
+		}
+		if (height < 0) {
 			throw new IllegalArgumentException();
+		}
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -59,21 +60,28 @@ public class Region implements IRegion {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Region other = (Region) obj;
-		if (height != other.height)
+		if (height != other.height) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

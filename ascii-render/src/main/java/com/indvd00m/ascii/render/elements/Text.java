@@ -9,10 +9,9 @@ import com.indvd00m.ascii.render.api.IPoint;
 /**
  * Multiline string. {@code Text} has a width and source string will be split in a parts by a {@literal \n} symbol if
  * length of string more than {@code Text} width.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 2:11:38 PM
- *
  */
 public class Text implements IElement {
 
@@ -47,17 +46,22 @@ public class Text implements IElement {
 		int width = this.width;
 		int height = this.height;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = 0;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = 0;
-		if (width == Integer.MIN_VALUE)
+		}
+		if (width == Integer.MIN_VALUE) {
 			width = canvas.getWidth();
-		if (height == Integer.MIN_VALUE)
+		}
+		if (height == Integer.MIN_VALUE) {
 			height = canvas.getHeight();
+		}
 
-		if (height <= 0 || width <= 0)
+		if (height <= 0 || width <= 0) {
 			return null;
+		}
 		// text.replaceAll("([^\\n\\r]{" + width + "})\\s*", "$1\n").trim();
 		StringBuilder sb = new StringBuilder(text);
 		for (int i = 0, breaksCount = 0; i < sb.length(); i++) {
@@ -121,26 +125,35 @@ public class Text implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Text other = (Text) obj;
-		if (height != other.height)
+		if (height != other.height) {
 			return false;
+		}
 		if (text == null) {
-			if (other.text != null)
+			if (other.text != null) {
 				return false;
-		} else if (!text.equals(other.text))
+			}
+		} else if (!text.equals(other.text)) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

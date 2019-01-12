@@ -1,5 +1,12 @@
 package com.indvd00m.ascii.render;
 
+import com.indvd00m.ascii.render.api.IContext;
+import com.indvd00m.ascii.render.api.IElement;
+import com.indvd00m.ascii.render.api.ILayer;
+import com.indvd00m.ascii.render.api.IPoint;
+import com.indvd00m.ascii.render.api.IRegion;
+import com.indvd00m.ascii.render.api.ITypedIdentified;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,17 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.indvd00m.ascii.render.api.IContext;
-import com.indvd00m.ascii.render.api.IElement;
-import com.indvd00m.ascii.render.api.ILayer;
-import com.indvd00m.ascii.render.api.IPoint;
-import com.indvd00m.ascii.render.api.IRegion;
-import com.indvd00m.ascii.render.api.ITypedIdentified;
-
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 5:49:09 PM
- *
  */
 public class Context implements IContext {
 
@@ -58,8 +57,9 @@ public class Context implements IContext {
 	@Override
 	public <E extends IElement> E lookup(Class<E> clazz, boolean includeSuccessors) {
 		List<E> elements = lookupAll(clazz, includeSuccessors);
-		if (!elements.isEmpty())
+		if (!elements.isEmpty()) {
 			return elements.get(0);
+		}
 		return null;
 	}
 
@@ -77,8 +77,9 @@ public class Context implements IContext {
 			Set<IElement> elements = elementsByClass.get(clazz);
 			if (elements != null) {
 				for (IElement e : elements) {
-					if (includeSuccessors || clazz.equals(e.getClass()))
+					if (includeSuccessors || clazz.equals(e.getClass())) {
 						set.add(e);
+					}
 				}
 			}
 		}
@@ -87,8 +88,9 @@ public class Context implements IContext {
 			for (Class<IElement> nextClazz : elementsByClass.keySet()) {
 				if (clazz.isAssignableFrom(nextClazz)) {
 					Set<IElement> elements = elementsByClass.get(nextClazz);
-					if (elements != null)
+					if (elements != null) {
 						set.addAll(elements);
+					}
 				}
 			}
 		}
@@ -104,8 +106,9 @@ public class Context implements IContext {
 	@Override
 	public <E extends IElement> E lookup(Class<E> clazz, boolean includeSuccessors, ILayer layer) {
 		List<E> elements = lookupAll(clazz, includeSuccessors, layer);
-		if (!elements.isEmpty())
+		if (!elements.isEmpty()) {
 			return elements.get(0);
+		}
 		return null;
 	}
 
@@ -125,8 +128,9 @@ public class Context implements IContext {
 				for (IElement e : elements) {
 					if (includeSuccessors || clazz.equals(e.getClass())) {
 						Set<ILayer> elementLayers = layersByElement.get(e);
-						if (elementLayers.contains(layer))
+						if (elementLayers.contains(layer)) {
 							set.add(e);
+						}
 					}
 				}
 			}
@@ -136,12 +140,14 @@ public class Context implements IContext {
 			for (Class<IElement> nextClazz : elementsByClass.keySet()) {
 				if (clazz.isAssignableFrom(nextClazz)) {
 					Set<IElement> elements = elementsByClass.get(nextClazz);
-					if (elements != null)
+					if (elements != null) {
 						for (IElement e : elements) {
 							Set<ILayer> elementLayers = layersByElement.get(e);
-							if (elementLayers.contains(layer))
+							if (elementLayers.contains(layer)) {
 								set.add(e);
+							}
 						}
+					}
 				}
 			}
 		}
@@ -152,8 +158,9 @@ public class Context implements IContext {
 	@Override
 	public ILayer lookupLayer(IElement element) {
 		Set<ILayer> elementLayers = layersByElement.get(element);
-		if (elementLayers != null && !elementLayers.isEmpty())
+		if (elementLayers != null && !elementLayers.isEmpty()) {
 			return elementLayers.iterator().next();
+		}
 		return null;
 	}
 
@@ -162,8 +169,9 @@ public class Context implements IContext {
 		List<ILayer> list = new ArrayList<ILayer>();
 
 		Set<ILayer> elementLayers = layersByElement.get(element);
-		if (elementLayers != null)
+		if (elementLayers != null) {
 			list.addAll(elementLayers);
+		}
 
 		return list;
 	}
@@ -180,8 +188,9 @@ public class Context implements IContext {
 			Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
 			if (map != null && map.containsKey(typedId)) {
 				ITypedIdentified<?> ti = map.get(typedId);
-				if (includeSuccessors || type.equals(ti.getClass()))
+				if (includeSuccessors || type.equals(ti.getClass())) {
 					return (T) ti;
+				}
 			}
 		}
 
@@ -215,8 +224,9 @@ public class Context implements IContext {
 			Map<Integer, ITypedIdentified<?>> map = identifiedByType.get(type);
 			if (map != null) {
 				for (ITypedIdentified<?> ti : map.values()) {
-					if (includeSuccessors || type.equals(ti.getClass()))
+					if (includeSuccessors || type.equals(ti.getClass())) {
 						set.add(ti);
+					}
 				}
 			}
 		}

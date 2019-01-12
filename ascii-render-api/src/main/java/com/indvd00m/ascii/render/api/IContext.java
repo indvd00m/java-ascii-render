@@ -6,37 +6,36 @@ import java.util.List;
  * Context object. Context contains layers which contains elements. Every layer has region, in which it will be drawn.
  * Only content from this layer region will be drawn in render. Layers contained in a particular order and will be drawn
  * in this order.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 3:46:21 PM
- *
  */
 public interface IContext {
 
 	/**
 	 * Width of context.
-	 * 
+	 *
 	 * @return
 	 */
 	int getWidth();
 
 	/**
 	 * Height of context.
-	 * 
+	 *
 	 * @return
 	 */
 	int getHeight();
 
 	/**
 	 * Layers list.
-	 * 
+	 *
 	 * @return
 	 */
 	List<ILayer> getLayers();
 
 	/**
 	 * Search first element of {@code E} type (or successors of {@code E})
-	 * 
+	 *
 	 * @param clazz
 	 * @return
 	 */
@@ -44,7 +43,7 @@ public interface IContext {
 
 	/**
 	 * Search first element of {@code E} type (optionally including successors)
-	 * 
+	 *
 	 * @param clazz
 	 * @return
 	 */
@@ -53,7 +52,7 @@ public interface IContext {
 	/**
 	 * Search all elements of {@code E} type (or successors of {@code E}). If elements not found, empty list will be
 	 * returned.
-	 * 
+	 *
 	 * @param clazz
 	 * @return
 	 */
@@ -62,7 +61,7 @@ public interface IContext {
 	/**
 	 * Search all elements of {@code E} type (optionally including successors). If elements not found, empty list will
 	 * be returned.
-	 * 
+	 *
 	 * @param clazz
 	 * @return
 	 */
@@ -70,7 +69,7 @@ public interface IContext {
 
 	/**
 	 * Search first element of {@code E} type (or successors of {@code E}) in layer.
-	 * 
+	 *
 	 * @param clazz
 	 * @param layer
 	 * @return
@@ -79,7 +78,7 @@ public interface IContext {
 
 	/**
 	 * Search first element of {@code E} type (optionally including successors) in layer.
-	 * 
+	 *
 	 * @param clazz
 	 * @param layer
 	 * @return
@@ -89,7 +88,7 @@ public interface IContext {
 	/**
 	 * Search all elements of {@code E} type (or successors of {@code E}) in layer. If elements not found, empty list
 	 * will be returned.
-	 * 
+	 *
 	 * @param clazz
 	 * @param layer
 	 * @return
@@ -99,7 +98,7 @@ public interface IContext {
 	/**
 	 * Search all elements of {@code E} type (optionally including successors) in layer. If elements not found, empty
 	 * list will be returned.
-	 * 
+	 *
 	 * @param clazz
 	 * @param layer
 	 * @return
@@ -108,7 +107,7 @@ public interface IContext {
 
 	/**
 	 * Search first layer which contains {@code element}.
-	 * 
+	 *
 	 * @param element
 	 * @return
 	 */
@@ -116,7 +115,7 @@ public interface IContext {
 
 	/**
 	 * Search all layers which contains {@code element}. If layers not found, empty list will be returned.
-	 * 
+	 *
 	 * @param element
 	 * @return
 	 */
@@ -125,7 +124,7 @@ public interface IContext {
 	/**
 	 * Search object with type {@code T} (or successors of {@code T}) and identificator {@code typedId}. See
 	 * {@link ITypedIdentified}.
-	 * 
+	 *
 	 * @param type
 	 * @param typedId
 	 * @return
@@ -135,7 +134,7 @@ public interface IContext {
 	/**
 	 * Search object with type {@code T} (optionally including successors) and identificator {@code typedId}. See
 	 * {@link ITypedIdentified}.
-	 * 
+	 *
 	 * @param type
 	 * @param typedId
 	 * @return
@@ -145,7 +144,7 @@ public interface IContext {
 	/**
 	 * Search objects with type {@code T} (or successors of {@code T}). If objects not found, empty list will be
 	 * returned. See {@link ITypedIdentified}.
-	 * 
+	 *
 	 * @param type
 	 * @param id
 	 * @return
@@ -155,7 +154,7 @@ public interface IContext {
 	/**
 	 * Search objects with type {@code T} (optionally including successors). If objects not found, empty list will be
 	 * returned. See {@link ITypedIdentified}.
-	 * 
+	 *
 	 * @param type
 	 * @param id
 	 * @return
@@ -170,7 +169,7 @@ public interface IContext {
 
 	/**
 	 * Transform point coordinates from {@code source} coordinate system to {@code target} coordinate system.
-	 * 
+	 *
 	 * @param point
 	 * @param source
 	 * @param target
@@ -180,7 +179,7 @@ public interface IContext {
 
 	/**
 	 * Transform point coordinates from {@code source} coordinate system to {@code target} coordinate system.
-	 * 
+	 *
 	 * @param point
 	 * @param source
 	 * @param target

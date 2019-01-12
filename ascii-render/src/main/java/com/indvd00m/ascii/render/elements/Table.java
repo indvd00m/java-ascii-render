@@ -1,8 +1,5 @@
 package com.indvd00m.ascii.render.elements;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.indvd00m.ascii.render.Canvas;
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
@@ -10,12 +7,14 @@ import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Table with rows and columns.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2018-Nov-17 3:23:56 PM
- *
  */
 public class Table implements IElement {
 
@@ -84,14 +83,18 @@ public class Table implements IElement {
 		int width = this.width;
 		int height = this.height;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = 0;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = 0;
-		if (width == Integer.MIN_VALUE)
+		}
+		if (width == Integer.MIN_VALUE) {
 			width = canvas.getWidth();
-		if (height == Integer.MIN_VALUE)
+		}
+		if (height == Integer.MIN_VALUE) {
 			height = canvas.getHeight();
+		}
 
 		// table borders
 		canvas.draw(x, y, "─", width);
@@ -175,30 +178,41 @@ public class Table implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Table other = (Table) obj;
-		if (columns != other.columns)
+		if (columns != other.columns) {
 			return false;
+		}
 		if (elements == null) {
-			if (other.elements != null)
+			if (other.elements != null) {
 				return false;
-		} else if (!elements.equals(other.elements))
+			}
+		} else if (!elements.equals(other.elements)) {
 			return false;
-		if (height != other.height)
+		}
+		if (height != other.height) {
 			return false;
-		if (rows != other.rows)
+		}
+		if (rows != other.rows) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

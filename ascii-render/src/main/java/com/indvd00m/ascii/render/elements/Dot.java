@@ -8,10 +8,9 @@ import com.indvd00m.ascii.render.api.IPoint;
 
 /**
  * Single dot ('*' symbol).
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 6:09:09 PM
- *
  */
 public class Dot implements IElement {
 
@@ -35,10 +34,12 @@ public class Dot implements IElement {
 		int x = this.x;
 		int y = this.y;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = canvas.getWidth() / 2;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = canvas.getHeight() / 2;
+		}
 
 		canvas.draw(x, y, "*");
 		return new Point(x, y);
@@ -63,17 +64,22 @@ public class Dot implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Dot other = (Dot) obj;
-		if (x != other.x)
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

@@ -1,10 +1,5 @@
 package com.indvd00m.ascii.render.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-
-import org.junit.Test;
-
 import com.indvd00m.ascii.render.Canvas;
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
@@ -14,11 +9,14 @@ import com.indvd00m.ascii.render.elements.Label;
 import com.indvd00m.ascii.render.elements.Rectangle;
 import com.indvd00m.ascii.render.elements.Table;
 import com.indvd00m.ascii.render.elements.Text;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 5:15:07 PM
- *
  */
 public class TestTable {
 

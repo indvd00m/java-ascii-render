@@ -9,7 +9,6 @@ import com.indvd00m.ascii.render.api.IPoint;
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 6:15:35 PM
- *
  */
 public class Ellipse implements IElement {
 
@@ -41,14 +40,18 @@ public class Ellipse implements IElement {
 		int width = this.width;
 		int height = this.height;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = canvas.getWidth() / 2;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = canvas.getHeight() / 2;
-		if (width == Integer.MIN_VALUE)
+		}
+		if (width == Integer.MIN_VALUE) {
 			width = canvas.getWidth() - 1;
-		if (height == Integer.MIN_VALUE)
+		}
+		if (height == Integer.MIN_VALUE) {
 			height = canvas.getHeight() - 1;
+		}
 
 		double a = width / 2d;
 		double b = height / 2d;
@@ -61,8 +64,9 @@ public class Ellipse implements IElement {
 			for (int y1 = (int) (y - b); y1 <= y + b; y1++) {
 				double d1 = Math.sqrt(Math.pow(f1x - x1, 2) + Math.pow(f1y - y1, 2));
 				double d2 = Math.sqrt(Math.pow(f2x - x1, 2) + Math.pow(f2y - y1, 2));
-				if (compare(d1 + d2, 2 * a, 0.5d) == 0)
+				if (compare(d1 + d2, 2 * a, 0.5d) == 0) {
 					canvas.draw(x1, y1, "*");
+				}
 			}
 		}
 		return new Point(x, y);
@@ -70,12 +74,14 @@ public class Ellipse implements IElement {
 
 	protected int compare(double d1, double d2, double precision) {
 		double diff = d1 - d2;
-		if (Math.abs(diff) < precision)
+		if (Math.abs(diff) < precision) {
 			return 0;
-		if (diff < 0d)
+		}
+		if (diff < 0d) {
 			return -1;
-		else
+		} else {
 			return 1;
+		}
 	}
 
 	public int getX() {
@@ -107,21 +113,28 @@ public class Ellipse implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Ellipse other = (Ellipse) obj;
-		if (height != other.height)
+		if (height != other.height) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

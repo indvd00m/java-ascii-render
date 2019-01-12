@@ -5,7 +5,6 @@ import com.indvd00m.ascii.render.api.IPoint;
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 5:39:16 PM
- *
  */
 public class Point implements IPoint {
 
@@ -39,17 +38,22 @@ public class Point implements IPoint {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Point other = (Point) obj;
-		if (x != other.x)
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

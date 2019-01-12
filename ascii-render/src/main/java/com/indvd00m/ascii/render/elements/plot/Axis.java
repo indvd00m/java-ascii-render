@@ -1,7 +1,5 @@
 package com.indvd00m.ascii.render.elements.plot;
 
-import java.util.List;
-
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IPoint;
@@ -10,12 +8,13 @@ import com.indvd00m.ascii.render.elements.plot.api.AxisType;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.misc.AxisLabel;
 
+import java.util.List;
+
 /**
  * Axis X and Y.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-19 11:35:47 PM
- *
  */
 public class Axis extends AbstractPlotObject<Axis> {
 

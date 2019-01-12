@@ -1,5 +1,12 @@
 package com.indvd00m.ascii.render;
 
+import com.indvd00m.ascii.render.api.IContext;
+import com.indvd00m.ascii.render.api.IContextBuilder;
+import com.indvd00m.ascii.render.api.IElement;
+import com.indvd00m.ascii.render.api.ILayer;
+import com.indvd00m.ascii.render.api.IRegion;
+import com.indvd00m.ascii.render.api.ITypedIdentified;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,17 +15,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.indvd00m.ascii.render.api.IContext;
-import com.indvd00m.ascii.render.api.IContextBuilder;
-import com.indvd00m.ascii.render.api.IElement;
-import com.indvd00m.ascii.render.api.ILayer;
-import com.indvd00m.ascii.render.api.IRegion;
-import com.indvd00m.ascii.render.api.ITypedIdentified;
-
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 11:59:26 PM
- *
  */
 public class ContextBuilder implements IContextBuilder {
 
@@ -128,8 +127,9 @@ public class ContextBuilder implements IContextBuilder {
 	public IContextBuilder layer(IElement... elements) {
 		Layer layer = new Layer(new Region(0, 0, width, height));
 		addLayer(layer);
-		for (IElement element : elements)
+		for (IElement element : elements) {
 			addElementToLayer(layer, element);
+		}
 		return this;
 	}
 
@@ -137,8 +137,9 @@ public class ContextBuilder implements IContextBuilder {
 	public IContextBuilder layer(IRegion region, IElement... elements) {
 		Layer layer = new Layer(region);
 		addLayer(layer);
-		for (IElement element : elements)
+		for (IElement element : elements) {
 			addElementToLayer(layer, element);
+		}
 		return this;
 	}
 
@@ -151,8 +152,9 @@ public class ContextBuilder implements IContextBuilder {
 	public IContextBuilder layer(List<IElement> elements) {
 		Layer layer = new Layer(new Region(0, 0, width, height));
 		addLayer(layer);
-		for (IElement element : elements)
+		for (IElement element : elements) {
 			addElementToLayer(layer, element);
+		}
 		return this;
 	}
 
@@ -160,8 +162,9 @@ public class ContextBuilder implements IContextBuilder {
 	public IContextBuilder layer(IRegion region, List<IElement> elements) {
 		Layer layer = new Layer(region);
 		addLayer(layer);
-		for (IElement element : elements)
+		for (IElement element : elements) {
 			addElementToLayer(layer, element);
+		}
 		return this;
 	}
 
@@ -172,8 +175,9 @@ public class ContextBuilder implements IContextBuilder {
 
 	@Override
 	public IContextBuilder opacity(boolean opacity) {
-		if (layers.isEmpty())
+		if (layers.isEmpty()) {
 			layer();
+		}
 		Layer layer = (Layer) layers.get(layers.size() - 1);
 		layer.opacity = opacity;
 		return this;
@@ -181,8 +185,9 @@ public class ContextBuilder implements IContextBuilder {
 
 	@Override
 	public IContextBuilder element(IElement element) {
-		if (layers.isEmpty())
+		if (layers.isEmpty()) {
 			layer();
+		}
 		Layer layer = (Layer) layers.get(layers.size() - 1);
 		addElementToLayer(layer, element);
 		return this;
@@ -190,29 +195,34 @@ public class ContextBuilder implements IContextBuilder {
 
 	@Override
 	public IContextBuilder elements(IElement... elements) {
-		if (layers.isEmpty())
+		if (layers.isEmpty()) {
 			layer();
+		}
 		Layer layer = (Layer) layers.get(layers.size() - 1);
-		for (IElement element : elements)
+		for (IElement element : elements) {
 			addElementToLayer(layer, element);
+		}
 		return this;
 	}
 
 	@Override
 	public IContextBuilder elements(List<IElement> elements) {
-		if (layers.isEmpty())
+		if (layers.isEmpty()) {
 			layer();
+		}
 		Layer layer = (Layer) layers.get(layers.size() - 1);
-		for (IElement element : elements)
+		for (IElement element : elements) {
 			addElementToLayer(layer, element);
+		}
 		return this;
 	}
 
 	protected LinkedHashSet<Class<?>> getAncestors(Class<?> clazz) {
 		LinkedHashSet<Class<?>> ancestors = new LinkedHashSet<Class<?>>();
 
-		if (clazz == null)
+		if (clazz == null) {
 			return ancestors;
+		}
 
 		ancestors.add(clazz);
 		for (Class<?> iClazz : clazz.getInterfaces()) {

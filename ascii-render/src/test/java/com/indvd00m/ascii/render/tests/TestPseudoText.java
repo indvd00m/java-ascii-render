@@ -1,25 +1,23 @@
 package com.indvd00m.ascii.render.tests;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Ignore;
-import org.junit.Test;
-
 import com.indvd00m.ascii.render.Canvas;
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IPoint;
 import com.indvd00m.ascii.render.elements.PseudoText;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-21 3:28:50 PM
- *
  */
 @Ignore
 public class TestPseudoText {
@@ -35,8 +33,9 @@ public class TestPseudoText {
 		StringBuilder sb = new StringBuilder(text);
 		for (int i = 0; i < sb.length(); i += lineSymbolsCount) {
 			int lastIndex = i + lineSymbolsCount;
-			if (lastIndex > sb.length())
+			if (lastIndex > sb.length()) {
 				lastIndex = sb.length();
+			}
 			String s = sb.substring(i, lastIndex);
 			lines.add(s);
 		}

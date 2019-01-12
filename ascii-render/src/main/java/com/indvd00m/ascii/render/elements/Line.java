@@ -1,18 +1,17 @@
 package com.indvd00m.ascii.render.elements;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 9:28:30 PM
- *
  */
 public class Line implements IElement {
 
@@ -50,20 +49,23 @@ public class Line implements IElement {
 		int dx2 = 0;
 		int dy2 = 0;
 
-		if (w < 0)
+		if (w < 0) {
 			dx1 = -1;
-		else if (w > 0)
+		} else if (w > 0) {
 			dx1 = 1;
+		}
 
-		if (h < 0)
+		if (h < 0) {
 			dy1 = -1;
-		else if (h > 0)
+		} else if (h > 0) {
 			dy1 = 1;
+		}
 
-		if (w < 0)
+		if (w < 0) {
 			dx2 = -1;
-		else if (w > 0)
+		} else if (w > 0) {
 			dx2 = 1;
+		}
 
 		int longest = Math.abs(w);
 		int shortest = Math.abs(h);
@@ -72,10 +74,11 @@ public class Line implements IElement {
 			longest = Math.abs(h);
 			shortest = Math.abs(w);
 
-			if (h < 0)
+			if (h < 0) {
 				dy2 = -1;
-			else if (h > 0)
+			} else if (h > 0) {
 				dy2 = 1;
+			}
 			dx2 = 0;
 		}
 
@@ -104,12 +107,14 @@ public class Line implements IElement {
 
 	protected int compare(double d1, double d2, double precision) {
 		double diff = d1 - d2;
-		if (Math.abs(diff) < precision)
+		if (Math.abs(diff) < precision) {
 			return 0;
-		if (diff < 0d)
+		}
+		if (diff < 0d) {
 			return -1;
-		else
+		} else {
 			return 1;
+		}
 	}
 
 	public IPoint getStart() {
@@ -131,23 +136,30 @@ public class Line implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Line other = (Line) obj;
 		if (end == null) {
-			if (other.end != null)
+			if (other.end != null) {
 				return false;
-		} else if (!end.equals(other.end))
+			}
+		} else if (!end.equals(other.end)) {
 			return false;
+		}
 		if (start == null) {
-			if (other.start != null)
+			if (other.start != null) {
 				return false;
-		} else if (!start.equals(other.start))
+			}
+		} else if (!start.equals(other.start)) {
 			return false;
+		}
 		return true;
 	}
 

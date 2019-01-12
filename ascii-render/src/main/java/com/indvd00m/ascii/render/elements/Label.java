@@ -9,10 +9,9 @@ import com.indvd00m.ascii.render.api.IPoint;
 /**
  * Single-line string. Label has a width and text which do not gets in a label region will be discarded. In this case
  * last symbol of a drawed text will be {@literal '…'}. Line breaks will be replaced with space symbol.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 12:29:22 PM
- *
  */
 public class Label implements IElement {
 
@@ -53,12 +52,15 @@ public class Label implements IElement {
 
 		String s = text.replaceAll("[\\n\\r]+", " ");
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = 0;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = 0;
-		if (width == Integer.MIN_VALUE)
+		}
+		if (width == Integer.MIN_VALUE) {
 			width = s.length();
+		}
 
 		if (s.length() > width) {
 			if (width > 1) {
@@ -85,24 +87,32 @@ public class Label implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Label other = (Label) obj;
 		if (text == null) {
-			if (other.text != null)
+			if (other.text != null) {
 				return false;
-		} else if (!text.equals(other.text))
+			}
+		} else if (!text.equals(other.text)) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

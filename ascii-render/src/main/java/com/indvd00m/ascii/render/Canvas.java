@@ -25,10 +25,12 @@ public class Canvas implements ICanvas {
 	protected boolean needUpdateCache = false;
 
 	public Canvas(int width, int height) {
-		if (width < 0)
+		if (width < 0) {
 			throw new IllegalArgumentException();
-		if (height < 0)
+		}
+		if (height < 0) {
 			throw new IllegalArgumentException();
+		}
 
 		this.width = width;
 		this.height = height;
@@ -49,8 +51,9 @@ public class Canvas implements ICanvas {
 		for (Iterator<StringBuilder> it = lines.iterator(); it.hasNext(); ) {
 			StringBuilder line = it.next();
 			sb.append(line);
-			if (it.hasNext())
+			if (it.hasNext()) {
 				sb.append('\n');
+			}
 		}
 		String text = sb.toString();
 		this.cachedLines = text;
@@ -78,36 +81,43 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public void draw(int x, int y, String s) {
-		if (x >= width)
+		if (x >= width) {
 			return;
-		if (y >= height)
+		}
+		if (y >= height) {
 			return;
+		}
 
 		if (s.matches("(?s).*[\\n\\r]+.*")) { // multiline string
 			for (String line : s.split("[\\n\\r]")) {
 				draw(x, y++, line);
-				if (y >= height)
+				if (y >= height) {
 					break;
+				}
 			}
 			return;
 		}
 
 		// single line string
-		if (y < 0)
+		if (y < 0) {
 			return;
-
-		if (x < 0) {
-			if (-x > s.length() - 1)
-				s = "";
-			else
-				s = s.substring(-x);
 		}
 
-		if (s.length() > width - x)
-			s = s.substring(0, width - x);
+		if (x < 0) {
+			if (-x > s.length() - 1) {
+				s = "";
+			} else {
+				s = s.substring(-x);
+			}
+		}
 
-		if (x < 0)
+		if (s.length() > width - x) {
+			s = s.substring(0, width - x);
+		}
+
+		if (x < 0) {
 			x = 0;
+		}
 
 		StringBuilder line = lines.get(y);
 		line.replace(x, x + s.length(), s);
@@ -117,8 +127,9 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public void draw(int x, int y, String s, int count) {
-		if (count <= 0)
+		if (count <= 0) {
 			return;
+		}
 		draw(x, y, repeatString(s, count));
 	}
 
@@ -145,19 +156,23 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		Canvas canvas = (Canvas) o;
 		updateCacheIfNeed();
 		canvas.updateCacheIfNeed();
 
-		if (width != canvas.width)
+		if (width != canvas.width) {
 			return false;
-		if (height != canvas.height)
+		}
+		if (height != canvas.height) {
 			return false;
+		}
 		return cachedLines.equals(canvas.cachedLines);
 	}
 
@@ -185,10 +200,12 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public char getChar(int x, int y) {
-		if (x < 0 || x >= width)
+		if (x < 0 || x >= width) {
 			return 0;
-		if (y < 0 || y >= height)
+		}
+		if (y < 0 || y >= height) {
 			return 0;
+		}
 
 		StringBuilder line = lines.get(y);
 		char c = line.charAt(x);
@@ -197,10 +214,12 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public char setChar(int x, int y, char c) {
-		if (x < 0 || x >= width)
+		if (x < 0 || x >= width) {
 			return 0;
-		if (y < 0 || y >= height)
+		}
+		if (y < 0 || y >= height) {
 			return 0;
+		}
 
 		StringBuilder line = lines.get(y);
 		char prevC = line.charAt(x);

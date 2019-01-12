@@ -1,9 +1,5 @@
 package com.indvd00m.ascii.render.tests;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import com.indvd00m.ascii.render.Render;
 import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IContextBuilder;
@@ -11,11 +7,15 @@ import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IRender;
 import com.indvd00m.ascii.render.elements.Dot;
 import com.indvd00m.ascii.render.elements.Rectangle;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2017-Feb-04 7:18:18 AM
- *
  */
 public class TestContext {
 

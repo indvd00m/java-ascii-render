@@ -1,47 +1,40 @@
 package com.indvd00m.ascii.render.elements;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.imageio.ImageIO;
-
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * PseudoText element. Default font DejaVu Sans Mono.
- * 
+ *
  * <pre>
- *                                                ██                                                                      
- * ██████▒                                        ██           ██████████                         ██                      
- * ██ ░░██▒                                       ██               ██                             ██                      
- * ██   ░██                                       ██               ██                             ██                      
- * ██   ░██  ░▒████▓▒   ░▓███▒    ██    ██   ▒███▒██   ▒████░      ██       ░▓███▒   ▓██░░██▓   ███████                   
- * ██   ░██  ▓█▓░░░▒▓  ░██░░██░   ██    ██  ░██░░███  ░██░░██░     ██      ░██░░██░  ░██▓▓██░     ██                      
- * ██ ░░██▒  ██▒░      ▓█▒  ░█▓   ██    ██  ▓█▒  ▒██  ▓█▒  ▒█▓     ██      ▓█▒  ░█▓   ░████░      ██                      
- * ██████▒   ▓████▓▒   ██░  ░██   ██    ██  ██░  ░██  ██░  ░██     ██      ██░  ░██    ▒██▒       ██                      
- * ██        ░▓█████▒  ████████   ██    ██  ██░  ░██  ██░  ░██     ██      ████████    ░██░       ██                      
- * ██           ░░▓██  ██░        ██░  ░██  ██░  ░██  ██░  ░██     ██      ██░         ▓██▓       ██                      
- * ██             ░██  ▓█▒        ██░  ░██  ▓█▒  ▒██  ▓█▒  ▒█▓     ██      ▓█▒        ▒████▒      ██░                     
- * ██        █▒░░░▓█▓  ░██▒░░▒▓   ▓█▓░░███  ░██░░███  ░██░░██░     ██      ░██▒░░▒▓  ░██▒▒██░     ▓█▒░                    
+ *                                                ██
+ * ██████▒                                        ██           ██████████                         ██
+ * ██ ░░██▒                                       ██               ██                             ██
+ * ██   ░██                                       ██               ██                             ██
+ * ██   ░██  ░▒████▓▒   ░▓███▒    ██    ██   ▒███▒██   ▒████░      ██       ░▓███▒   ▓██░░██▓   ███████
+ * ██   ░██  ▓█▓░░░▒▓  ░██░░██░   ██    ██  ░██░░███  ░██░░██░     ██      ░██░░██░  ░██▓▓██░     ██
+ * ██ ░░██▒  ██▒░      ▓█▒  ░█▓   ██    ██  ▓█▒  ▒██  ▓█▒  ▒█▓     ██      ▓█▒  ░█▓   ░████░      ██
+ * ██████▒   ▓████▓▒   ██░  ░██   ██    ██  ██░  ░██  ██░  ░██     ██      ██░  ░██    ▒██▒       ██
+ * ██        ░▓█████▒  ████████   ██    ██  ██░  ░██  ██░  ░██     ██      ████████    ░██░       ██
+ * ██           ░░▓██  ██░        ██░  ░██  ██░  ░██  ██░  ░██     ██      ██░         ▓██▓       ██
+ * ██             ░██  ▓█▒        ██░  ░██  ▓█▒  ▒██  ▓█▒  ▒█▓     ██      ▓█▒        ▒████▒      ██░
+ * ██        █▒░░░▓█▓  ░██▒░░▒▓   ▓█▓░░███  ░██░░███  ░██░░██░     ██      ░██▒░░▒▓  ░██▒▒██░     ▓█▒░
  * ██        ░▓████▒░   ░▓███▓░   ░▓███░██   ▒███▒██   ▒████▒      ██       ░▓███▓░  ▓██░░██▓     ░▓███
  * </pre>
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-21 12:14:24 PM
- *
  */
 public class PseudoText implements IElement {
 
@@ -112,25 +105,30 @@ public class PseudoText implements IElement {
 		int y = this.y;
 		int height = this.height;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = 0;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = 0;
-		if (height == Integer.MIN_VALUE)
+		}
+		if (height == Integer.MIN_VALUE) {
 			height = canvas.getHeight();
+		}
 
-		if (height <= 0)
+		if (height <= 0) {
 			return null;
+		}
 
 		int width = canvas.getWidth() - x;
 
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D graphics = image.createGraphics();
 		graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-		if (antialising)
+		if (antialising) {
 			graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		else
+		} else {
 			graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+		}
 
 		Font font = getFont().deriveFont(24);
 		FontMetrics fm = graphics.getFontMetrics(font);
@@ -170,18 +168,20 @@ public class PseudoText implements IElement {
 	}
 
 	protected char colorToChar(Color fontColor, Color backgroundColor, Color pixelColor) {
-		if (backgroundColor.equals(pixelColor))
+		if (backgroundColor.equals(pixelColor)) {
 			return ' ';
+		}
 		if (antialising) {
 			double diff = getColorDistancePercentage(fontColor, pixelColor, backgroundColor);
-			if (diff > 75d)
+			if (diff > 75d) {
 				return '░';
-			else if (diff > 50d)
+			} else if (diff > 50d) {
 				return '▒';
-			else if (diff > 25d)
+			} else if (diff > 25d) {
 				return '▓';
-			else
+			} else {
 				return '█';
+			}
 		} else {
 			return '█';
 		}
@@ -251,8 +251,9 @@ public class PseudoText implements IElement {
 	}
 
 	public Font getFont() {
-		if (font == null)
+		if (font == null) {
 			font = createFont();
+		}
 		return font;
 	}
 
@@ -275,31 +276,42 @@ public class PseudoText implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		PseudoText other = (PseudoText) obj;
-		if (antialising != other.antialising)
+		if (antialising != other.antialising) {
 			return false;
+		}
 		if (font == null) {
-			if (other.font != null)
+			if (other.font != null) {
 				return false;
-		} else if (!font.equals(other.font))
+			}
+		} else if (!font.equals(other.font)) {
 			return false;
-		if (height != other.height)
+		}
+		if (height != other.height) {
 			return false;
+		}
 		if (text == null) {
-			if (other.text != null)
+			if (other.text != null) {
 				return false;
-		} else if (!text.equals(other.text))
+			}
+		} else if (!text.equals(other.text)) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

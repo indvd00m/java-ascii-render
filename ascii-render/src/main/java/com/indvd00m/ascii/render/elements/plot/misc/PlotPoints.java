@@ -1,15 +1,14 @@
 package com.indvd00m.ascii.render.elements.plot.misc;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoints;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-16 11:26:24 PM
- *
  */
 public class PlotPoints implements IPlotPoints {
 
@@ -25,14 +24,18 @@ public class PlotPoints implements IPlotPoints {
 		this.plotPoints = plotPoints;
 
 		for (IPlotPoint plotPoint : plotPoints) {
-			if (maxX < plotPoint.getX())
+			if (maxX < plotPoint.getX()) {
 				maxX = plotPoint.getX();
-			if (maxY < plotPoint.getY())
+			}
+			if (maxY < plotPoint.getY()) {
 				maxY = plotPoint.getY();
-			if (minX > plotPoint.getX())
+			}
+			if (minX > plotPoint.getX()) {
 				minX = plotPoint.getX();
-			if (minY > plotPoint.getY())
+			}
+			if (minY > plotPoint.getY()) {
 				minY = plotPoint.getY();
+			}
 		}
 		diffX = maxX - minX;
 		diffY = maxY - minY;

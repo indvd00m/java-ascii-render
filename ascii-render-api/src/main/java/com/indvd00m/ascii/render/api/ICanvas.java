@@ -7,7 +7,6 @@ package com.indvd00m.ascii.render.api;
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-16 10:45:16 PM
- *
  */
 public interface ICanvas {
 

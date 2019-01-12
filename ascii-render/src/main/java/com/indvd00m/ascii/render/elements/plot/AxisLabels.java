@@ -1,11 +1,5 @@
 package com.indvd00m.ascii.render.elements.plot;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IContext;
@@ -15,12 +9,17 @@ import com.indvd00m.ascii.render.elements.plot.api.AxisType;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.misc.AxisLabel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Labels for {@link Axis}.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-18 9:16:00 PM
- *
  */
 public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 
@@ -73,11 +72,11 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 			double textsStep = (double) (height - 2) / (double) (texts.size() + 1);
 			for (int y = startY; y < lastY; y++) {
 				String text = null;
-				if (y == startY)
+				if (y == startY) {
 					text = topText;
-				else if (y == lastY - 1)
+				} else if (y == lastY - 1) {
 					text = bottomText;
-				else if (y % textsStep < 1) {
+				} else if (y % textsStep < 1) {
 					text = texts.pollLast();
 				}
 
@@ -128,10 +127,11 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 
 	protected String format(AxisType type, double value, double labelsStep) {
 		String label = null;
-		if (labelsStep < 10d)
+		if (labelsStep < 10d) {
 			label = String.format("%1$,.2f", value);
-		else
+		} else {
 			label = String.format("%,d", (int) value);
+		}
 		return label;
 	}
 
@@ -139,8 +139,9 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		int labelsYWidth = 0;
 		for (String yLabel : labelsY) {
 			int length = yLabel.length();
-			if (labelsYWidth < length)
+			if (labelsYWidth < length) {
 				labelsYWidth = length;
+			}
 		}
 		return labelsYWidth;
 	}

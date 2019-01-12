@@ -4,10 +4,9 @@ import java.util.List;
 
 /**
  * Additional information for list of {@link IPlotPoint}.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-16 11:29:37 PM
- *
  */
 public interface IPlotPoints {
 

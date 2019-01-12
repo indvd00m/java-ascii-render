@@ -8,10 +8,9 @@ import com.indvd00m.ascii.render.api.IPoint;
 
 /**
  * Circle of a particular radius.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-17 7:09:54 PM
- *
  */
 public class Circle implements IElement {
 
@@ -39,18 +38,22 @@ public class Circle implements IElement {
 		int y = this.y;
 		int radius = this.radius;
 
-		if (x == Integer.MIN_VALUE)
+		if (x == Integer.MIN_VALUE) {
 			x = canvas.getWidth() / 2;
-		if (y == Integer.MIN_VALUE)
+		}
+		if (y == Integer.MIN_VALUE) {
 			y = canvas.getHeight() / 2;
-		if (radius == Integer.MIN_VALUE)
+		}
+		if (radius == Integer.MIN_VALUE) {
 			radius = Math.min(canvas.getWidth(), canvas.getHeight()) / 2;
+		}
 
 		for (int x1 = x - radius; x1 <= x + radius; x1++) {
 			for (int y1 = y - radius; y1 <= y + radius; y1++) {
 				double distance = Math.sqrt(Math.pow(x - x1, 2) + Math.pow(y - y1, 2));
-				if (compare(radius, distance, 0.5d) == 0)
+				if (compare(radius, distance, 0.5d) == 0) {
 					canvas.draw(x1, y1, "*");
+				}
 			}
 		}
 		return new Point(x, y);
@@ -58,12 +61,14 @@ public class Circle implements IElement {
 
 	protected int compare(double d1, double d2, double precision) {
 		double diff = d1 - d2;
-		if (Math.abs(diff) < precision)
+		if (Math.abs(diff) < precision) {
 			return 0;
-		if (diff < 0d)
+		}
+		if (diff < 0d) {
 			return -1;
-		else
+		} else {
 			return 1;
+		}
 	}
 
 	public int getX() {
@@ -90,19 +95,25 @@ public class Circle implements IElement {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Circle other = (Circle) obj;
-		if (radius != other.radius)
+		if (radius != other.radius) {
 			return false;
-		if (x != other.x)
+		}
+		if (x != other.x) {
 			return false;
-		if (y != other.y)
+		}
+		if (y != other.y) {
 			return false;
+		}
 		return true;
 	}
 

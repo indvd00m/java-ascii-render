@@ -1,14 +1,5 @@
 package com.indvd00m.ascii.render.tests.plot;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.indvd00m.ascii.render.Region;
 import com.indvd00m.ascii.render.Render;
 import com.indvd00m.ascii.render.api.ICanvas;
@@ -18,11 +9,18 @@ import com.indvd00m.ascii.render.elements.plot.Axis;
 import com.indvd00m.ascii.render.elements.plot.AxisLabels;
 import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.misc.PlotPoint;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-19 11:32:32 PM
- *
  */
 public class TestAxis {
 

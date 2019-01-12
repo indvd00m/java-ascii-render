@@ -1,14 +1,5 @@
 package com.indvd00m.ascii.render.tests.plot;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.indvd00m.ascii.render.Region;
 import com.indvd00m.ascii.render.Render;
 import com.indvd00m.ascii.render.api.ICanvas;
@@ -22,11 +13,18 @@ import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 import com.indvd00m.ascii.render.elements.plot.misc.PlotPoint;
 import com.indvd00m.ascii.render.tests.plot.impl.AxisConvertedTestLabels;
 import com.indvd00m.ascii.render.tests.plot.impl.AxisTestLabels;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-20 12:34:56 AM
- *
  */
 public class TestFullPlott {
 
@@ -155,10 +153,12 @@ public class TestFullPlott {
 	public void test04() {
 		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
 		for (int degree = 0; degree <= 360; degree++) {
-			if (degree > 75 && degree < 105)
+			if (degree > 75 && degree < 105) {
 				continue;
-			if (degree > 255 && degree < 285)
+			}
+			if (degree > 255 && degree < 285) {
 				continue;
+			}
 			double val = Math.tan(Math.toRadians(degree));
 			IPlotPoint plotPoint = new PlotPoint(degree, val);
 			points.add(plotPoint);
