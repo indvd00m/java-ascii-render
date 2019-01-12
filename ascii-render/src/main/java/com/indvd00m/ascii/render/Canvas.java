@@ -1,26 +1,28 @@
 package com.indvd00m.ascii.render;
 
+import com.indvd00m.ascii.render.api.ICanvas;
+import com.indvd00m.ascii.render.api.IRegion;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.indvd00m.ascii.render.api.ICanvas;
-import com.indvd00m.ascii.render.api.IRegion;
-
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-16 10:46:00 PM
- *
  */
 public class Canvas implements ICanvas {
+
+	public static final char NULL_CHAR = '\0';
 
 	protected final int width;
 	protected final int height;
 	protected final List<StringBuilder> lines;
 
 	// cache
-	protected String text;
-	protected boolean needUpdateText = false;
+	protected String cachedText;
+	protected String cachedLines;
+	protected boolean needUpdateCache = false;
 
 	public Canvas(int width, int height) {
 		if (width < 0)
@@ -30,33 +32,29 @@ public class Canvas implements ICanvas {
 
 		this.width = width;
 		this.height = height;
-		lines = new ArrayList<StringBuilder>(height);
-		for (int y = 0; y < height; y++) {
-			StringBuilder line = new StringBuilder(width);
-			String emptyLine = repeatChar(' ', width);
-			line.append(emptyLine);
-			lines.add(line);
-		}
+		this.lines = new ArrayList<StringBuilder>(height);
 
-		needUpdateText = true;
+		clear();
 	}
 
-	protected void updateTextIfNeed() {
-		if (needUpdateText) {
-			updateText();
-			needUpdateText = false;
+	protected void updateCacheIfNeed() {
+		if (needUpdateCache) {
+			updateCache();
+			needUpdateCache = false;
 		}
 	}
 
-	protected void updateText() {
+	protected void updateCache() {
 		StringBuilder sb = new StringBuilder();
-		for (Iterator<StringBuilder> it = lines.iterator(); it.hasNext();) {
+		for (Iterator<StringBuilder> it = lines.iterator(); it.hasNext(); ) {
 			StringBuilder line = it.next();
 			sb.append(line);
 			if (it.hasNext())
 				sb.append('\n');
 		}
-		text = sb.toString();
+		String text = sb.toString();
+		this.cachedLines = text;
+		this.cachedText = text.replace(NULL_CHAR, ' ');
 	}
 
 	protected String repeatChar(char c, int count) {
@@ -64,7 +62,7 @@ public class Canvas implements ICanvas {
 	}
 
 	protected String repeatString(String s, int count) {
-		String repeated = new String(new char[count]).replace("\0", s);
+		String repeated = new String(new char[count]).replace(NULL_CHAR + "", s);
 		return repeated;
 	}
 
@@ -94,6 +92,7 @@ public class Canvas implements ICanvas {
 			return;
 		}
 
+		// single line string
 		if (y < 0)
 			return;
 
@@ -113,7 +112,7 @@ public class Canvas implements ICanvas {
 		StringBuilder line = lines.get(y);
 		line.replace(x, x + s.length(), s);
 
-		needUpdateText = true;
+		needUpdateCache = true;
 	}
 
 	@Override
@@ -135,8 +134,8 @@ public class Canvas implements ICanvas {
 
 	@Override
 	public String getText() {
-		updateTextIfNeed();
-		return text;
+		updateCacheIfNeed();
+		return cachedText;
 	}
 
 	@Override
@@ -145,36 +144,43 @@ public class Canvas implements ICanvas {
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		Canvas canvas = (Canvas) o;
+		updateCacheIfNeed();
+		canvas.updateCacheIfNeed();
+
+		if (width != canvas.width)
+			return false;
+		if (height != canvas.height)
+			return false;
+		return cachedLines.equals(canvas.cachedLines);
+	}
+
+	@Override
 	public int hashCode() {
-		updateTextIfNeed();
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		updateCacheIfNeed();
+
+		int result = width;
+		result = 31 * result + height;
+		result = 31 * result + cachedLines.hashCode();
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Canvas other = (Canvas) obj;
-		updateTextIfNeed();
-		other.updateTextIfNeed();
-		if (text == null) {
-			if (other.text != null)
-				return false;
-		} else if (!text.equals(other.text))
-			return false;
-		return true;
-	}
-
-	@Override
 	public void clear() {
-		draw(0, 0, repeatChar(' ', width) + '\n', height);
+		lines.clear();
+		for (int y = 0; y < height; y++) {
+			StringBuilder line = new StringBuilder(width);
+			line.append(new char[width]);
+			lines.add(line);
+		}
+
+		needUpdateCache = true;
 	}
 
 	@Override
@@ -199,28 +205,38 @@ public class Canvas implements ICanvas {
 		StringBuilder line = lines.get(y);
 		char prevC = line.charAt(x);
 		line.setCharAt(x, c);
-		needUpdateText = true;
+		needUpdateCache = true;
 		return prevC;
 	}
 
 	@Override
-	public ICanvas trim() {
-		IRegion region = getTrimmedRegion(this);
-		int trimWidth = region.getWidth();
-		int trimHeight = region.getHeight();
-		int trimX = region.getX();
-		int trimY = region.getY();
-		ICanvas canvas = new Canvas(trimWidth, trimHeight);
-		for (int x = 0; x < trimWidth; x++) {
-			for (int y = 0; y < trimHeight; y++) {
-				char c = getChar(trimX + x, trimY + y);
-				canvas.setChar(x, y, c);
-			}
-		}
-		return canvas;
+	public boolean isCharDrawed(int x, int y) {
+		return getChar(x, y) != NULL_CHAR;
 	}
 
-	protected IRegion getTrimmedRegion(ICanvas canvas) {
+	@Override
+	public ICanvas trim() {
+		IRegion region = getTrimmedRegion(this, ' ', NULL_CHAR);
+		return subCanvas(region);
+	}
+
+	@Override
+	public ICanvas trimSpaces() {
+		return trim(' ');
+	}
+
+	@Override
+	public ICanvas trimNulls() {
+		return trim(NULL_CHAR);
+	}
+
+	@Override
+	public ICanvas trim(char trimChar) {
+		IRegion region = getTrimmedRegion(this, trimChar);
+		return subCanvas(region);
+	}
+
+	protected IRegion getTrimmedRegion(ICanvas canvas, char trimChar) {
 		int w = canvas.getWidth();
 		int h = canvas.getHeight();
 		int firstX = w;
@@ -228,10 +244,11 @@ public class Canvas implements ICanvas {
 		int lastX = 0;
 		int lastY = 0;
 		// first x
-		cycle: for (int x = 0; x < w; x++) {
+		cycle:
+		for (int x = 0; x < w; x++) {
 			for (int y = 0; y < h; y++) {
 				char c = canvas.getChar(x, y);
-				if (c != ' ') {
+				if (c != trimChar) {
 					firstX = x;
 					break cycle;
 				}
@@ -239,30 +256,33 @@ public class Canvas implements ICanvas {
 		}
 		if (firstX != w) {
 			// first y
-			cycle: for (int y = 0; y < h; y++) {
+			cycle:
+			for (int y = 0; y < h; y++) {
 				for (int x = 0; x < w; x++) {
 					char c = canvas.getChar(x, y);
-					if (c != ' ') {
+					if (c != trimChar) {
 						firstY = y;
 						break cycle;
 					}
 				}
 			}
 			// last x
-			cycle: for (int x = w - 1; x >= 0; x--) {
+			cycle:
+			for (int x = w - 1; x >= 0; x--) {
 				for (int y = h - 1; y >= 0; y--) {
 					char c = canvas.getChar(x, y);
-					if (c != ' ') {
+					if (c != trimChar) {
 						lastX = x;
 						break cycle;
 					}
 				}
 			}
 			// last y
-			cycle: for (int y = h - 1; y >= 0; y--) {
+			cycle:
+			for (int y = h - 1; y >= 0; y--) {
 				for (int x = w - 1; x >= 0; x--) {
 					char c = canvas.getChar(x, y);
-					if (c != ' ') {
+					if (c != trimChar) {
 						lastY = y;
 						break cycle;
 					}
@@ -279,6 +299,87 @@ public class Canvas implements ICanvas {
 		}
 		IRegion region = new Region(firstX, firstY, regionWidth, regionHeight);
 		return region;
+	}
+
+	protected IRegion getTrimmedRegion(ICanvas canvas, char trimChar1, char trimChar2) {
+		int w = canvas.getWidth();
+		int h = canvas.getHeight();
+		int firstX = w;
+		int firstY = h;
+		int lastX = 0;
+		int lastY = 0;
+		// first x
+		cycle:
+		for (int x = 0; x < w; x++) {
+			for (int y = 0; y < h; y++) {
+				char c = canvas.getChar(x, y);
+				if (c != trimChar1 && c != trimChar2) {
+					firstX = x;
+					break cycle;
+				}
+			}
+		}
+		if (firstX != w) {
+			// first y
+			cycle:
+			for (int y = 0; y < h; y++) {
+				for (int x = 0; x < w; x++) {
+					char c = canvas.getChar(x, y);
+					if (c != trimChar1 && c != trimChar2) {
+						firstY = y;
+						break cycle;
+					}
+				}
+			}
+			// last x
+			cycle:
+			for (int x = w - 1; x >= 0; x--) {
+				for (int y = h - 1; y >= 0; y--) {
+					char c = canvas.getChar(x, y);
+					if (c != trimChar1 && c != trimChar2) {
+						lastX = x;
+						break cycle;
+					}
+				}
+			}
+			// last y
+			cycle:
+			for (int y = h - 1; y >= 0; y--) {
+				for (int x = w - 1; x >= 0; x--) {
+					char c = canvas.getChar(x, y);
+					if (c != trimChar1 && c != trimChar2) {
+						lastY = y;
+						break cycle;
+					}
+				}
+			}
+		}
+		int regionWidth = lastX - firstX + 1;
+		if (regionWidth < 0) {
+			regionWidth = 0;
+		}
+		int regionHeight = lastY - firstY + 1;
+		if (regionHeight < 0) {
+			regionHeight = 0;
+		}
+		IRegion region = new Region(firstX, firstY, regionWidth, regionHeight);
+		return region;
+	}
+
+	@Override
+	public ICanvas subCanvas(IRegion region) {
+		int trimWidth = region.getWidth();
+		int trimHeight = region.getHeight();
+		int trimX = region.getX();
+		int trimY = region.getY();
+		ICanvas canvas = new Canvas(trimWidth, trimHeight);
+		for (int x = 0; x < trimWidth; x++) {
+			for (int y = 0; y < trimHeight; y++) {
+				char c = getChar(trimX + x, trimY + y);
+				canvas.setChar(x, y, c);
+			}
+		}
+		return canvas;
 	}
 
 }

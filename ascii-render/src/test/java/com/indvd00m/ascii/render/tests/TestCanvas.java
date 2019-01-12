@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -158,7 +159,7 @@ public class TestCanvas {
 		ICanvas canvas = new Canvas(10, 5);
 		canvas.draw(3, 1, "1");
 		canvas.draw(2, 2, "****");
-		canvas.draw(7, 3, "3");
+		canvas.draw(7, 3, "3 ");
 		String s = "";
 		s += "          \n";
 		s += "   1      \n";
@@ -181,7 +182,7 @@ public class TestCanvas {
 	@Test
 	public void test05() {
 		ICanvas canvas = new Canvas(10, 5);
-		canvas.draw(1, 0, "1");
+		canvas.draw(0, 0, " 1");
 		canvas.draw(2, 2, "****");
 		canvas.draw(4, 3, "3");
 		String s = "";
@@ -394,6 +395,307 @@ public class TestCanvas {
 	@Test
 	public void test14() {
 		ICanvas canvas = new Canvas(10, 5);
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test15() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(2, 2, "****");
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "  ****    \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "****";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test16() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(3, 1, "1");
+		canvas.draw(2, 2, "****");
+		canvas.draw(7, 3, "3 ");
+		String s = "";
+		s += "          \n";
+		s += "   1      \n";
+		s += "  ****    \n";
+		s += "       3  \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += " 1     \n";
+		t += "****   \n";
+		t += "     3 ";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+		assertFalse(canvas.isCharDrawed(6, 3));
+		assertTrue(canvas.isCharDrawed(7, 3));
+		assertTrue(canvas.isCharDrawed(8, 3));
+		assertFalse(canvas.isCharDrawed(9, 3));
+	}
+
+	@Test
+	public void test17() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(0, 0, " 1");
+		canvas.draw(2, 2, "****");
+		canvas.draw(4, 3, "3");
+		String s = "";
+		s += " 1        \n";
+		s += "          \n";
+		s += "  ****    \n";
+		s += "    3     \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += " 1    \n";
+		t += "      \n";
+		t += "  ****\n";
+		t += "    3 ";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test18() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(4, 0, "*");
+		canvas.draw(2, 1, "1");
+		canvas.draw(2, 2, "****");
+		canvas.draw(4, 3, "3");
+		canvas.draw(1, 4, "2");
+		String s = "";
+		s += "    *     \n";
+		s += "  1       \n";
+		s += "  ****    \n";
+		s += "    3     \n";
+		s += " 2        ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "   * \n";
+		t += " 1   \n";
+		t += " ****\n";
+		t += "   3 \n";
+		t += "2    ";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test19() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(0, 0, " ");
+		canvas.draw(9, 0, " ");
+		canvas.draw(2, 1, "1");
+		canvas.draw(2, 2, "****");
+		canvas.draw(4, 3, "3");
+		canvas.draw(0, 4, "*");
+		canvas.draw(9, 4, "*");
+		String s = "";
+		s += "          \n";
+		s += "  1       \n";
+		s += "  ****    \n";
+		s += "    3     \n";
+		s += "*        *";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "          \n";
+		t += "  1       \n";
+		t += "  ****    \n";
+		t += "    3     \n";
+		t += "*        *";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test20() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(9, 2, "*");
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "         *\n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "*";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test21() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(9, 2, "*");
+		canvas.draw(9, 3, " ");
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "         *\n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "*\n";
+		t += " ";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test22() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(5, 4, "*");
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "     *    ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "*";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test23() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(5, 4, "* ");
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "     *    ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "* ";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	@Test
+	public void test24() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(0, 2, "*");
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "*         \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "*";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	public void test25() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(5, 0, "*");
+		String s = "";
+		s += "     *    \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimNulls();
+		String t = "";
+		t += "*";
+		System.out.println(trimmed.getText());
+
+		assertEquals(s, canvas.getText());
+		assertEquals(t, trimmed.getText());
+	}
+
+	public void test26() {
+		ICanvas canvas = new Canvas(10, 5);
+		canvas.draw(5, 0, "*");
+		String s = "";
+		s += "     *    \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+
+		ICanvas trimmed = canvas.trimSpaces();
+		System.out.println(trimmed.getText());
+
+		assertEquals(canvas, trimmed);
+		assertEquals(s, canvas.getText());
+		assertEquals(s, trimmed.getText());
+	}
+
+	@Test
+	public void test27() {
+		ICanvas canvas = new Canvas(10, 5);
 		canvas.draw(4, 0, "*");
 		canvas.draw(2, 1, "1");
 		canvas.draw(2, 2, "****");
@@ -420,7 +722,7 @@ public class TestCanvas {
 	}
 
 	@Test
-	public void test15() {
+	public void test28() {
 		ICanvas canvas1 = new Canvas(10, 5);
 		canvas1.draw(2, 2, "****");
 		String s = "";
@@ -443,9 +745,9 @@ public class TestCanvas {
 		System.out.println(canvas2.getText());
 		assertEquals(s2, canvas2.getText());
 
-		assertTrue(canvas1.equals(canvas2));
-		assertTrue(canvas2.equals(canvas1));
-		assertEquals(canvas1.hashCode(), canvas2.hashCode());
+		assertNotEquals(canvas1, canvas2);
+		assertFalse(canvas1.equals(canvas2));
+		assertFalse(canvas2.equals(canvas1));
 
 		canvas1 = new Canvas(10, 5);
 		canvas1.draw(2, 2, "****");
@@ -469,6 +771,7 @@ public class TestCanvas {
 		System.out.println(canvas2.getText());
 		assertEquals(s2, canvas2.getText());
 
+		assertNotEquals(canvas1, canvas2);
 		assertFalse(canvas1.equals(canvas2));
 		assertFalse(canvas2.equals(canvas1));
 	}

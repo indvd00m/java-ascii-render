@@ -2,9 +2,9 @@ package com.indvd00m.ascii.render.api;
 
 /**
  * Canvas it's a low level object, which can draw text in a particular position. Canvas has width and height and
- * contains area of {@code \s} and {@literal \n} (line breaks) symbols after creating. Axis X directed from left to
+ * contains area of {@code \0} and {@code \n} (line breaks) symbols after creating. Axis X directed from left to
  * right. Axis Y directed from top to bottom.
- * 
+ *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @date 2016-Nov-16 10:45:16 PM
  *
@@ -12,22 +12,22 @@ package com.indvd00m.ascii.render.api;
 public interface ICanvas {
 
 	/**
-	 * Final version of text, which contains all drawed elements.
-	 * 
+	 * Final version of text with all drawed elements. Every {@code \0} will be replaced with {@code \s} symbol.
+	 *
 	 * @return
 	 */
 	String getText();
 
 	/**
 	 * Height of canvas.
-	 * 
+	 *
 	 * @return
 	 */
 	int getHeight();
 
 	/**
 	 * Width of canvas.
-	 * 
+	 *
 	 * @return
 	 */
 	int getWidth();
@@ -35,7 +35,7 @@ public interface ICanvas {
 	/**
 	 * Draw char in a particular position. Coordinates {@code x} and {@code y} may be any, canvas will draw only text
 	 * which gets in his region. {@code c} can contains line break.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @param c
@@ -45,7 +45,7 @@ public interface ICanvas {
 	/**
 	 * Draw char {@code count} times starting from {@code x} and {@code y}. Coordinates {@code x} and {@code y} may be
 	 * any, canvas will draw only text which gets in his region. {@code c} can contains line break.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @param c
@@ -56,7 +56,7 @@ public interface ICanvas {
 	/**
 	 * Draw string in a particular position. Coordinates {@code x} and {@code y} may be any, canvas will draw only text
 	 * which gets in his region. {@code s} can contains line breaks.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @param s
@@ -66,7 +66,7 @@ public interface ICanvas {
 	/**
 	 * Draw string {@code count} times starting from {@code x} and {@code y}. Coordinates {@code x} and {@code y} may be
 	 * any, canvas will draw only text which gets in his region. {@code s} can contains line breaks.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @param s
@@ -74,14 +74,14 @@ public interface ICanvas {
 	void draw(int x, int y, String s, int count);
 
 	/**
-	 * Clear all region of canvas and fill it with space symbols.
+	 * Clear all region of canvas and fill it with {@code \0} symbols.
 	 */
 	void clear();
 
 	/**
-	 * Gets char at a particular position. After creating canvas contains only {@literal \s} symbols and line breaks
-	 * {@literal \n}. If coordinates do not gets in a canvas region {@literal 0} will be returned.
-	 * 
+	 * Gets char at a particular position. After creating canvas contains only {@code \0} symbols and line breaks
+	 * {@code \n}. If coordinates do not gets in a canvas region {@code \0} will be returned.
+	 *
 	 * @param x
 	 * @param y
 	 * @return
@@ -90,7 +90,7 @@ public interface ICanvas {
 
 	/**
 	 * Set char at a particular position.
-	 * 
+	 *
 	 * @param x
 	 * @param y
 	 * @return previous value
@@ -98,10 +98,49 @@ public interface ICanvas {
 	char setChar(int x, int y, char c);
 
 	/**
-	 * Returns a canvas whose value is this canvas, with any leading and trailing whitespace {@code \s} removed.
-	 * 
+	 * Return {@code true} if any char except {@code \0} was drawed in this position.
+	 *
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	boolean isCharDrawed(int x, int y);
+
+	/**
+	 * Returns a canvas whose value is this canvas, with any leading and trailing {@code \s} and {@code \0} symbols
+	 * removed.
+	 *
 	 * @return
 	 */
 	ICanvas trim();
+
+	/**
+	 * Returns a canvas whose value is this canvas, with any leading and trailing whitespace {@code \s} removed.
+	 *
+	 * @return
+	 */
+	ICanvas trimSpaces();
+
+	/**
+	 * Returns a canvas whose value is this canvas, with any leading and trailing {@code \0} symbol removed.
+	 *
+	 * @return
+	 */
+	ICanvas trimNulls();
+
+	/**
+	 * Returns a canvas whose value is this canvas, with any leading and trailing {@code trimChar} symbol removed.
+	 *
+	 * @return
+	 */
+	ICanvas trim(char trimChar);
+
+	/**
+	 * Returns a {@code ICanvas} that is a subcanvas of this canvas.
+	 *
+	 * @param region
+	 * @return
+	 */
+	ICanvas subCanvas(IRegion region);
 
 }
