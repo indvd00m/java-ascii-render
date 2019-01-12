@@ -32,7 +32,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>1.5.0</version>
+		<version>2.0.0</version>
 	</dependency>
 ```
 
@@ -401,6 +401,12 @@ https://github.com/indvd00m/java-ascii-render/releases
 
 ### Version 1.5.0
 - Improved canvas draw performance.
+
+### Version 2.0.0
+- Canvas now is empty by default - contains only \0 and \n symbols. Previous Canvas implementation contained \s and 
+\n symbols. This new changes break backward compatibility for drawing behavior in some cases (but do not break compile 
+time API compatibility). Now overlapping of layers would work correctly when you directly draw spaces \n to layer.
+- Added opacity for layers.
 
 ## Roadmap
 
