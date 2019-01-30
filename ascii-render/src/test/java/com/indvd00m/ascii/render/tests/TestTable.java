@@ -182,6 +182,7 @@ public class TestTable {
 		IPoint point = t.draw(canvas, context);
 		assertEquals(new Point(0, 0), point);
 		String s = "";
+		s += "┌───────────────────┐\n";
 		s += "├───────────────────┤\n";
 		s += "├───────────────────┤\n";
 		s += "├───────────────────┤\n";
@@ -190,8 +191,7 @@ public class TestTable {
 		s += "├───────────────────┤\n";
 		s += "├───────────────────┤\n";
 		s += "├───────────────────┤\n";
-		s += "├───────────────────┤\n";
-		s += "├───────────────────┤";
+		s += "└───────────────────┘";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 	}
@@ -369,6 +369,30 @@ public class TestTable {
 		s += "│┌┐│┌┐│┌┐│\n";
 		s += "│└┘│└┘│└┘│\n";
 		s += "└──┴──┴──┘";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+	}
+
+	@Test
+	public void test16() {
+		IContext context = mock(IContext.class);
+		ICanvas canvas = new Canvas(23, 12);
+		Table t = new Table(1, 1, 21, 10, 2, 3);
+		IPoint point = t.draw(canvas, context);
+		assertEquals(new Point(1, 1), point);
+		String s = "";
+		s += "                       \n";
+		s += " ┌─────────┬─────────┐ \n";
+		s += " │         │         │ \n";
+		s += " │         │         │ \n";
+		s += " ├─────────┼─────────┤ \n";
+		s += " │         │         │ \n";
+		s += " │         │         │ \n";
+		s += " ├─────────┼─────────┤ \n";
+		s += " │         │         │ \n";
+		s += " │         │         │ \n";
+		s += " └─────────┴─────────┘ \n";
+		s += "                       ";
 		System.out.println(canvas.getText());
 		assertEquals(s, canvas.getText());
 	}

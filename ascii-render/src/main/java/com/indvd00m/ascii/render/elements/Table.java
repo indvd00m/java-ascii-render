@@ -32,8 +32,16 @@ public class Table implements IElement {
 		this.y = Integer.MIN_VALUE;
 		this.width = Integer.MIN_VALUE;
 		this.height = Integer.MIN_VALUE;
-		this.columns = columns;
-		this.rows = rows;
+		if (columns > 0) {
+			this.columns = columns;
+		} else {
+			this.columns = 1;
+		}
+		if (rows > 0) {
+			this.rows = rows;
+		} else {
+			this.rows = 1;
+		}
 		int size = rows * columns;
 		this.elements = new ArrayList<IElement>(size);
 		for (int i = 0; i < size; i++) {
@@ -47,8 +55,16 @@ public class Table implements IElement {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.columns = columns;
-		this.rows = rows;
+		if (columns > 0) {
+			this.columns = columns;
+		} else {
+			this.columns = 1;
+		}
+		if (rows > 0) {
+			this.rows = rows;
+		} else {
+			this.rows = 1;
+		}
 		int size = rows * columns;
 		this.elements = new ArrayList<IElement>(size);
 		for (int i = 0; i < size; i++) {
@@ -107,27 +123,61 @@ public class Table implements IElement {
 		canvas.draw(x, y + height - 1, "└");
 		canvas.draw(x + width - 1, y + height - 1, "┘");
 
-		// cell borders
-		for (int r = 1; r < rows; r++) {
-			int rowX = x;
-			int rowY = y + r * height / rows;
-			canvas.draw(rowX + 1, rowY, "─", width - 2);
-			canvas.draw(rowX, rowY, "├");
-			canvas.draw(rowX + width - 1, rowY, "┤");
-		}
-		for (int c = 1; c < columns; c++) {
-			int colX = x + c * width / columns;
-			int colY = y;
-			canvas.draw(colX, colY + 1, "│\n", height - 2);
-			canvas.draw(colX, colY, "┬");
-			canvas.draw(colX, colY + height - 1, "┴");
-		}
-		// intersections
-		for (int r = 1; r < rows; r++) {
-			for (int c = 1; c < columns; c++) {
-				int cellX = x + c * width / columns;
-				int cellY = y + r * height / rows;
-				canvas.draw(cellX, cellY, "┼");
+		// borders
+		for (int r = 0; r <= rows; r++) {
+			int cellY;
+			int cellHeight;
+			if (r == rows) {
+				cellY = y + height - 1;
+				cellHeight = 0;
+			} else if (rows >= height) {
+				cellY = y + r;
+				cellHeight = 1;
+			} else {
+				cellY = y + r * height / rows;
+				cellHeight = y + (r + 1) * height / rows - cellY;
+			}
+			for (int c = 0; c <= columns; c++) {
+				int cellX;
+				int cellWidth;
+				if (c == columns) {
+					cellX = x + width - 1;
+					cellWidth = 0;
+				} else if (columns >= width) {
+					cellX = x + c;
+					cellWidth = 1;
+				} else {
+					cellX = x + c * width / columns;
+					cellWidth = x + (c + 1) * width / columns - cellX;
+				}
+
+				canvas.draw(cellX + 1, cellY, "─", cellWidth - 1);
+				canvas.draw(cellX, cellY + 1, "│\n", cellHeight - 1);
+				if (r > 0 && r < rows && c > 0 && c < columns) {
+					canvas.draw(cellX, cellY, "┼");
+				}
+				if (c == 0 && r == 0) {
+					canvas.draw(cellX, cellY, "┌");
+				} else if (c == columns && r == 0) {
+					canvas.draw(cellX, cellY, "┐");
+				} else if (c == 0 && r == rows) {
+					canvas.draw(cellX, cellY, "└");
+				} else if (c == columns && r == rows) {
+					canvas.draw(cellX, cellY, "┘");
+				} else {
+					if (c == 0) {
+						canvas.draw(cellX, cellY, "├");
+					}
+					if (c == columns) {
+						canvas.draw(cellX + cellWidth, cellY, "┤");
+					}
+					if (r == 0) {
+						canvas.draw(cellX, cellY, "┬");
+					}
+					if (r == rows) {
+						canvas.draw(cellX, cellY + cellHeight, "┴");
+					}
+				}
 			}
 		}
 		// elements
