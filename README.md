@@ -32,7 +32,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>2.0.0</version>
+		<version>2.1.0</version>
 	</dependency>
 ```
 
@@ -408,6 +408,9 @@ https://github.com/indvd00m/java-ascii-render/releases
 \n symbols. This new changes break backward compatibility for drawing behavior in some cases (but do not break compile 
 time API compatibility). Now overlapping of layers would work correctly when you directly draw spaces \n to layer.
 - Added opacity for layers.
+
+### Version 2.1.0
+- Added table cells highlighting.
 
 ## Roadmap
 
