@@ -394,7 +394,8 @@ public class TestReadme {
 		builder.width(37).height(7);
 		Table table = new Table(4, 3);
 		table.setElement(1, 1, new Label("1234567890"));
-		table.setElement(4, 3, new Text("1234567890"));
+		table.setElement(4, 3, new Text("1234567890"), true);
+		table.setHighlighted(2, 3, true);
 		builder.element(table);
 		ICanvas canvas = render.render(builder.build());
 		String s = canvas.getText();
@@ -404,9 +405,9 @@ public class TestReadme {
 		e += "│12345678│        │        │        │\n";
 		e += "├────────┼────────┼────────┼────────┤\n";
 		e += "│        │        │        │        │\n";
-		e += "├────────┼────────┼────────┼────────┤\n";
-		e += "│        │        │        │1234567…│\n";
-		e += "└────────┴────────┴────────┴────────┘";
+		e += "├────────╆━━━━━━━━╅────────╆━━━━━━━━┪\n";
+		e += "│        ┃        ┃        ┃1234567…┃\n";
+		e += "└────────┺━━━━━━━━┹────────┺━━━━━━━━┛";
 		assertEquals(e, s);
 	}
 
