@@ -27,9 +27,16 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 	protected int countY = 5;
 	protected List<AxisLabel> labels = new ArrayList<AxisLabel>();
 	protected int labelsYWidth;
+	protected String labelsFormat = "%1$,.2f";
 
 	public AxisLabels(List<IPlotPoint> points, IRegion region) {
 		super(points, region);
+		generateLabels();
+	}
+
+	public AxisLabels(List<IPlotPoint> points, IRegion region, String labelFormat) {
+		super(points, region);
+		this.labelsFormat = labelFormat;
 		generateLabels();
 	}
 
@@ -37,6 +44,14 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		super(points, region);
 		this.countX = countX;
 		this.countY = countY;
+		generateLabels();
+	}
+	
+	public AxisLabels(List<IPlotPoint> points, IRegion region, int countX, int countY, String labelFormat) {
+		super(points, region);
+		this.countX = countX;
+		this.countY = countY;
+		this.labelsFormat = labelFormat;
 		generateLabels();
 	}
 
@@ -128,7 +143,7 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 	protected String format(AxisType type, double value, double labelsStep) {
 		String label = null;
 		if (labelsStep < 10d) {
-			label = String.format("%1$,.2f", value);
+			label = String.format(labelsFormat, value);
 		} else {
 			label = String.format("%,d", (int) value);
 		}
@@ -177,5 +192,4 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 	public int getLabelsYWidth() {
 		return labelsYWidth;
 	}
-
 }
