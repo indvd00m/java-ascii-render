@@ -27,16 +27,16 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 	protected int countY = 5;
 	protected List<AxisLabel> labels = new ArrayList<AxisLabel>();
 	protected int labelsYWidth;
-	protected String labelsFormat = "%1$,.2f";
+	protected String decimalFractionsLabelsFormat = "%1$,.2f";
 
 	public AxisLabels(List<IPlotPoint> points, IRegion region) {
 		super(points, region);
 		generateLabels();
 	}
 
-	public AxisLabels(List<IPlotPoint> points, IRegion region, String labelFormat) {
+	public AxisLabels(List<IPlotPoint> points, IRegion region, String decimalFractionsLabelsFormat) {
 		super(points, region);
-		this.labelsFormat = labelFormat;
+		this.decimalFractionsLabelsFormat = decimalFractionsLabelsFormat;
 		generateLabels();
 	}
 
@@ -47,11 +47,11 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 		generateLabels();
 	}
 	
-	public AxisLabels(List<IPlotPoint> points, IRegion region, int countX, int countY, String labelFormat) {
+	public AxisLabels(List<IPlotPoint> points, IRegion region, int countX, int countY, String decimalFractionsLabelsFormat) {
 		super(points, region);
 		this.countX = countX;
 		this.countY = countY;
-		this.labelsFormat = labelFormat;
+		this.decimalFractionsLabelsFormat = decimalFractionsLabelsFormat;
 		generateLabels();
 	}
 
@@ -143,7 +143,7 @@ public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 	protected String format(AxisType type, double value, double labelsStep) {
 		String label = null;
 		if (labelsStep < 10d) {
-			label = String.format(labelsFormat, value);
+			label = String.format(decimalFractionsLabelsFormat, value);
 		} else {
 			label = String.format("%,d", (int) value);
 		}
