@@ -32,7 +32,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>2.1.0</version>
+		<version>2.1.1</version>
 	</dependency>
 ```
 
@@ -411,6 +411,9 @@ time API compatibility). Now overlapping of layers would work correctly when you
 
 ### Version 2.1.0
 - Added table cells highlighting.
+
+### Version 2.1.1
+- Added some useful constructors.
 
 ## Roadmap
 
