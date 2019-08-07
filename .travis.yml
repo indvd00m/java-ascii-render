@@ -1,9 +1,8 @@
 language: java
 
 jdk:
- - openjdk7
- - openjdk8
- - oraclejdk8
+ - openjdk11
+ - oraclejdk11
 
 env:
   global:
@@ -26,9 +25,8 @@ script: mvn clean verify
 
 after_success:
   - test -n "$TRAVIS_TAG" -o "$TRAVIS_BRANCH" = "master" &&
-    test $TRAVIS_JDK_VERSION = "openjdk8" &&
+    test $TRAVIS_JDK_VERSION = "openjdk11" &&
     test $TRAVIS_PULL_REQUEST = "false" &&
     openssl aes-256-cbc -K $encrypted_2fa22c1a3c47_key -iv $encrypted_2fa22c1a3c47_iv -in ci-cd/signingkey.asc.enc -out ci-cd/signingkey.asc -d &&
     gpg --fast-import ci-cd/signingkey.asc &&
     mvn deploy -P release --settings ci-cd/mvnsettings.xml
-
