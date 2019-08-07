@@ -406,7 +406,7 @@ https://github.com/indvd00m/java-ascii-render/releases
 ### Version 2.0.0
 - Canvas now is empty by default - contains only \0 and \n symbols. Previous Canvas implementation contained \s and 
 \n symbols. This new changes break backward compatibility for drawing behavior in some cases (but do not break compile 
-time API compatibility). Now overlapping of layers would work correctly when you directly draw spaces \n to layer.
+time API compatibility). Now overlapping of layers would work correctly when you directly draw spaces \s to layer.
 - Added opacity for layers.
 
 ### Version 2.1.0
@@ -415,7 +415,7 @@ time API compatibility). Now overlapping of layers would work correctly when you
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
-- ...
+- PseudoCanvas and PseudoElement (increasing "pixel" resolution by using `▖▗▘▙▚▛▜▝▞▟` chars).
 
 ## Issue tracking
 
