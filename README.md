@@ -32,7 +32,7 @@ Add dependency to your maven project:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>2.1.1</version>
+		<version>2.1.0</version>
 	</dependency>
 ```
 
