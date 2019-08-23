@@ -71,7 +71,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
-					<failOnError>false</failOnError>
+					<failOnError>true</failOnError>
 					<source>${project.source.version}</source>
 					<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
 				</configuration>
