@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-16 10:46:00 PM
+ * @since 0.9.0
  */
 public class Canvas implements ICanvas {
 

@@ -11,7 +11,7 @@ import com.indvd00m.ascii.render.api.IPoint;
  * length of string more than {@code Text} width.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-18 2:11:38 PM
+ * @since 1.0.0
  */
 public class Text implements IElement {
 

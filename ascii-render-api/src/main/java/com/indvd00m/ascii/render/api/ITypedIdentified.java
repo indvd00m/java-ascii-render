@@ -7,7 +7,7 @@ package com.indvd00m.ascii.render.api;
  * of all objects with type {@link #getType} (including successors) in current context.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-19 7:39:37 PM
+ * @since 1.0.0
  */
 public interface ITypedIdentified<T> {
 

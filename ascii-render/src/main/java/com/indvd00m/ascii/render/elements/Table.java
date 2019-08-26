@@ -17,7 +17,7 @@ import java.util.List;
  * Table with rows and columns.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2018-Nov-17 3:23:56 PM
+ * @since 1.3.0
  */
 public class Table implements IElement {
 

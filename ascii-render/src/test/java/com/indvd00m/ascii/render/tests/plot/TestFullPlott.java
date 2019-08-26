@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-20 12:34:56 AM
+ * @since 1.0.0
  */
 public class TestFullPlott {
 

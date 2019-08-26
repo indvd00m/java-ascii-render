@@ -16,7 +16,7 @@ import static org.mockito.Mockito.mock;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 5:15:07 PM
+ * @since 1.4.0
  */
 public class TestOverlay {
 

@@ -4,7 +4,7 @@ package com.indvd00m.ascii.render.api;
  * A region.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 12:16:38 PM
+ * @since 0.9.0
  */
 public interface IRegion {
 

@@ -4,7 +4,7 @@ import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-16 10:10:19 PM
+ * @since 1.0.0
  */
 public class PlotPoint implements IPlotPoint {
 

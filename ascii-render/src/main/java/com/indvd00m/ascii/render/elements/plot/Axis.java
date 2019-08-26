@@ -14,7 +14,7 @@ import java.util.List;
  * Axis X and Y.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-19 11:35:47 PM
+ * @since 1.0.0
  */
 public class Axis extends AbstractPlotObject<Axis> {
 

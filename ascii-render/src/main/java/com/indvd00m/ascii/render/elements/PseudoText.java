@@ -34,7 +34,7 @@ import java.io.InputStream;
  * </pre>
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-21 12:14:24 PM
+ * @since 1.1.0
  */
 public class PseudoText implements IElement {
 

@@ -10,7 +10,7 @@ import com.indvd00m.ascii.render.api.IRender;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 6:02:13 PM
+ * @since 0.9.0
  */
 public class Render implements IRender {
 

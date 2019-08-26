@@ -4,7 +4,7 @@ import com.indvd00m.ascii.render.api.IPoint;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 5:39:16 PM
+ * @since 0.9.0
  */
 public class Point implements IPoint {
 

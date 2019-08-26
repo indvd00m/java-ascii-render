@@ -10,7 +10,7 @@ import com.indvd00m.ascii.render.api.IPoint;
  * Circle of a particular radius.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 7:09:54 PM
+ * @since 0.9.0
  */
 public class Circle implements IElement {
 

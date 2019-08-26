@@ -8,7 +8,7 @@ import com.indvd00m.ascii.render.api.IPoint;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-18 6:15:35 PM
+ * @since 1.0.0
  */
 public class Ellipse implements IElement {
 
