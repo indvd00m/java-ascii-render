@@ -49,7 +49,10 @@ public interface IContextBuilder {
 	/**
 	 * Create new layer and add him to context in a specific position.
 	 *
-	 * @param region
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
 	 * @return
 	 */
 	IContextBuilder layer(int x, int y, int width, int height);
@@ -72,7 +75,11 @@ public interface IContextBuilder {
 	/**
 	 * Create new layer with {@code elements} and add layer to context in a specific position.
 	 *
-	 * @param region
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param elements
 	 * @return
 	 */
 	IContextBuilder layer(int x, int y, int width, int height, IElement... elements);
@@ -96,7 +103,11 @@ public interface IContextBuilder {
 	/**
 	 * Create new layer with {@code elements} and add layer to context in a specific position.
 	 *
-	 * @param region
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param elements
 	 * @return
 	 */
 	IContextBuilder layer(int x, int y, int width, int height, List<IElement> elements);
