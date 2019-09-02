@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2017-Feb-04 7:18:18 AM
+ * @since 1.2.0
  */
 public class TestContext {
 

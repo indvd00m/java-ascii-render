@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-16 11:26:24 PM
+ * @since 1.0.0
  */
 public class PlotPoints implements IPlotPoints {
 

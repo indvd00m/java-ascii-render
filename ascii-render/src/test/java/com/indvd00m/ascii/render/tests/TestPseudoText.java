@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-21 3:28:50 PM
+ * @since 1.1.0
  */
 @Ignore
 public class TestPseudoText {

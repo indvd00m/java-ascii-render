@@ -19,7 +19,7 @@ import java.util.List;
  * Labels for {@link Axis}.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-18 9:16:00 PM
+ * @since 1.0.0
  */
 public class AxisLabels extends AbstractPlotObject<AxisLabels> {
 

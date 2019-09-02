@@ -12,7 +12,7 @@ import java.util.List;
  * Plot points.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-19 10:59:38 PM
+ * @since 1.0.0
  */
 public class Plot extends AbstractPlotObject<Plot> {
 

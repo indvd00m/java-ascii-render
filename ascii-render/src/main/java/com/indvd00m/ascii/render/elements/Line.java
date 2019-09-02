@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 9:28:30 PM
+ * @since 0.9.0
  */
 public class Line implements IElement {
 

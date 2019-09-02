@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2017-Feb-04 5:41:08 AM
+ * @since 1.2.0
  */
 public class AxisTestLabels extends AxisLabels {
 

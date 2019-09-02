@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2017-Feb-04 9:11:23 AM
+ * @since 1.2.0
  */
 public class AxisConvertedTestLabels extends AxisLabels {
 

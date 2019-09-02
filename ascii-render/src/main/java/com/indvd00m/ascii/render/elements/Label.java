@@ -11,7 +11,7 @@ import com.indvd00m.ascii.render.api.IPoint;
  * last symbol of a drawed text will be {@literal '…'}. Line breaks will be replaced with space symbol.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-18 12:29:22 PM
+ * @since 0.9.0
  */
 public class Label implements IElement {
 

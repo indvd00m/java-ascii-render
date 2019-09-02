@@ -8,7 +8,7 @@ import java.util.List;
  * in this order.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 3:46:21 PM
+ * @since 0.9.0
  */
 public interface IContext {
 
@@ -137,7 +137,9 @@ public interface IContext {
 	 *
 	 * @param type
 	 * @param typedId
+	 * @param includeSuccessors
 	 * @return
+	 * @param <T>
 	 */
 	<T extends ITypedIdentified<T>> T lookupTyped(Class<T> type, int typedId, boolean includeSuccessors);
 
@@ -146,7 +148,6 @@ public interface IContext {
 	 * returned. See {@link ITypedIdentified}.
 	 *
 	 * @param type
-	 * @param id
 	 * @return
 	 */
 	<T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type);
@@ -156,8 +157,9 @@ public interface IContext {
 	 * returned. See {@link ITypedIdentified}.
 	 *
 	 * @param type
-	 * @param id
+	 * @param includeSuccessors
 	 * @return
+	 * @param <T>
 	 */
 	<T extends ITypedIdentified<T>> List<T> lookupTyped(Class<T> type, boolean includeSuccessors);
 

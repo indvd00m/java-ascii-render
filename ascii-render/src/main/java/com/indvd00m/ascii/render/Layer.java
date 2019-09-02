@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 5:38:28 PM
+ * @since 0.9.0
  */
 public class Layer implements ILayer {
 

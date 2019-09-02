@@ -6,7 +6,7 @@ package com.indvd00m.ascii.render.api;
  * right. Axis Y directed from top to bottom.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-16 10:45:16 PM
+ * @since 0.9.0
  */
 public interface ICanvas {
 

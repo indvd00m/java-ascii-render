@@ -17,7 +17,7 @@ import java.util.Set;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-18 11:59:26 PM
+ * @since 1.0.0
  */
 public class ContextBuilder implements IContextBuilder {
 

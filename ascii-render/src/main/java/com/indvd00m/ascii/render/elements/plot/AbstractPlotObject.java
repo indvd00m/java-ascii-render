@@ -16,7 +16,7 @@ import java.util.List;
  * hashCode.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-19 9:45:31 PM
+ * @since 1.0.0
  */
 public abstract class AbstractPlotObject<P extends AbstractPlotObject<P>> implements IElement, ITypedIdentified<P> {
 

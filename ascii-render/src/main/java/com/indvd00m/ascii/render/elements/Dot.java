@@ -10,7 +10,7 @@ import com.indvd00m.ascii.render.api.IPoint;
  * Single dot ('*' symbol).
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-18 6:09:09 PM
+ * @since 1.0.0
  */
 public class Dot implements IElement {
 

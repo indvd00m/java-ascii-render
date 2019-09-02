@@ -5,7 +5,7 @@ package com.indvd00m.ascii.render.api;
  * will be drawn in his layer.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-17 12:21:54 PM
+ * @since 0.9.0
  */
 public interface IElement {
 

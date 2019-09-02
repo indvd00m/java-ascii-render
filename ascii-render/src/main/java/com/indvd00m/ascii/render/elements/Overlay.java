@@ -12,7 +12,7 @@ import com.indvd00m.ascii.render.api.IRegion;
  * Canvas overlay. Possibility to combine results of several renders.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2018-Nov-19 8:31:36 PM
+ * @since 1.4.0
  */
 public class Overlay implements IElement {
 

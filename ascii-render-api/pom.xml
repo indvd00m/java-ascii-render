@@ -49,6 +49,7 @@
 		<project.source.version>1.6</project.source.version>
 		<project.target.version>1.6</project.target.version>
 		<project.encoding>UTF-8</project.encoding>
+		<project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
@@ -59,7 +60,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
+				<version>3.8.1</version>
 				<configuration>
 					<encoding>${project.encoding}</encoding>
 					<source>${project.source.version}</source>
@@ -69,9 +70,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9</version>
+				<version>3.1.1</version>
 				<configuration>
-					<failOnError>false</failOnError>
+					<failOnError>true</failOnError>
 					<source>${project.source.version}</source>
 					<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
 				</configuration>
@@ -87,7 +88,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>2.2.1</version>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>

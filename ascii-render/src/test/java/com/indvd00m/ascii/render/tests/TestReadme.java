@@ -32,7 +32,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @date 2016-Nov-20 4:24:36 PM
+ * @since 1.0.0
  */
 public class TestReadme {
 
