@@ -49,6 +49,7 @@
 		<project.source.version>1.6</project.source.version>
 		<project.target.version>1.6</project.target.version>
 		<project.encoding>UTF-8</project.encoding>
+		<project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
 		<junit.version>4.12</junit.version>
 	</properties>
 
