@@ -7,7 +7,7 @@
 	<groupId>com.indvd00m.ascii.render</groupId>
 	<artifactId>ascii-render-api</artifactId>
 	<packaging>jar</packaging>
-	<version>2.1.2-SNAPSHOT</version>
+	<version>2.1.2</version>
 	<name>ascii-render-api</name>
 	<description>ASCII renderer in pure java with no external dependencies. API interfaces.</description>
 	<url>https://github.com/indvd00m/java-ascii-render</url>
