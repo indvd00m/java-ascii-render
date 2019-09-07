@@ -31,9 +31,13 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
     └──────────────────────────────────────┘                 CONCLUSION: APPROVE
 ```
 
-## Using
+## Download and Install
 
-Add dependency to your maven project:
+To download and install Java ASCII Render you currently have the following options.
+
+**Maven**
+
+Add dependency to `com.indvd00m.ascii.render:ascii-render`:
 
 ```xml
 	<dependency>
@@ -43,6 +47,16 @@ Add dependency to your maven project:
 	</dependency>
 ```
 
+**Plain-old JAR**
+
+Download the following JARs and add them to your classpath:
+
+ * [ascii-render.jar](https://search.maven.org/search?q=g:%22com.indvd00m.ascii.render%22%20AND%20a:%22ascii-render%22)
+ * [ascii-render-api.jar](https://search.maven.org/search?q=g:%22com.indvd00m.ascii.render%22%20AND%20a:%22ascii-render-api%22)
+
+## Compatibility
+
+Java ASCII Render requires Java 6 (or higher). 
 
 ## Available graphical elements and usage examples
 
