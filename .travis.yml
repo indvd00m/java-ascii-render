@@ -18,18 +18,26 @@ env:
 cache:
   directories:
     - ~/.m2/repository
+    - ~/.sonar/cache
 
 install: true
 
-script: mvn clean verify -B -V
+script: mvn -B -V clean verify sonar:sonar
 
 deploy:
   provider: script
   script:
   - openssl aes-256-cbc -K $encrypted_2fa22c1a3c47_key -iv $encrypted_2fa22c1a3c47_iv -in ci-cd/signingkey.asc.enc -out ci-cd/signingkey.asc -d &&
     gpg --fast-import ci-cd/signingkey.asc &&
-    mvn deploy -P release -DskipTests=true -B -V --settings ci-cd/mvnsettings.xml
+    mvn deploy -B -V -P release -DskipTests=true --settings ci-cd/mvnsettings.xml
   on:
     all_branches: true
     condition: -n "$TRAVIS_TAG" || "$TRAVIS_BRANCH" == "master"
     jdk: openjdk11
+
+
+addons:
+  sonarcloud:
+    organization: "indvd00m"
+    token:
+      secure: "pMDAwVY0SYZEZJzwa5nEupXAQ5C7fWleXiRO1BolbfZw2lBLmvtJBxydF8moM+lI6X4GSOwuTAC1ruiTncypirlI+3lDz4H0VctzxHquYMHtGwtzD4HPLN8ZRNmeCpBDNUc9jPs1QHtKtFhqE5varkv8yVn8hQZU/KzGQsjfzDbDY46Nkt8a+IXRUImCumK7EF1S9b7O+of/XilubU5WLGComjhKcOYK1VbFL27cm7ihVxKqNtJohVbkBcGk9j+YAadqHQv/e969VZd7jkKbGDYtmvRziXP1iVH90gYu49DrnSRomEU16HoAwVgOQ9HZ4K/rqdzN34sHfoHqJOJeRH3MUirgFA72RtYxr78jioWxZIrpINAldx6uL44lYtmfx3QmSl1SPXIsn62dTlrYEEPJF8r+zbVwYOUh1SCzxmLlpd/RSh+RqAZl56SV1ZQJafVRPJWnYFMbLpuEXPFtPRyuk0zwBJ2IUN9wfdLxtWR89dc7qNOknp9d4LcFu1Eaz3R0PmKV2TD6Xz7CEmVAtvZqug5puOOuZv5vHWOKkIoXpwkXKjrQjAbeZSqVle0QrhTUXq9CTWAVdVeDxWQRQSyUpvRS37kK7vAFVEzyaHWjtPwf3UHEcvwfBlflxCMESNjf7l3TOX+M/c+LUruyPmLC4e39yqb8FKOMKbcwm+o="
