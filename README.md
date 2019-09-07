@@ -32,6 +32,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 ```
 
 ## Using
+
 Add dependency to your maven project:
 
 ```xml
@@ -43,7 +44,7 @@ Add dependency to your maven project:
 ```
 
 
-## Available graphical elements
+## Available graphical elements and usage examples
 
 ### Rectangle
 ```
@@ -425,6 +426,7 @@ time API compatibility). Now overlapping of layers would work correctly when you
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
 - PseudoCanvas and PseudoElement (increasing "pixel" resolution by using `▖▗▘▙▚▛▜▝▞▟` chars).
+- Fluent API for elements.
 
 ## Issue tracking
 
