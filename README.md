@@ -1,5 +1,11 @@
 # Java ASCII Render
 
+[![Maven Central](https://img.shields.io/maven-central/v/com.indvd00m.ascii.render/ascii-render.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.indvd00m.ascii.render%22%20AND%20a:%22ascii-render%22)
+[![Build Status](https://travis-ci.org/indvd00m/java-ascii-render.svg?branch=master)](https://travis-ci.org/indvd00m/java-ascii-render)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.indvd00m.ascii.render%3Ajava-ascii-render&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.indvd00m.ascii.render%3Ajava-ascii-render)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=com.indvd00m.ascii.render%3Ajava-ascii-render&metric=ncloc)](https://sonarcloud.io/dashboard?id=com.indvd00m.ascii.render%3Ajava-ascii-render)
+![GitHub](https://img.shields.io/github/license/indvd00m/java-ascii-render)
+
 ASCII renderer in pure java with no external dependencies. Java ASCII Render supports graphical primitives/elements, layers, context, canvas.
 
 ```
@@ -26,6 +32,7 @@ ASCII renderer in pure java with no external dependencies. Java ASCII Render sup
 ```
 
 ## Using
+
 Add dependency to your maven project:
 
 ```xml
@@ -36,11 +43,8 @@ Add dependency to your maven project:
 	</dependency>
 ```
 
-## CI
-Maven artifacts are built via Travis: 
-[![Build Status](https://travis-ci.org/indvd00m/java-ascii-render.svg?branch=master)](https://travis-ci.org/indvd00m/java-ascii-render)
 
-## Available graphical elements
+## Available graphical elements and usage examples
 
 ### Rectangle
 ```
@@ -422,6 +426,7 @@ time API compatibility). Now overlapping of layers would work correctly when you
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
 - PseudoCanvas and PseudoElement (increasing "pixel" resolution by using `▖▗▘▙▚▛▜▝▞▟` chars).
+- Fluent API for elements.
 
 ## Issue tracking
 
