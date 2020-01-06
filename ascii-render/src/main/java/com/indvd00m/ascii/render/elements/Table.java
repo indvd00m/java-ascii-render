@@ -177,13 +177,18 @@ public class Table implements IElement {
 				}
 				int cellWidth = endX - startX;
 				int cellHeight = endY - startY;
-				ICanvas elementCanvas = new Canvas(cellWidth, cellHeight);
-				element.draw(elementCanvas, context);
-				canvas.draw(startX, startY, elementCanvas.getText());
+				drawCellContent(canvas, context, element, startX, startY, cellWidth, cellHeight);
 			}
 		}
 
 		return new Point(x, y);
+	}
+
+	protected void drawCellContent(ICanvas canvas, IContext context, IElement element, int startX, int startY,
+			int cellWidth, int cellHeight) {
+		ICanvas elementCanvas = new Canvas(cellWidth, cellHeight);
+		element.draw(elementCanvas, context);
+		canvas.draw(startX, startY, elementCanvas.getText());
 	}
 
 	private void drawBorderCellCorners(ICanvas canvas, int r, int cellY, int cellHeight, int c, int cellX,
