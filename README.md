@@ -43,7 +43,7 @@ Add dependency to `com.indvd00m.ascii.render:ascii-render`:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>2.1.2</version>
+		<version>2.1.3</version>
 	</dependency>
 ```
 
@@ -435,6 +435,9 @@ time API compatibility). Now overlapping of layers would work correctly when you
 
 ### Version 2.1.2
 - Fixed javadoc.
+
+### Version 2.1.3
+- Simplified extending of Table element.
 
 ## Roadmap
 
