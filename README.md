@@ -43,7 +43,7 @@ Add dependency to `com.indvd00m.ascii.render:ascii-render`:
 	<dependency>
 		<groupId>com.indvd00m.ascii.render</groupId>
 		<artifactId>ascii-render</artifactId>
-		<version>2.1.3</version>
+		<version>2.2.0</version>
 	</dependency>
 ```
 
@@ -538,10 +538,12 @@ time API compatibility). Now overlapping of layers would work correctly when you
 ### Version 2.1.3
 - Simplified extending of Table element.
 
+### Version 2.2.0
+- Added possibility to increase "pixel" resolution.
+
 ## Roadmap
 
 This component is developed as a hobby with no public roadmap or any guarantees of upcoming releases. That said, the following features are planned for upcoming releases:
-- PseudoCanvas and PseudoElement (increasing "pixel" resolution by using `▖▗▘▙▚▛▜▝▞▟` chars).
 - Fluent API for elements.
 
 ## Issue tracking
