@@ -444,4 +444,102 @@ public class TestReadme {
 		assertEquals(e, s);
 	}
 
+	@Test
+	public void test13() {
+		{
+			IRender render = new Render();
+			IContextBuilder builder = render.newBuilder();
+			builder.width(30).height(10);
+			builder.element(new Line(new Point(0, 0), new Point(29, 9), '█'));
+			ICanvas canvas = render.render(builder.build());
+			String s = canvas.getText();
+			System.out.println(s);
+			String e = "";
+			e += "██                            \n";
+			e += "  ███                         \n";
+			e += "     ████                     \n";
+			e += "         ███                  \n";
+			e += "            ███               \n";
+			e += "               ███            \n";
+			e += "                  ███         \n";
+			e += "                     ████     \n";
+			e += "                         ███  \n";
+			e += "                            ██";
+			assertEquals(e, s);
+		}
+		{
+			IRender render = new Render();
+			render.setPseudoCanvas(true);
+			IContextBuilder builder = render.newBuilder();
+			builder.width(60).height(20);
+			builder.element(new Line(new Point(0, 0), new Point(59, 19)));
+			ICanvas canvas = render.render(builder.build());
+			String s = canvas.getText();
+			System.out.println(s);
+			String e = "";
+			e += "▀▄▖                           \n";
+			e += "  ▝▀▄▖                        \n";
+			e += "     ▝▀▄▄                     \n";
+			e += "         ▀▚▄                  \n";
+			e += "            ▀▚▄               \n";
+			e += "               ▀▚▄            \n";
+			e += "                  ▀▚▄         \n";
+			e += "                     ▀▀▄▖     \n";
+			e += "                        ▝▀▄▖  \n";
+			e += "                           ▝▀▄";
+			assertEquals(e, s);
+		}
+	}
+
+	@Test
+	public void test14() {
+		{
+			IRender render = new Render();
+			IContextBuilder builder = render.newBuilder();
+			builder.width(60).height(10);
+			builder.element(new PseudoText("PseudoText", false));
+			ICanvas canvas = render.render(builder.build());
+			String s = canvas.getText();
+			System.out.println(s);
+
+			String e = "";
+			e += "                                                            \n";
+			e += "                          █                                 \n";
+			e += " ███                      █      █████                      \n";
+			e += " █  █                     █        █               █        \n";
+			e += " █  █ ████   ██  █  █   ███  ██    █    ██  █  █  ████      \n";
+			e += " ███  █     █  █ █  █  █  █ █  █   █   █  █  ██    █        \n";
+			e += " █     ███  ████ █  █  █  █ █  █   █   ████  ██    █        \n";
+			e += " █       █  █    █  █  █  █ █  █   █   █     ██    █        \n";
+			e += " █    ████   ███ ████   ███  ██    █    ███ █  █   ███      \n";
+			e += "                                                            ";
+			// Do not test this, because AWT produce different environment-specific results
+			// assertEquals(e, s);
+		}
+		{
+			IRender render = new Render();
+			render.setPseudoCanvas(true);
+			IContextBuilder builder = render.newBuilder();
+			builder.width(120).height(20);
+			builder.element(new PseudoText("PseudoText", false));
+			ICanvas canvas = render.render(builder.build());
+			String s = canvas.getText();
+			System.out.println(s);
+
+			String e = "";
+			e += "                                                            \n";
+			e += "                                                            \n";
+			e += "                        ▄                                   \n";
+			e += "▐▛▀▙                    █      ▀▀█▀▀            ▐▌          \n";
+			e += "▐▌ ▐▌ ▗▄▄   ▄▄  ▄  ▄  ▄▖█  ▗▄▖   █   ▗▄▖  ▄▖▗▄ ▗▟▙▄         \n";
+			e += "▐▌ ▟▘▐▌  ▘ ▟▘▝▙ █  █ ▟▘▝█ ▗▛ ▜▖  █  ▗▛ ▜▖ ▝██▘  ▐▌          \n";
+			e += "▐▛▀▘ ▝██▙▖ █▄▄█ █  █ █  █ ▐▌ ▐▌  █  ▐▙▄▟▌  ▐▌   ▐▌          \n";
+			e += "▐▌      ▜▌ █    █  █ █  █ ▐▌ ▐▌  █  ▐▌     ██   ▐▌          \n";
+			e += "▐▌   ▝▄▄▞▘ ▝▙▄▞ ▜▙▞█ ▝▙▞█  ▜▄▛   █   ▜▄▄▘ ▟▌▐▙  ▝▙▄         \n";
+			e += "                                                            ";
+			// Do not test this, because AWT produce different environment-specific results
+			// assertEquals(e, s);
+		}
+	}
+
 }
