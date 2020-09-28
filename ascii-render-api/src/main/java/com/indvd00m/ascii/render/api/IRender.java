@@ -23,4 +23,7 @@ public interface IRender {
 	 */
 	ICanvas render(IContext context);
 
+	boolean isPseudoCanvas();
+
+	void setPseudoCanvas(boolean pseudoCanvas);
 }

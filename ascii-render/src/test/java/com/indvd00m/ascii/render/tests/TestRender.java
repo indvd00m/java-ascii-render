@@ -1,18 +1,33 @@
 package com.indvd00m.ascii.render.tests;
 
+import com.indvd00m.ascii.render.Canvas;
 import com.indvd00m.ascii.render.Point;
 import com.indvd00m.ascii.render.Region;
 import com.indvd00m.ascii.render.Render;
 import com.indvd00m.ascii.render.api.ICanvas;
+import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IContextBuilder;
+import com.indvd00m.ascii.render.api.IPoint;
 import com.indvd00m.ascii.render.api.IRender;
 import com.indvd00m.ascii.render.elements.Circle;
 import com.indvd00m.ascii.render.elements.Label;
 import com.indvd00m.ascii.render.elements.Line;
+import com.indvd00m.ascii.render.elements.PseudoText;
 import com.indvd00m.ascii.render.elements.Rectangle;
+import com.indvd00m.ascii.render.elements.Table;
+import com.indvd00m.ascii.render.elements.Text;
+import com.indvd00m.ascii.render.elements.plot.Axis;
+import com.indvd00m.ascii.render.elements.plot.AxisLabels;
+import com.indvd00m.ascii.render.elements.plot.Plot;
+import com.indvd00m.ascii.render.elements.plot.api.IPlotPoint;
+import com.indvd00m.ascii.render.elements.plot.misc.PlotPoint;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
@@ -240,4 +255,139 @@ public class TestRender {
 		assertEquals(s, t);
 	}
 
+	@Test
+	public void test10() {
+		IRender render = new Render();
+		render.setPseudoCanvas(true);
+		IContextBuilder builder = render.newBuilder();
+		builder.width(20).height(10);
+		builder.element(new Rectangle());
+		builder.element(new Line(new Point(2, 2), new Point(17, 7)));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String e = "";
+		e += "▛▀▀▀▀▀▀▀▀▜\n";
+		e += "▌▀▄▖     ▐\n";
+		e += "▌  ▝▀▄▖  ▐\n";
+		e += "▌     ▝▀▄▐\n";
+		e += "▙▄▄▄▄▄▄▄▄▟";
+		assertEquals(e, s);
+	}
+
+	@Test
+	public void test11() {
+		IRender render = new Render();
+		render.setPseudoCanvas(true);
+		IContextBuilder builder = render.newBuilder();
+		builder.width(20).height(10);
+		builder.element(new Rectangle());
+		builder.element(new Circle(9, 4, 3));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String e = "";
+		e += "▛▀▀▀█▛▀▀▀▜\n";
+		e += "▌  ▞ ▝▖  ▐\n";
+		e += "▌  ▌  ▌  ▐\n";
+		e += "▌  ▝▄▞   ▐\n";
+		e += "▙▄▄▄▄▄▄▄▄▟";
+		assertEquals(e, s);
+	}
+
+	@Test
+	public void test12() {
+		IRender render = new Render();
+		render.setPseudoCanvas(true);
+		IContextBuilder builder = render.newBuilder();
+		builder.width(102).height(20);
+		builder.element(new PseudoText("PseudoText", false));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		@SuppressWarnings("unused")
+		String e = "";
+		e += "                                                   \n";
+		e += "                        ▄                          \n";
+		e += "▐▛▀▙                    █      ▀▀█▀▀            ▐▌ \n";
+		e += "▐▌ ▐▌ ▗▄▄   ▄▄  ▄  ▄  ▄▖█  ▗▄▖   █   ▗▄▖  ▄▖▗▄ ▗▟▙▄\n";
+		e += "▐▌ ▟▘▐▌  ▘ ▟▘▝▙ █  █ ▟▘▝█ ▗▛ ▜▖  █  ▗▛ ▜▖ ▝██▘  ▐▌ \n";
+		e += "▐▛▀▘ ▝██▙▖ █▄▄█ █  █ █  █ ▐▌ ▐▌  █  ▐▙▄▟▌  ▐▌   ▐▌ \n";
+		e += "▐▌      ▜▌ █    █  █ █  █ ▐▌ ▐▌  █  ▐▌     ██   ▐▌ \n";
+		e += "▐▌   ▝▄▄▞▘ ▝▙▄▞ ▜▙▞█ ▝▙▞█  ▜▄▛   █   ▜▄▄▘ ▟▌▐▙  ▝▙▄\n";
+		e += "                                                   \n";
+		e += "                                                   ";
+		// Do not test this, because AWT produce different environment-specific results
+		// assertEquals(e, s);
+	}
+
+	@Test
+	public void test13() {
+		List<IPlotPoint> points = new ArrayList<IPlotPoint>();
+		for (int degree = 0; degree <= 360; degree++) {
+			if (degree > 75 && degree < 105) {
+				continue;
+			}
+			if (degree > 255 && degree < 285) {
+				continue;
+			}
+			double val = Math.tan(Math.toRadians(degree));
+			IPlotPoint plotPoint = new PlotPoint(degree, val);
+			points.add(plotPoint);
+		}
+		IRender render = new Render();
+		render.setPseudoCanvas(true);
+		IContextBuilder builder = render.newBuilder();
+		builder.width(160).height(40);
+		builder.element(new Axis(points, new Region(0, 0, 160, 40)));
+		builder.element(new Plot(points, new Region(0, 0, 160, 40)));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String expected = "";
+		expected += "▌               ▐                                       ▌                       \n";
+		expected += "▌               ▞                                      ▗▘                       \n";
+		expected += "▌              ▗▘                                      ▞                        \n";
+		expected += "▌             ▗▌                                      ▟                         \n";
+		expected += "▌            ▗▞                                      ▄▘                         \n";
+		expected += "▌           ▄▛                                     ▗▟▘                          \n";
+		expected += "▌         ▄▛▘                                    ▗▟▀                            \n";
+		expected += "▌      ▄▄▀▘                                   ▗▄▞▀                              \n";
+		expected += "▌  ▄▄▛▀▘                                  ▗▄▟▀▀                                 \n";
+		expected += "▛▀▀                                  ▗▄▄▀▀▘                                  ▄▄▞\n";
+		expected += "▌                                ▄▄▛▀▘                                  ▗▄▟▀▀   \n";
+		expected += "▌                             ▄▞▀▘                                   ▗▄▀▀       \n";
+		expected += "▌                           ▄▛▘                                    ▗▟▀          \n";
+		expected += "▌                         ▗▛▘                                     ▟▀            \n";
+		expected += "▌                        ▗▀                                      ▞▘             \n";
+		expected += "▌                        ▛                                      ▐▘              \n";
+		expected += "▌                       ▞                                      ▗▘               \n";
+		expected += "▌                      ▗▘                                      ▞                \n";
+		expected += "▌                      ▐                                       ▘                \n";
+		expected += "▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄";
+		assertEquals(expected, s);
+	}
+
+	@Test
+	public void test14() {
+		IRender render = new Render();
+		render.setPseudoCanvas(true);
+		IContextBuilder builder = render.newBuilder();
+		builder.width(72).height(14);
+		Table table = new Table(4, 3);
+		table.setHighlighted(2, 3, true);
+		builder.element(table);
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+		String e = "";
+		e += "▛▀▀▀▀▀▀▀▀▛▀▀▀▀▀▀▀▀▛▀▀▀▀▀▀▀▀▛▀▀▀▀▀▀▀▜\n";
+		e += "▌        ▌        ▌        ▌       ▐\n";
+		e += "▛▀▀▀▀▀▀▀▀▛▀▀▀▀▀▀▀▀▛▀▀▀▀▀▀▀▀▛▀▀▀▀▀▀▀▜\n";
+		e += "▌        ▌        ▌        ▌       ▐\n";
+		e += "▙▄▄▄▄▄▄▄▄▙▄▄▄▄▄▄▄▄▙▄▄▄▄▄▄▄▄▙▄▄▄▄▄▄▄▟\n";
+		e += "▌        ▌        ▌        ▌       ▐\n";
+		e += "▙▄▄▄▄▄▄▄▄▙▄▄▄▄▄▄▄▄▙▄▄▄▄▄▄▄▄▙▄▄▄▄▄▄▄▟";
+		assertEquals(e, s);
+	}
 }

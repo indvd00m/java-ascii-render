@@ -14,6 +14,8 @@ import com.indvd00m.ascii.render.api.IRender;
  */
 public class Render implements IRender {
 
+	protected boolean pseudoCanvas;
+
 	@Override
 	public IContextBuilder newBuilder() {
 		return ContextBuilder.newBuilder();
@@ -21,7 +23,12 @@ public class Render implements IRender {
 
 	@Override
 	public ICanvas render(IContext context) {
-		ICanvas canvas = new Canvas(context.getWidth(), context.getHeight());
+		final ICanvas canvas;
+		if (pseudoCanvas) {
+			canvas = new PseudoCanvas(context.getWidth(), context.getHeight());
+		} else {
+			canvas = new Canvas(context.getWidth(), context.getHeight());
+		}
 		for (ILayer layer : context.getLayers()) {
 			IRegion region = layer.getRegion();
 			ICanvas layerCanvas = new Canvas(region.getWidth(), region.getHeight());
@@ -47,4 +54,13 @@ public class Render implements IRender {
 		}
 	}
 
+	@Override
+	public boolean isPseudoCanvas() {
+		return pseudoCanvas;
+	}
+
+	@Override
+	public void setPseudoCanvas(boolean pseudoCanvas) {
+		this.pseudoCanvas = pseudoCanvas;
+	}
 }
