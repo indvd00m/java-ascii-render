@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @since 2.4.0
+ * @since 2.2.0
  */
 public class PseudoCanvas extends Canvas {
 
