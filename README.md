@@ -378,6 +378,105 @@ Possibility to combine results of several renders.
 		System.out.println(s);
 ```
 
+### PseudoCanvas
+
+In some cases you can get better results by synthetic increasing of "pixel resolution". This is possible by calling 
+`render.setPseudoCanvas(true)` method. After that render would use `▖▗▘▙▚▛▜▝▞▟▄▐▌▀█ ` chars for drawing 4 points in 1 char. 
+This is would work only if you do not use any special symbols for drawing (but you still can use Overlay to combine 
+two different renders).
+
+Example 1: line in 30x10 resolution:
+```
+██                            
+  ███                         
+     ████                     
+         ███                  
+            ███               
+               ███            
+                  ███         
+                     ████     
+                         ███  
+                            ██
+```
+```java
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		builder.width(30).height(10);
+		builder.element(new Line(new Point(0, 0), new Point(29, 9), '█'));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+```
+And same line in 60x20 resolution:
+```
+▀▄▖                           
+  ▝▀▄▖                        
+     ▝▀▄▄                     
+         ▀▚▄                  
+            ▀▚▄               
+               ▀▚▄            
+                  ▀▚▄         
+                     ▀▀▄▖     
+                        ▝▀▄▖  
+                           ▝▀▄
+```
+```java
+		IRender render = new Render();
+		render.setPseudoCanvas(true);
+		IContextBuilder builder = render.newBuilder();
+		builder.width(60).height(20);
+		builder.element(new Line(new Point(0, 0), new Point(59, 19)));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+```
+
+Example 2: pseudo text in 60x10 resolution:
+```
+                                                            
+                          █                                 
+ ███                      █      █████                      
+ █  █                     █        █               █        
+ █  █ ████   ██  █  █   ███  ██    █    ██  █  █  ████      
+ ███  █     █  █ █  █  █  █ █  █   █   █  █  ██    █        
+ █     ███  ████ █  █  █  █ █  █   █   ████  ██    █        
+ █       █  █    █  █  █  █ █  █   █   █     ██    █        
+ █    ████   ███ ████   ███  ██    █    ███ █  █   ███      
+                                                            
+```
+```java
+		IRender render = new Render();
+		IContextBuilder builder = render.newBuilder();
+		builder.width(60).height(10);
+		builder.element(new PseudoText("PseudoText", false));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+```
+And same pseudo text in 120x20 resolution:
+```
+                                                            
+                                                            
+                        ▄                                   
+▐▛▀▙                    █      ▀▀█▀▀            ▐▌          
+▐▌ ▐▌ ▗▄▄   ▄▄  ▄  ▄  ▄▖█  ▗▄▖   █   ▗▄▖  ▄▖▗▄ ▗▟▙▄         
+▐▌ ▟▘▐▌  ▘ ▟▘▝▙ █  █ ▟▘▝█ ▗▛ ▜▖  █  ▗▛ ▜▖ ▝██▘  ▐▌          
+▐▛▀▘ ▝██▙▖ █▄▄█ █  █ █  █ ▐▌ ▐▌  █  ▐▙▄▟▌  ▐▌   ▐▌          
+▐▌      ▜▌ █    █  █ █  █ ▐▌ ▐▌  █  ▐▌     ██   ▐▌          
+▐▌   ▝▄▄▞▘ ▝▙▄▞ ▜▙▞█ ▝▙▞█  ▜▄▛   █   ▜▄▄▘ ▟▌▐▙  ▝▙▄         
+                                                            
+```
+```java
+		IRender render = new Render();
+		render.setPseudoCanvas(true);
+		IContextBuilder builder = render.newBuilder();
+		builder.width(120).height(20);
+		builder.element(new PseudoText("PseudoText", false));
+		ICanvas canvas = render.render(builder.build());
+		String s = canvas.getText();
+		System.out.println(s);
+```
+
 
 ## Download release
 
