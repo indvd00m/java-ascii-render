@@ -163,7 +163,7 @@
 								<moduleInfo>
 									<name>com.indvd00m.ascii.render.api</name>
 									<exports>
-										*;
+										com.indvd00m.ascii.render.api;
 									</exports>
 								</moduleInfo>
 							</module>
