@@ -74,7 +74,6 @@
 				<configuration>
 					<failOnError>true</failOnError>
 					<source>${project.source.version}</source>
-					<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
 				</configuration>
 				<executions>
 					<execution>

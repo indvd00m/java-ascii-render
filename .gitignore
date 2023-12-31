@@ -5,8 +5,12 @@
 
 **/target/
 
-.idea/
-
+### IntelliJ IDEA ###
+.idea
+out
+*.iws
+*.iml
+*.ipr
 out/
 
 cov-int/
