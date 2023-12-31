@@ -19,7 +19,7 @@ import static org.mockito.Mockito.mock;
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @since 1.1.0
  */
-@Ignore
+@Ignore("Results of this tests is a platform dependent")
 public class TestPseudoText {
 
 	@Test
