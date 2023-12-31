@@ -7,7 +7,7 @@
 	<groupId>com.indvd00m.ascii.render</groupId>
 	<artifactId>ascii-render</artifactId>
 	<packaging>jar</packaging>
-	<version>2.2.1-SNAPSHOT</version>
+	<version>0.0.101</version>
 	<name>ascii-render</name>
 	<description>ASCII renderer in pure java with no external dependencies. API implementation.</description>
 	<url>https://github.com/indvd00m/java-ascii-render</url>
@@ -175,7 +175,7 @@
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
 					</plugin>
