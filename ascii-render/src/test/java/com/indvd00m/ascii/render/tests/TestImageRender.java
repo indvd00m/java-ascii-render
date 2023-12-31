@@ -35,7 +35,7 @@ import static org.junit.Assert.assertNotNull;
  * dependent operation.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
- * @since 0.9.0
+ * @since 2.3.0
  */
 public class TestImageRender {
 

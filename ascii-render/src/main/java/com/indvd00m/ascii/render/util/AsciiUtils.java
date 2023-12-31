@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * @author indvd00m (gotoindvdum[at]gmail[dot]com)
+ * @since 2.3.0
+ */
 public class AsciiUtils {
 
 	public static final char NULL_CHAR = '\0';
