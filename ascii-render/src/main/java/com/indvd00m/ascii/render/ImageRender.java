@@ -2,6 +2,7 @@ package com.indvd00m.ascii.render;
 
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IImageRender;
+import com.indvd00m.ascii.render.util.AsciiUtils;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -16,9 +17,12 @@ import static com.indvd00m.ascii.render.util.AsciiUtils.repeatChar;
  */
 public class ImageRender implements IImageRender {
 
-	protected Font font;
+	public static final int FONT_REPLICA_STYLE = 24;
+	public static final char SAMPLE_SYMBOL = ' ';
+	protected final Font font;
 
 	public ImageRender() {
+		this(AsciiUtils.getDejaVuSansMonoFont());
 	}
 
 	/**
@@ -32,28 +36,30 @@ public class ImageRender implements IImageRender {
 	public BufferedImage render(final ICanvas canvas, final int height) {
 		int textWidth = canvas.getWidth();
 		int textHeight = canvas.getHeight();
-		int proportionalWidth = (int) ((float) height * textWidth / textHeight);
 
-		Font font = getFont().deriveFont(24);
+		Font fontReplica = getFont().deriveFont(FONT_REPLICA_STYLE);
+
 		final int ascent;
 		final int leading;
 		final int linesWidth;
-		float lineHeight = height / textHeight;
+		float lineHeight = ((float) height) / textHeight;
+
 		{
-			String sampleString = repeatChar(' ', textWidth);
-			BufferedImage sampleImage = new BufferedImage(proportionalWidth, height, BufferedImage.TYPE_INT_RGB);
+			int sampleWidth = (int) ((float) height * textWidth / textHeight);
+			String sampleString = repeatChar(SAMPLE_SYMBOL, textWidth);
+			BufferedImage sampleImage = new BufferedImage(sampleWidth, height, BufferedImage.TYPE_INT_RGB);
 			Graphics2D sampleGraphics = sampleImage.createGraphics();
 			sampleGraphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS,
 					RenderingHints.VALUE_FRACTIONALMETRICS_ON);
 			sampleGraphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
 					RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
 
-			FontMetrics fm = sampleGraphics.getFontMetrics(font);
+			FontMetrics fm = sampleGraphics.getFontMetrics(fontReplica);
 			Rectangle2D r2d = fm.getStringBounds(sampleString, sampleGraphics);
 			float leadingFactor = (float) fm.getLeading() / fm.getHeight();
-			float size = (float) (font.getSize2D() * lineHeight / (r2d.getHeight() - r2d.getHeight() * leadingFactor));
-			font = font.deriveFont(size);
-			fm = sampleGraphics.getFontMetrics(font);
+			float size = (float) (fontReplica.getSize2D() * lineHeight / (r2d.getHeight() - r2d.getHeight() * leadingFactor));
+			fontReplica = fontReplica.deriveFont(size);
+			fm = sampleGraphics.getFontMetrics(fontReplica);
 			ascent = fm.getAscent();
 			leading = fm.getLeading();
 			linesWidth = (int) fm.getStringBounds(sampleString, sampleGraphics).getWidth();
@@ -67,7 +73,7 @@ public class ImageRender implements IImageRender {
 		Color fontColor = Color.BLACK;
 		Color backgroundColor = Color.WHITE;
 
-		graphics.setFont(font);
+		graphics.setFont(fontReplica);
 		graphics.setColor(backgroundColor);
 		graphics.fillRect(0, 0, linesWidth, height);
 		graphics.setColor(fontColor);
@@ -79,10 +85,8 @@ public class ImageRender implements IImageRender {
 		return image;
 	}
 
+
 	public Font getFont() {
-		if (font == null) {
-			font = getDejaVuSansMonoFont();
-		}
 		return font;
 	}
 
