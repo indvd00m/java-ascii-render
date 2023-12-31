@@ -59,7 +59,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 245);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 245);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 	@Test
@@ -184,7 +184,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 360);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 	int percent(int value, double percent) {
@@ -206,7 +206,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 30);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 	@Test
@@ -224,7 +224,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 30);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 	@Test
@@ -242,7 +242,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 300);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 	@Test
@@ -260,7 +260,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 100);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 	@Test
@@ -282,7 +282,7 @@ public class TestImageRender {
 		IImageRender imageRender = new ImageRender();
 		BufferedImage image = imageRender.render(canvas, 30);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 
 		{
 			IContextBuilder builder = render.newBuilder();
@@ -313,7 +313,7 @@ public class TestImageRender {
 
 		image = imageRender.render(canvas, 300);
 		assertNotNull(image);
-		writeImageToPNG(image, "/tmp/ascii-image.png");
+//		writeImageToPNG(image, "/tmp/ascii-image.png");
 	}
 
 }
