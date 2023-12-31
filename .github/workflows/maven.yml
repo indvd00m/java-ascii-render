@@ -28,4 +28,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        run: mvn -B -V --file pom.xml clean verify sonar:sonar
+        run: mvn -B -V --file pom.xml clean verify
