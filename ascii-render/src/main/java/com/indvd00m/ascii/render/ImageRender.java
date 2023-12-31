@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-import static com.indvd00m.ascii.render.util.AsciiUtils.getDejaVuSansMonoFont;
 import static com.indvd00m.ascii.render.util.AsciiUtils.repeatChar;
 
 /**
@@ -22,7 +21,7 @@ public class ImageRender implements IImageRender {
 	protected final Font font;
 
 	public ImageRender() {
-		this(AsciiUtils.getDejaVuSansMonoFont());
+		this(AsciiUtils.readDejaVuSansMonoFont());
 	}
 
 	/**

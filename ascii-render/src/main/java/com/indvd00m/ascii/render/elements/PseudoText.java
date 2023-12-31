@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-import static com.indvd00m.ascii.render.util.AsciiUtils.getDejaVuSansMonoFont;
+import static com.indvd00m.ascii.render.util.AsciiUtils.readDejaVuSansMonoFont;
 
 /**
  * PseudoText element. Default font DejaVu Sans Mono.
@@ -221,7 +221,7 @@ public class PseudoText implements IElement {
 
 	public Font getFont() {
 		if (font == null) {
-			font = getDejaVuSansMonoFont();
+			font = readDejaVuSansMonoFont();
 		}
 		return font;
 	}

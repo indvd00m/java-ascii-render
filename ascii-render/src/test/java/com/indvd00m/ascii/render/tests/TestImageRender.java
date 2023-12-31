@@ -31,7 +31,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * We can not compare images with expected values, because rendering of a font to image is platform dependent operation.
+ * We can not compare images with expected values pyxel by pyxel, because rendering of a font to image is platform
+ * dependent operation.
  *
  * @author indvd00m (gotoindvdum[at]gmail[dot]com)
  * @since 0.9.0
