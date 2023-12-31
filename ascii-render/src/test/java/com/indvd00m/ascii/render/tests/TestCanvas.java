@@ -776,4 +776,142 @@ public class TestCanvas {
 		assertFalse(canvas2.equals(canvas1));
 	}
 
+	@Test
+	public void test29() {
+		ICanvas canvas = new Canvas(10, 5);
+		String s = "";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("          ", canvas.getLine(0));
+		assertEquals("          ", canvas.getLine(1));
+		assertEquals("          ", canvas.getLine(2));
+		assertEquals("          ", canvas.getLine(3));
+		assertEquals("          ", canvas.getLine(4));
+
+		canvas.draw(0, 1, '1');
+		s = "";
+		s += "          \n";
+		s += "1         \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("          ", canvas.getLine(0));
+		assertEquals("1         ", canvas.getLine(1));
+		assertEquals("          ", canvas.getLine(2));
+		assertEquals("          ", canvas.getLine(3));
+		assertEquals("          ", canvas.getLine(4));
+
+		canvas.draw(0, 1, "123");
+		s = "";
+		s += "          \n";
+		s += "123       \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("          ", canvas.getLine(0));
+		assertEquals("123       ", canvas.getLine(1));
+		assertEquals("          ", canvas.getLine(2));
+		assertEquals("          ", canvas.getLine(3));
+		assertEquals("          ", canvas.getLine(4));
+
+		canvas.draw(8, 0, "12345");
+		s = "";
+		s += "        12\n";
+		s += "123       \n";
+		s += "          \n";
+		s += "          \n";
+		s += "          ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("        12", canvas.getLine(0));
+		assertEquals("123       ", canvas.getLine(1));
+		assertEquals("          ", canvas.getLine(2));
+		assertEquals("          ", canvas.getLine(3));
+		assertEquals("          ", canvas.getLine(4));
+
+		canvas.draw(4, 2, "line1\nline2\nline3");
+		s = "";
+		s += "        12\n";
+		s += "123       \n";
+		s += "    line1 \n";
+		s += "    line2 \n";
+		s += "    line3 ";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("        12", canvas.getLine(0));
+		assertEquals("123       ", canvas.getLine(1));
+		assertEquals("    line1 ", canvas.getLine(2));
+		assertEquals("    line2 ", canvas.getLine(3));
+		assertEquals("    line3 ", canvas.getLine(4));
+
+		canvas.draw(6, 2, "1line\n2line\n3line");
+		s = "";
+		s += "        12\n";
+		s += "123       \n";
+		s += "    li1lin\n";
+		s += "    li2lin\n";
+		s += "    li3lin";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("        12", canvas.getLine(0));
+		assertEquals("123       ", canvas.getLine(1));
+		assertEquals("    li1lin", canvas.getLine(2));
+		assertEquals("    li2lin", canvas.getLine(3));
+		assertEquals("    li3lin", canvas.getLine(4));
+
+		canvas.draw(6, 4, "1line\n2line\n3line");
+		s = "";
+		s += "        12\n";
+		s += "123       \n";
+		s += "    li1lin\n";
+		s += "    li2lin\n";
+		s += "    li1lin";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("        12", canvas.getLine(0));
+		assertEquals("123       ", canvas.getLine(1));
+		assertEquals("    li1lin", canvas.getLine(2));
+		assertEquals("    li2lin", canvas.getLine(3));
+		assertEquals("    li1lin", canvas.getLine(4));
+
+		canvas.draw(5, 1, '1', 3);
+		s = "";
+		s += "        12\n";
+		s += "123  111  \n";
+		s += "    li1lin\n";
+		s += "    li2lin\n";
+		s += "    li1lin";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("        12", canvas.getLine(0));
+		assertEquals("123  111  ", canvas.getLine(1));
+		assertEquals("    li1lin", canvas.getLine(2));
+		assertEquals("    li2lin", canvas.getLine(3));
+		assertEquals("    li1lin", canvas.getLine(4));
+
+		canvas.draw(5, 1, "12", 3);
+		s = "";
+		s += "        12\n";
+		s += "123  12121\n";
+		s += "    li1lin\n";
+		s += "    li2lin\n";
+		s += "    li1lin";
+		System.out.println(canvas.getText());
+		assertEquals(s, canvas.getText());
+		assertEquals("        12", canvas.getLine(0));
+		assertEquals("123  12121", canvas.getLine(1));
+		assertEquals("    li1lin", canvas.getLine(2));
+		assertEquals("    li2lin", canvas.getLine(3));
+		assertEquals("    li1lin", canvas.getLine(4));
+	}
+
 }

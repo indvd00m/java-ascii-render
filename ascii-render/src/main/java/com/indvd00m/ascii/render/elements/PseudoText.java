@@ -6,13 +6,11 @@ import com.indvd00m.ascii.render.api.IContext;
 import com.indvd00m.ascii.render.api.IElement;
 import com.indvd00m.ascii.render.api.IPoint;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+
+import static com.indvd00m.ascii.render.util.AsciiUtils.getDejaVuSansMonoFont;
 
 /**
  * PseudoText element. Default font DejaVu Sans Mono.
@@ -149,7 +147,7 @@ public class PseudoText implements IElement {
 		graphics.setColor(fontColor);
 		graphics.drawString(text, 0, ascent + leading);
 
-		// writeImageToPNG(image, "/tmp/pseudotext.png");
+		// AsciiUtils.writeImageToPNG(image, "/tmp/pseudotext.png");
 
 		for (int imgX = 0; imgX < width; imgX++) {
 			for (int imgY = 0; imgY < height; imgY++) {
@@ -205,35 +203,6 @@ public class PseudoText implements IElement {
 		return Math.sqrt(weightR * r * r + weightG * g * g + weightB * b * b);
 	}
 
-	protected Font createFont() {
-		InputStream is = null;
-		try {
-			is = getClass().getResourceAsStream("/fonts/DejaVuSansMono/DejaVuSansMono.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-			return font;
-		} catch (FontFormatException e) {
-			throw new RuntimeException(e);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-				}
-			}
-		}
-	}
-
-	protected void writeImageToPNG(BufferedImage image, String path) {
-		try {
-			ImageIO.write(image, "png", new File(path));
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 	public String getText() {
 		return text;
 	}
@@ -252,7 +221,7 @@ public class PseudoText implements IElement {
 
 	public Font getFont() {
 		if (font == null) {
-			font = createFont();
+			font = getDejaVuSansMonoFont();
 		}
 		return font;
 	}

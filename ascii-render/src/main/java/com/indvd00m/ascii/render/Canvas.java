@@ -2,6 +2,7 @@ package com.indvd00m.ascii.render;
 
 import com.indvd00m.ascii.render.api.ICanvas;
 import com.indvd00m.ascii.render.api.IRegion;
+import com.indvd00m.ascii.render.util.AsciiUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,7 +14,8 @@ import java.util.List;
  */
 public class Canvas implements ICanvas {
 
-	public static final char NULL_CHAR = '\0';
+	@Deprecated
+	public static final char NULL_CHAR = AsciiUtils.NULL_CHAR;
 
 	protected final int width;
 	protected final int height;
@@ -147,6 +149,11 @@ public class Canvas implements ICanvas {
 	public String getText() {
 		updateCacheIfNeed();
 		return cachedText;
+	}
+
+	@Override
+	public String getLine(int index) {
+		return lines.get(index).toString().replace(NULL_CHAR, ' ');
 	}
 
 	@Override

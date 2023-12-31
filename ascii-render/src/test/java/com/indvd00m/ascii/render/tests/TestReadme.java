@@ -100,7 +100,7 @@ public class TestReadme {
 		}
 
 		{
-			// conclustion
+			// conclusion
 			Label label = new Label("CONCLUSION: APPROVE", 0, 1);
 			Region region = new Region(width - label.getText().length(), height - 2, label.getText().length(), 2);
 			builder.layer(region);
