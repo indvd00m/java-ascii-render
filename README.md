@@ -1,7 +1,7 @@
 # Java ASCII Render
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.indvd00m.ascii.render/ascii-render.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.indvd00m.ascii.render%22%20AND%20a:%22ascii-render%22)
-[![Build Status](https://travis-ci.org/indvd00m/java-ascii-render.svg?branch=master)](https://travis-ci.org/indvd00m/java-ascii-render)
+[![Java CI with Maven](https://github.com/indvd00m/java-ascii-render/actions/workflows/maven.yml/badge.svg)](https://github.com/indvd00m/java-ascii-render/actions/workflows/maven.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=indvd00m_java-ascii-render&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=indvd00m_java-ascii-render)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=indvd00m_java-ascii-render&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=indvd00m_java-ascii-render)
 ![GitHub](https://img.shields.io/github/license/indvd00m/java-ascii-render)
