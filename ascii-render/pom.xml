@@ -160,6 +160,43 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.moditect</groupId>
+				<artifactId>moditect-maven-plugin</artifactId>
+				<version>1.0.0.Final</version>
+				<executions>
+					<execution>
+						<id>add-module-infos</id>
+						<phase>package</phase>
+						<goals>
+							<goal>add-module-info</goal>
+						</goals>
+						<configuration>
+							<jvmVersion>9</jvmVersion>
+							<module>
+								<moduleInfo>
+									<name>com.indvd00m.ascii.render</name>
+									<exports>
+										com.indvd00m.ascii.render;
+										com.indvd00m.ascii.render.elements;
+										com.indvd00m.ascii.render.elements.plot;
+										com.indvd00m.ascii.render.elements.plot.api;
+										com.indvd00m.ascii.render.elements.plot.misc;
+										com.indvd00m.ascii.render.elements.table;
+									</exports>
+									<requires>
+										transitive com.indvd00m.ascii.render.api;
+									</requires>
+								</moduleInfo>
+							</module>
+							<jdepsExtraArgs>
+								<arg>--multi-release</arg>
+								<arg>9</arg>
+							</jdepsExtraArgs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
