@@ -18,6 +18,14 @@ public interface ICanvas {
 	String getText();
 
 	/**
+	 * One line of canvas, without trailed new line symbol.
+	 *
+	 * @param index index of line, from top to bottom
+	 * @return
+	 */
+	String getLine(int index);
+
+	/**
 	 * Height of canvas.
 	 *
 	 * @return
