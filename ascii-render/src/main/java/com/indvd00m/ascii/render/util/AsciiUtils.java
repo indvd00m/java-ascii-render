@@ -28,7 +28,7 @@ public class AsciiUtils {
 	public static Font readDejaVuSansMonoFont() {
 		InputStream is = null;
 		try {
-			is = AsciiUtils.class.getResourceAsStream("/fonts/DejaVuSansMono/DejaVuSansMono.ttf");
+			is = AsciiUtils.class.getClassLoader().getResourceAsStream("fonts/DejaVuSansMono/DejaVuSansMono.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, is);
 			return font;
 		} catch (FontFormatException e) {
